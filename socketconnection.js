@@ -1,3 +1,2 @@
-const io = require('socket.io-client');
-
-var socket = io.connect('http://localhost:8080');
+var http = require('http');
+var socket = io.connect('http://localhost:3000');
