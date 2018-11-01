@@ -25,6 +25,7 @@
     "socket.io": "^2.1.1"
   },
   "dependencies": {
+    "ent": "^2.2.0",
     "modules": "^0.4.0",
     "require.js": "^1.0.0"
   }
