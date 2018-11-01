@@ -11,28 +11,30 @@ http.listen(3000, function(){
   console.log('listening on *:3000');
 });
 
-io.on('connection', function(socket,username){
+io.on('connection', function(socket){
     socket.on('new_client',function(username){
     socket.broadcast.emit('new_client', socket.username);
     socket.username = username;
+    socket.id = username;
+    console.log(socket.id)
   console.log(username +' connected');
+ 
   
 });
+
     socket.on('disconnect',function(username){
         console.log( socket.username+' disconnected');
     });
-});
-io.on('connection', function(socket){
-   socket.on('chat message', function(msg){
+    // En listener der venter på at 'chat message' eventet forekommer
+    socket.on('chat message', function(msg){
     io.emit('chat message', msg);
     console.log(socket.username +' siger: ' + msg);
     
-    let besked = msg;
-if (besked === "join 2"){
-socket.join("RoomName");
-}
-   });
 });
+});
+io.on('connection', function(socket){
+   
+   });
 
 
 
