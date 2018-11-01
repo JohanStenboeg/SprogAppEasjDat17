@@ -18,23 +18,21 @@ io.on('connection', function(socket){
     socket.id = username;
     console.log(socket.id)
   console.log(username +' connected');
- 
   
-});
-
+  
+}); 
+    // En listener der venter på at 'disconnect' eventet forekommer. 
     socket.on('disconnect',function(username){
         console.log( socket.username+' disconnected');
     });
-    // En listener der venter på at 'chat message' eventet forekommer
+    // En listener der venter på at 'chat message' eventet forekommer.
     socket.on('chat message', function(msg){
     io.emit('chat message', msg);
     console.log(socket.username +' siger: ' + msg);
     
 });
 });
-io.on('connection', function(socket){
-   
-   });
+
 
 
 
