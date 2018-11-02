@@ -28,7 +28,7 @@ io.on('connection', function(socket){
     // En listener der venter på at 'chat message' eventet forekommer.
     socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    console.log(socket.username +' siger: ' + msg);
+    console.log(msg);
     
 });
 });
