@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     let database = db.db("tododb");
     database.collection("ordbog").find({}).toArray(function (err, result) {
       if (err) throw err;
-      res.render('ordbog' , result);
+      res.render('ordbog', result);
       db.close();
     });
   });
@@ -20,9 +20,9 @@ router.get('/', function (req, res, next) {
 });
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
-router.post('/postord', function(req, res, next) {
+router.post('/postord', function (req, res, next) {
 
-  MongoClient.connect(url, { useNewUrlParser: true } , function(err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     let database = db.db("tododb");
 
@@ -31,23 +31,18 @@ router.post('/postord', function(req, res, next) {
       sprog: "dk",
       user: "erik2310",
       image: "",
-      sound: "", 
+      sound: "",
       video: ""
     }
 
-    database.collection("ordbog").insertOne(object, function(err, res) {
+    database.collection("ordbog").insertOne(object, function (err, res) {
       if (err) throw err;
       console.log("1 document inserted");
-    });
-
-    database.collection("ordbog").find({}).toArray(function (err, result) {
-      if (err) throw err;
-      res.render('ordbog' , result);
       db.close();
     });
   });
-
-  });
+  res.redirect('../ordbog');
+});
 
 
 module.exports = router;
