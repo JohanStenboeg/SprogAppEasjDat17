@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- "Wrapper" klassen indeholder alt hvad "body" klassen
+      indeholder. Den er til for at man bedre kan stylé
+      den individuelle body i hver html-fil, uden at skulle
+      bruge en separat css-fil.-->
+    <div class="note-record-wrapper">
+
+
+      <!-- i headeren har vi vores primære navigation, som består af
+        en "tilbage"-knap.
+        "a" elementet er et link som er blevet smidt på og "img" elementet
+        er refferencen til det billede der skal bruges.
+        klassen som hedder "spilside-hjemknap" bliver brugt på mange
+        af HTML-siderne da de stylés éns.-->
+      <header>
+      <a href="noter.html"><div class="noter-hjemknap">
+          <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+        </div>
+      </a>
+      </header>
+
+      <!-- Her kommer der nogle billeder, hvor nogle fungerer som knapper
+        Hvilket bliver brugt i javaScript filen. Hvor nogle skifter
+        fra ikke at blive vist og andre tiltræder når nogle knapper
+        bliver trykket på.
+        Stopuret skulle gerne fungere på den måde, at når "record"
+        knappen bliver trykket på, så begynder den at tælle opad.
+        Og når man trykker på stop-knappen, så stopper den. Det
+        er bare ikke noget vi nåede at implementere.-->
+      <div class="noter-billede">
+        <img src="billeder/note_billede.PNG" alt="Et billede af en stol">
+      </div>
+
+      <div class="record_lydoptagelse">
+        <img src="billeder/optag.png" alt="Et tilbage-symbol">
+      </div>
+
+      <div class="record_lydoptagelse2">
+        <img src="billeder/optag_uden.png" alt="Et tilbage-symbol">
+      </div>
+
+      <div class="record_stop">
+        <img src="billeder/stop_uden.png" alt="Et tilbage-symbol">
+      </div>
+
+      <div class="record_stop2">
+        <img src="billeder/stop.png" alt="Et tilbage-symbol">
+      </div>
+
+      <div class="stopur">
+        <h1>00.00.00</h1>
+      </div>
+
+      <div class="record_play">
+        <img src="billeder/play.png" alt="Et tilbage-symbol">
+      </div>
+
+    </div>
+    <!-- Der bliver referret til js filen og jQuery biblioteket
+    som det sidste for at sørge for at det er det sidste som bliver
+    indlæst i koden. En ekstra foranstaltning er dog taget i js filen.-->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src='javascript.js'></script>
+  </body>
+</html>
