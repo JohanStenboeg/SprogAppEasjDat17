@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style3.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <header>
+      <a href="menuside.html">
+      <div class="spilnav-hjemknap">
+        <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+      </div>
+      </a>
+    </header>
+      <!-- Camera -->
+    <main id="camera">
+
+      <!-- Camera view -->
+      <video id="camera--view" autoplay playsinline></video>
+
+      <!-- Camera sensor -->
+      <canvas id="camera--sensor"></canvas>
+
+      <!-- Camera output -->
+      <a href="galleri.html">
+      <img src="//:0" alt="" id="camera--output">
+      </a>
+      <!-- Camera trigger -->
+      <button id="camera--trigger">Take a picture</button>
+
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery.easypiechart.js"></script>
+    <script src="javascript.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

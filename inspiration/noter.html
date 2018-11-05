@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- "Wrapper" klassen indeholder alt hvad "body" klassen
+      indeholder. Den er til for at man bedre kan stylé
+      den individuelle body i hver html-fil, uden at skulle
+      bruge en separat css-fil.-->
+    <div class="noter-wrapper">
+
+      <!-- i headeren har vi vores primære navigation, som består af
+        en "tilbage"-knap.
+        "a" elementet er et link som er blevet smidt på og "img" elementet
+        er refferencen til det billede der skal bruges.
+        klassen som hedder "spilside-hjemknap" bliver brugt på mange
+        af HTML-siderne da de stylés éns.-->
+      <header>
+      <a href="galleri.html"><div class="noter-hjemknap">
+          <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+        </div></a>
+      </header>
+      <div class="noter-billede">
+        <img src="billeder/note_billede.PNG" alt="Et billede af en stol">
+      </div>
+      <div class="noter-lydoptagelse">
+        <img src="billeder/play_uden.png" alt="Et tilbage-symbol">
+      </div>
+      <div class="noter-lydoptagelse2">
+        <img src="billeder/play.png" alt="Et tilbage-symbol">
+      </div>
+      <div class="noter-lydoptagelse3">
+      <a href="note-record.html"><img src="billeder/optag.png" alt="Et tilbage-symbol"> </a>
+      </div>
+      <div class="noter-note">
+        <h1>Noter</h1>
+        <textarea name="note-box" rows="8" cols="45" placeholder="Skriv tekst her..."></textarea>
+      </div>
+    </div>
+
+    <!-- Der bliver referret til js filen og jQuery biblioteket
+    som det sidste for at sørge for at det er det sidste som bliver
+    indlæst i koden. En ekstra foranstaltning er dog taget i js filen.-->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src='javascript.js'></script>
+  </body>
+</html>
