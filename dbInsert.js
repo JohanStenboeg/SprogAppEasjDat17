@@ -8,7 +8,7 @@ var url = "mongodb://localhost:27017/";
 MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   if (err) throw err;
   var dbo = db.db("dbSprog");
-  var myobj = [{ username: 'Test123', password: 'Test123' }];
+  var myobj = [{ username: 'Sprogmakker1', password: 'Sprogmakker1', privilege: 'Sprogmakker' }];
   dbo.collection("brugere").insertMany(myobj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");

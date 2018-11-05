@@ -20,8 +20,10 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   var dbo = db.db("dbSprog");
   dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {_id : 0, username : 0,password : 0}}).toArray(function(err, result) {
     if (err) throw err;
-    console.log(result[0].privilege);
-    privilege = result[0].privilege;
+    if(result !== 'undefined' && result[0] !== 'undefined') {
+      console.log(result[0].privilege);
+      privilege = result[0].privilege;
+    }
     db.close();
     //console.log(result.length);
     if (result.length == 0){

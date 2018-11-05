@@ -26,6 +26,7 @@ function testLogin(){
 
                 switch(this.response){
                     case "Kursist":
+                    opretCookie("brugernavn", brugernavninput.value);
                     window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
                     document.cookie="loginPrivilege="+this.response+""
                     break;
@@ -71,7 +72,7 @@ function testLogin(){
     };
 
     //HTTP forespørgsel starter, og indhenter nødvendig data til genenmførsel.
-    var url = "http://10.200.122.55:3000/login";
+    var url = "http://localhost:3000/login";
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(params);
