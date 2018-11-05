@@ -26,7 +26,7 @@ function testLogin(){
 
                 switch(this.response){
                     case "Kursist":
-                    opretCookie("brugernavn", brugernavninput.value);
+                    //opretCookie("brugernavn", brugernavninput.value);
                     window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
                     document.cookie="loginPrivilege="+this.response+""
                     break;
