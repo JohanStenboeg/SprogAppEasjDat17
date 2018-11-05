@@ -11,8 +11,8 @@
     </header>
     <nav>
       <ul>
-        <li id="js_dine_ord" class="panel"><a href="#">Dine ord</a></li>
-        <li id="js_tilfoj_ord" class="panel"><a href="#">Tilføj ord</a></li>
+        <li id="js_dine_ord" class="panel" onclick="dine_ord()"><a href="#">Dine ord</a></li>
+        <li id="js_tilfoj_ord" class="panel"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>
       </ul>
     </nav>
     <section>
@@ -24,7 +24,7 @@
         {{/each}}
         
       </div>
-      <div id="tilfoj_ord">
+      <div id="tilfoj_ord" style="display: none;"
         <form>
           <p>Nyt ord:<br></p>
           <input type="text" name="input_nyt_ord" id="input_nyt_ord" placeholder="Skriv her">
