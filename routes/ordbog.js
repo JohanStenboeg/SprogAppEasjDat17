@@ -20,7 +20,7 @@ router.get('/', function (req, res, next) {
 });
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
-router.post('/postord', function(req, res, next) {
+router.post('ordbog/postord', function(req, res, next) {
 
   MongoClient.connect(url, { useNewUrlParser: true } , function(err, db) {
     if (err) throw err;
