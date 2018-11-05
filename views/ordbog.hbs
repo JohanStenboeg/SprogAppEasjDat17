@@ -13,6 +13,7 @@
       <ul>
         <li id="js_dine_ord" class="panel" onclick="dine_ord()"><a href="#">Dine ord</a></li>
         <li id="js_tilfoj_ord" class="panel"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>
+        <li id="js_rediger_ord" class="panel"<a href="#" onclick="rediger_ord()">Redigér ord</a></li>
       </ul>
     </nav>
     <section>
@@ -27,9 +28,18 @@
       <div id="tilfoj_ord" style="display: none;">
         <form>
           <p>Nyt ord:<br></p>
-          <input type="text" name="input_nyt_ord" id="input_nyt_ord" placeholder="Skriv her">
-          </input>
-          <input type="submit" value="Gem">
+          <input type="text" name="input_nyt_ord" id="input_nyt_ord" placeholder="Skriv her"></input>
+          <input type="submit" value="Gem"></input>
+        </form>
+      </div>
+      <div id="rediger_ord" style="display: none">
+        <form>
+          <p>Rediger ord:<br></p>
+          <input type="text" name="input_rediger_ord" id="input_rediger_ord" placeholder="Redigér ord"></input>
+          <input type="submit" value="Gem"></input>
+          <p>Slet ord:<br></p>
+          <input type="text" name="input_slet_ord" id="input_slet_ord" placeholder="Slet ord"></input>
+          <input type="submit" value="Slet"></input>
         </form>
       </div>
     </section>
