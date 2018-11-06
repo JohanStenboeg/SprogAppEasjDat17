@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Ordbog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
     <script src="javascripts/ordbog.js"></script>
   </head>
@@ -12,36 +13,27 @@
     <nav>
       <ul>
         <li id="js_dine_ord" class="panel" onclick="dine_ord()"><a href="#">Dine ord</a></li>
-        <li id="js_tilfoj_ord" class="panel"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>
+        <li id="js_tilfoj_ord" class="floatTilfoj"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>
         <!--<li id="js_rediger_ord" class="panel"><a href="#" onclick="rediger_ord()">Redigér ord</a></li> -->
-        <li id="js_slet_ord" class="panel"><a href="#" onclick="slet_ord()">Slet ord</a></li>
+        <!--<li id="js_slet_ord" class="floatSlet"><a href="#" onclick="slet_ord()">Slet ord</a></li> -->
         
       </ul>
     </nav>
     <section>
       <div id="dine_ord">
         <p>Ordliste:</p>
-        
+        <form method="POST" action="<!-- indsæt ny metode -->">
         {{#each this}}
-          <p>{{this.ord}}</p>
+          <input type="radio" name="ord" value={{this._id}}>{{this.ord}}<br>
         {{/each}}
-        
+          <input type="submit" value="Slet" class="floatSlet">
+        </form>
       </div>
       <div id="tilfoj_ord" style="display: none;">
         <form method="POST" action="ordbog/postord">
           <p>Nyt ord:<br></p>
           <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
           <input type="submit" value="Gem"></input>
-        </form>
-      </div>
-      <div id="slet_ord" style="display: none">
-        <form>
-        <!--<p>Rediger ord:<br></p>
-          <input type="text" name="input_rediger_ord" id="input_rediger_ord" placeholder="Redigér ord"></input>
-          <input type="submit" value="Gem"></input> -->     
-          <p>Slet ord:<br></p>
-          <input type="text" name="input_slet_ord" id="input_slet_ord" placeholder="Slet ord"></input>
-          <input type="submit" value="Slet"></input>
         </form>
       </div>
     </section>
