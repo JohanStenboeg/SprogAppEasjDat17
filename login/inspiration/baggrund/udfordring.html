@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- "Wrapper" klassen indeholder alt hvad "body" klassen
+      indeholder. Den er til for at man bedre kan stylé
+      den individuelle body i hver html-fil, uden at skulle
+      bruge en separat css-fil.-->
+    <div class="udfordring-wrapper">
+
+
+      <!-- i headeren har vi vores primære navigation, som består af
+        en "tilbage"-knap.
+        "a" elementet er et link som er blevet smidt på og "img" elementet
+        er refferencen til det billede der skal bruges.
+        klassen som hedder "hjemknap" bliver brugt på mange
+        af HTML-siderne da de stylés éns.-->
+      <header>
+        <a href="menuside.html">
+          <div class="udfordring-hjemknap">
+            <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+          </div>
+        </a>
+      </header>
+
+
+      <!-- Udfordring bjælken er delt op i 5 dele, med streger
+      imellem for at separere dem. Tallende repræsentere rækkefølgen
+      som de står i. Dette betyder at hver af bjælkerne kan interageres
+      med individuelt, og forholdsvist let.-->
+      <div class="udfordring-bjaelke">
+
+        <div class="udfordring-dag1">
+        </div>
+
+        <div class="udfordring-dag5">
+        </div>
+
+        <div class="udfordring-dag2">
+        </div>
+
+        <div class="udfordring-dag3">
+        </div>
+
+        <div class="udfordring-dag4">
+        </div>
+
+        <div class="udfordring-streg1">
+        </div>
+
+        <div class="udfordring-streg2">
+        </div>
+
+        <div class="udfordring-streg3">
+        </div>
+
+        <div class="udfordring-streg4">
+        </div>
+
+      </div>
+
+
+      <!-- Denne del er opsat i forskellige udfordringer, hvor tanken
+      bag, er at udfordringerne bliver udskiftet til nye fra dag til dag.
+      Når en udfordring er løst (for eksempel, tag et billede), så er det
+      meningen at billede skal skifte fra "noncompletion" til "completion",
+      og lyse en af bjælkerne op.-->
+      <div class="udfordring-udfordringer">
+
+        <div class="udfordring-udfordring1">
+          <h1>Udfordring 1</h1>
+          <h2>Tag et billede</h2>
+          <div class="udfordring-noncompletion">
+            <img src="billeder/noncompletion.png" alt="Et billede af et gråt okay-tegn">
+          </div>
+          <div class="udfordring-completion">
+            <img src="billeder/completion.png" alt="Et billede af et farverigt okay-tegn">
+          </div>
+        </div>
+
+
+        <div class="udfordring-udfordring2">
+          <h1>Udfordring 2</h1>
+          <h2>Spil 2 gange på en dag</h2>
+          <div class="udfordring-noncompletion">
+            <img src="billeder/noncompletion.png" alt="Et billede af et gråt okay-tegn">
+          </div>
+          <div class="udfordring-completion">
+            <img src="billeder/completion.png" alt="Et billede af et farverigt okay-tegn">
+          </div>
+        </div>
+
+
+        <div class="udfordring-udfordring3">
+          <h1>Udfordring 3</h1>
+          <h2>Skriv en note til et billede du har taget</h2>
+          <div class="udfordring-noncompletion">
+            <img src="billeder/noncompletion.png" alt="Et billede af et gråt okay-tegn">
+          </div>
+          <div class="udfordring-completion">
+            <img src="billeder/completion.png" alt="Et billede af et farverigt okay-tegn">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Der bliver referret til js filen og jQuery biblioteket
+    som det sidste for at sørge for at det er det sidste som bliver
+    indlæst i koden. En ekstra foranstaltning er dog taget i js filen.-->
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src='javascript.js'></script>
+  </body>
+</html>
