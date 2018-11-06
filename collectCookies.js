@@ -1,8 +1,5 @@
-function opretCookie(cNavn, cValue, exDays){
-    var d = new Date();
-    d.setTime(d.getTime() + (exDays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cNavn + "=" + cValue + ";" + expires + ";path=/";
+function opretCookie(cNavn, cValue){
+    document.cookie = cNavn + "=" + cValue + ";";
 }
 
 function hentCookie(){
@@ -23,8 +20,9 @@ function hentCookie(){
 
 function tjekCookie(){
     var bruger = hentCookie("brugernavn");
-    if(bruer != ""){
-        document.getElementById("welcome_msg").innerHTML("Welcome, " + bruger);
+    if(bruger != ""){
+        var x = document.cookie;
+        document.getElementById("welcome_msg").innerHTML("Velkommen, " + x);
         console.log(bruger + " er på Kursist.html");
     }
     else {
