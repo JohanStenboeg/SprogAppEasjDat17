@@ -144,6 +144,11 @@ p {
   font-family: arial;
 }
 
+#opretDiv{
+  margin:30px;
+  color:white;
+}
+
 .spilnav-wrapper {
   margin: 0%;
   width: 100%;
