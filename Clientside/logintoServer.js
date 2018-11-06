@@ -28,7 +28,7 @@ function testLogin(){
                     case "Kursist":
                     //opretCookie("brugernavn", brugernavninput.value);
                     window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
-                    opretCookie("brugernavn", brugernavninput.value);
+                    //opretCookie("brugernavn", brugernavninput.value);
                     break;
 
                     case "Sprogmakker":
