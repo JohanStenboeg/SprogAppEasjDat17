@@ -36,34 +36,47 @@
       }
 
       //Henter friendslist
-      /*
+      var venneliste=[];
       var xmlhttp = new XMLHttpRequest();
 
       xmlhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
+          console.log("inde i onreadystatechange")
         var myObj = JSON.parse(this.responseText);
-          console.log( myObj.value);
+         venneliste = myObj;
+         
+         var x = document.getElementById("friendslist"); 
+        
+        for (let index = 0; index < 3; index++) {
+          let option = document.createElement("option");
+          option.text = myObj.arr[index].name;
+          x.add(option);
+        }
+         
+
+         console.log("her"+myObj.arr[1].name);
+
         }
       };
 
-      xmlhttp.open("GET", "https://172.20.10.5:3000/getChats", true);
+      xmlhttp.open("GET", "http://localhost:3000/getChats", true);
       xmlhttp.send();
-      */
+      console.log("venne "+venneliste);
 
-        var pingPong =  [{"id":"ajjskkksk123ws","name":"Mads"}, {"id":"ajjskodaoksdko2","name":"Mathias"},{"id":"ajjskkksk123ws","name":"Mikkel"}]
-        console.log(pingPong[1].name);
+
      
         //Friendslist
+        /*
         var x = document.getElementById("friendslist"); 
         
-        for (let index = 0; index < pingPong.length; index++) {
+        for (let index = 0; index < 3; index++) {
           let option = document.createElement("option");
-          option.text = pingPong[index].name;
+          option.text = venneliste[index].name;
           x.add(option);
         }
 
         
-
+*/
 
 
         //Til at printe of sende beskeder.

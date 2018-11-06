@@ -18,11 +18,12 @@ app.use(function(req, res, next) {
 //get alle brugerens chats
 app.get('/getChats',function(req,res){
   //Her skal vi have lavet noget, så den sender en list over id'er på hvem man chatter med.
-  //Aka noget ala. [{ajjskkksk123ws, sjiij222jk3jd, jijidkerjkk23123}] 
-  var sendListe = [{"id":"ajjskkksk123ws","name":"Hans"}, {"id":"ajjskodaoksdko2","name":"Johan"}];
-  res.sendFile(sendListe);
+  //Det er en json, der skal hentes fra DB
+  var sendListe = {arr :[{"id":"ajjskkksk123ws","name":"Hans"}, {"id":"ajjskodaoksdko2","name":"Johan"},{"id":"woolololololol","name":"Frank"}]};
+  res.send(sendListe);
 
 });
+
 
 
 
@@ -40,6 +41,8 @@ io.on('connection', function(socket){
  
   
 });
+
+
 
 //
 socket.on('disconnect',function(username){
