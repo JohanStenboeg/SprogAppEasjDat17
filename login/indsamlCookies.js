@@ -26,7 +26,7 @@ function tjekCookie(){
         console.log(bruger + " er på Kursist.html");
     }
     else {
-        window.location.href="http://localhost:5500/Clientside/login.html";
+        document.getElementById("welcome_msg").innerHTML("Velkommen, bruger");
         if(bruger != "" && bruger != null){
             opretCookie("brugernavn", bruger, 365);
         }
