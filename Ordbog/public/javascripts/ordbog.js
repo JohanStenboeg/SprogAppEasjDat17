@@ -20,3 +20,4 @@ function slet_ord() {
     document.getElementById('tilfoj_ord').style.display = 'none';
     document.getElementById('slet_ord').style.display = 'block';
 }
+
