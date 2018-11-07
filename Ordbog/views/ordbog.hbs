@@ -13,8 +13,8 @@
   <!-- Navigations panel / Header -->
   <header>
     <nav>
-      <ul>
-        <li id="js_dine_ord" class="panel" onclick="dine_ord()"><a href="#">Dine ord</a></li>
+      <ul class="panel">
+        <li id="js_dine_ord" class="menuknap" onclick="dine_ord()"><a href="#">Dine ord</a></li>
 
         <!-- Udkommenterede navigationsknapper som måske skal benyttes til senere brug: -->
         <!--<li id="js_tilfoj_ord" class="floatTilfoj"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>-->
@@ -29,17 +29,20 @@
   <section>
     <!-- Hovedafsnit / Dine ord -->
     <div id="dine_ord">
-      <p>Ordliste:</p>
+      <!-- Søgefelt -->
+      <input type="text" id="searchInput" onkeyup="search()" placeholder="Hvilket ord søger du?" title="Skriv et ord">
+
+      <p id="overskriftTilOrdliste">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
       <form method="POST" action="<!-- indsæt ny metode -->">
-
-        {{#each this}}
-        <input type="radio" name="ord" value={{this._id}}>{{this.ord}}<br>
-        {{/each}}
-
+        <ul id="minListe">
+          {{#each this}}
+          <li name="ord" value={{this._id}}><a href="#">{{this.ord}}</a></li>
+          {{/each}}
+        </ul>
         <input type="submit" value="slet" class="floatSlet">
-        <button id="js_tilfoj_ord" class="floatTilfoj"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></button>
       </form>
+      <button id="js_tilfoj_ord" class="floatTilfoj" onclick="tilfoj_ord()">Tilføj ord</button>
     </div>
 
     <!-- Hovedafsnit / Tilføj ord -->
