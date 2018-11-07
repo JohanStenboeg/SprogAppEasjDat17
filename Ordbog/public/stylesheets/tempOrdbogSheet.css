@@ -21,17 +21,6 @@ li a {
 li a:hover {
     background-color: #111111;
 }
-h1{
-  text-align:center
-}
-.panel{
-  background-color:#333333;
-  padding:1em;
-  width:92.5%;
-  margin:auto;
-  max-width:30em;
-}
-
 .floatTilfoj{
 	position:fixed;
 	width:60px;
