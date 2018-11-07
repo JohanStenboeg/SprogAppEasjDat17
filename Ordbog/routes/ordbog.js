@@ -17,37 +17,38 @@ router.get('/', function (req, res, next) {
   });
 });
 
-    /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
+
+/* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
 router.post('/postord', function (req, res, next) {
 
-      let object = {
-        ord: req.body.ord,
-        sprog: "dk",
-        user: "erik2310",
-        image: "",
-        sound: "",
-        video: "",
-        kategori: "",
-        date: ""
-      }
+  let object = {
+    ord: req.body.ord,
+    sprog: "dk",
+    user: "erik2310",
+    image: "",
+    sound: "",
+    video: "",
+    kategori: "",
+    date: ""
+  }
 
-      ordbog.create(object, function (err) {
-        if (err) return console.log(err);
-      })
-      res.redirect('../ordbog');
-    });
+  ordbog.create(object, function (err) {
+    if (err) return console.log(err);
+  })
+  res.redirect('../ordbog');
+});
 
-    /* Handler update request og updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 
-    router.post('/updateord',function (req, res, next) {
+/* Handler update request og updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+router.post('/updateord', function (req, res, next) {
 
-      var id = mongoose.Types.ObjectId(req.query._id);
+  var id = mongoose.Types.ObjectId(req.query._id);
 
-      ord.findOneAndUpdate({_id: id}, req.body, {new: true}, function(err, ord) {
+  ord.findOneAndUpdate({ _id: id }, req.body, { new: true }, function (err, ord) {
 
-        if (err) return console.log(err);
-      })
-      res.redirect('../ordbog');
-    });
+    if (err) return console.log(err);
+  })
+  res.redirect('../ordbog');
+});
 
-    module.exports = router;
+module.exports = router;
