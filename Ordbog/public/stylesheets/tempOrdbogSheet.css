@@ -1,37 +1,31 @@
-ul {
+.panel {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333333;
 }
-
-li {
+.panel{
+    background-color:#333333;
+    padding:1em;
+    /*width:92.5%;*/
+    margin:auto;
+    /*max-width:30em;*/
+}
+.menuknap {
     float: left;
 }
-
-li a {
+.menuknap a {
     display: block;
     color: white;
     text-align: center;
     padding: 16px;
     text-decoration: none;
+    font-size: 16px;
 }
-
-li a:hover {
+.menuknap a:hover {
     background-color: #111111;
 }
-h1{
-  text-align:center
-}
-.panel{
-  background-color:#333333;
-  padding:1em;
-  width:92.5%;
-  margin:auto;
-  max-width:30em;
-}
-
 .floatTilfoj{
 	position:fixed;
 	width:60px;
@@ -59,4 +53,36 @@ h1{
 }
 .my-float{
 	margin-top:22px;
+}
+
+#searchInput {
+  /*background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;*/
+  font-size: 16px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+#minListe {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#minListe li a {
+  border: 1px solid #ddd;
+  margin-top: 3px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#minListe li a:hover:not(.header) {
+  background-color: #eee;
 }
