@@ -17,6 +17,7 @@ router.get('/', function (req, res, next) {
   });
 });
 
+
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
 router.post('/postord', function (req, res, next) {
 
@@ -37,6 +38,7 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
+// Mangler at blive tested
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/updateord', function (req, res, next) {
 
@@ -53,6 +55,7 @@ router.post('/updateord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
+// Mangler at blive testet
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet', function (req, res, next) {
 
@@ -62,7 +65,5 @@ router.post('/slet', function (req, res, next) {
     res.redirect('../ordbog');
   });
 });
-
-
 
 module.exports = router;
