@@ -6,16 +6,42 @@
     <title>Opret Bruger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
-    <script src="opretBruger.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
+    <script>
+        //variabler
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+var brugerNavnInput = document.getElementById("brugernavn");
+var brugerPassInput = document.getElementById("kodeord");
+var brugerRolleInput = document.getElementById("roller").selectedIndex;
+
+//URL
+var url = "mongodb://localhost:27017/";
+
+//Forbindelsen til MongoDB
+MongoClient.connect(url,{useNewUrlParser: true}, function(err, db) {
+    if (err){throw err};
+    var dbo = db.db("dbSprog");
+    var myobj = [{username: brugerNavnInput, password: brugerPassInput, privilege: brugerRolleInput}];
+    dbo.collection("brugere").insertMany(myobj, function(err, res){
+        if (err){throw err};
+        console.log("Document inserted");
+        db.close();
+    });
+});
+        </script>
     <div id = "opretDiv">
-    <p>Brugernavn:</p>
-    <input id = "brugernavn" type="email" placeholder="Brugernavn" name="uname" required>
-    <p>Kodeord:</p>
-    <input id = "koderod" type="password" placeholder="Kodeord" name="psw" required>
-    <p>Privilege:</p>
-    <input id = "privilege" type="text" placeholder="Rolle" name="priv" required>
-</div>
+        <input id = "brugernavn" type="email" placeholder="Brugernavn" name="uname" required> 
+        <input id = "kodeord" type="password" placeholder="Kodeord" name="psw" required> 
+        <select id = "roller"> 
+            <option value="default" selected>Vælg en rolle...</option>
+            <option value="Kursist">Kursist</option>
+            <option value="Sprogmakker">Sprogmakker</option>
+            <option value="Underviser">Underviser</option>
+        </select>
+        <button id="indsendKnap" type="submit">Opret</button>
+    </div>
 </body>
 </html>
