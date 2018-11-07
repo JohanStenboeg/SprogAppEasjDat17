@@ -37,7 +37,7 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-/* Handler der updater request og updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+/* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 
 router.post('/updateord', function (req, res, next) {
 
@@ -55,13 +55,15 @@ router.post('/updateord', function (req, res, next) {
 });
 
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/slet', function(req, res, next) {
+router.post('/slet', function (req, res, next) {
 
-ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
-  if (err) return console.log(err);
+  ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
+    if (err) return console.log(err);
 
-res.redirect('../ordbog');
-})
+    res.redirect('../ordbog');
+  });
 });
+
+
 
 module.exports = router;
