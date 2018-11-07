@@ -1,48 +1,54 @@
 var express = require('express');
 var router = express.Router();
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/tododb', {
+  useNewUrlParser: true
+});
+var ordbogModel = require('../models/ordbogModel');
+var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
 
-  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
-    if (err) throw err;
-    let database = db.db("tododb");
-    database.collection("ordbog").find({}).toArray(function (err, result) {
-      if (err) throw err;
-      res.render('ordbog', result);
-      db.close();
-    });
+  ordbog.find({}, function (err, result) {
+    if (err) return console.log(err);
+    res.render('ordbog', result);
   });
-
 });
+
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
 router.post('/postord', function (req, res, next) {
 
-  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
-    if (err) throw err;
-    let database = db.db("tododb");
+  let object = {
+    ord: req.body.ord,
+    sprog: "dk",
+    user: "erik2310",
+    image: "",
+    sound: "",
+    video: "",
+    kategori: "",
+    date: ""
+  }
 
-    let object = {
-      ord: req.body.ord,
-      sprog: "dk",
-      user: "erik2310",
-      image: "",
-      sound: "",
-      video: ""
-    }
-
-    database.collection("ordbog").insertOne(object, function (err, res) {
-      if (err) throw err;
-      console.log("1 document inserted");
-      db.close();
-    });
-  });
+  ordbog.create(object, function (err) {
+    if (err) return console.log(err);
+  })
   res.redirect('../ordbog');
 });
 
+
+/* Handler update request og updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+router.post('/updateord', function (req, res, next) {
+
+  var id = mongoose.Types.ObjectId(req.query._id);
+
+  ord.findOneAndUpdate({ _id: id }, req.body, { new: true }, function (err, ord) {
+
+    if (err) return console.log(err);
+  })
+  res.redirect('../ordbog');
+});
 
 module.exports = router;
