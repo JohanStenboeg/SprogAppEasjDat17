@@ -1,26 +1,31 @@
 var express = require('express');
 var router = express.Router();
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/tododb');
+var ordbogModel = require('../models/ordbogModel');
+var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
 
-  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
-    if (err) throw err;
-    let database = db.db("tododb");
-    database.collection("ordbog").find({}).toArray(function (err, result) {
-      if (err) throw err;
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function() {
+   
+    ordbog.find({}, function(err, result) {
+      if (err) return console.log(err);
       res.render('ordbog', result);
       db.close();
     });
+    
+    });
   });
 
-});
+
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
-router.post('/postord', function (req, res, next) {
+/* router.post('/postord', function (req, res, next) {
 
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
@@ -44,5 +49,6 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
+*/
 
 module.exports = router;
