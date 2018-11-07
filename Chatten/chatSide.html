@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -48,7 +48,7 @@
          
          var x = document.getElementById("friendslist"); 
         
-        for (let index = 0; index < 3; index++) {
+        for (let index = 0; index < 4; index++) {
           let option = document.createElement("option");
           option.text = myObj.arr[index].name;
           x.add(option);
@@ -88,7 +88,8 @@
 
       
           
-          var username = prompt('What\'s your username?');
+          var username = prompt('Hvad er dit brugernavn ?');
+          alert("Husk og vælg hvem du vil skrive med.")
           //var hvemSkriverJegTil = prompt("Hvem vil du skrive til?");
           
 
@@ -100,8 +101,8 @@
             //socket.emit('chat message',username+' : '+ $('#m').val());
             
             
-            socket.emit('chat message',hvemSkriverJegTil+' : '+ $('#m').val());
-            $('#messages').append($('<li>').text(username+" : "+$('#m').val()));
+            socket.emit('chat message',hvemSkriverJegTil+ $('#m').val());
+            $('#messages').append($('<li>').text($('#m').val()));
 
 
             $('#m').val('');
@@ -114,13 +115,20 @@
             if(msg.search(username)>(-1)){
               console.log(msg)
 
+              
+              
               if(msg.search(hvemSkriverJegTil)==0){
+                
                 var res = msg.replace(hvemSkriverJegTil, " ");
-                $('#messages').append($('<li>').text(username+" "+res));
+                $('#messages').append($('<li>').text(" "+res));
+                  
+
 
               }else{
                 var res2 = msg.replace(username, " ");
-                $('#messages').append($('<li>').text(hvemSkriverJegTil+" "+res2));
+                $('#messages').append($('<li>').text(" "+res2));
+                  
+
               }
             }else{
               
