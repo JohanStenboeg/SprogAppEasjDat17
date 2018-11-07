@@ -2,25 +2,20 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/tododb');
+mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 var ordbogModel = require('../models/ordbogModel');
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
-
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', function() {
    
     ordbog.find({}, function(err, result) {
       if (err) return console.log(err);
       res.render('ordbog', result);
-      db.close();
+
     });
     
     });
-  });
 
 
 
