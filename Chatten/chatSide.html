@@ -89,13 +89,19 @@ function printTidligereBeskeder(){
   xmlhttp2.onreadystatechange = function(){
     // Hvis requested kommer til stadie 4(sendt), og får status 200(Alt ok), så kører loopet. 
     if (this.readyState == 4 && this.status == 200) {
-      // Vi parser her resultatet, fordi at den data vi henter fra myObj ikke er et rigtig json objekt.
+      // Vi parser her resultatet til et json, fordi at den data vi henter fra myObj ikke er et rigtig json objekt.
       var myObj = JSON.parse(this.responseText);
-
+      
     console.log(myObj.arr.length + "hej");
 
+// For at kunne printe beskederne, laver vi et array.
+// Da JSON objekter ikke har nogen længde, går vi ind i en array subgruppe, som tæller hvor mange pladser i arrayet, vi bruger.
+// Når vi så har det tal, kan vi lave et forloop, der printer beskeder, så længe der er nogen der ikke er printet endnu. 
   for(i = 0; i < myObj.arr.length; i++){
+    
+    // Laver variabel, der bestemmer beskeden ud fra dens plads i arrayet.
     var text = myObj.arr[i].besked;
+    // Tilføjer beskeden ud fra listen. 
     $('#messages').append($('<li>').text(text));
   }
 }
