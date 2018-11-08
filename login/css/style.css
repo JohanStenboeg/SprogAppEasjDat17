@@ -22,7 +22,6 @@ p, div {
 /*login main page*/
 #mainlogin {
     background-color: rgb(20, 77, 77);
-  /*background-color: #000000;*/
   padding-bottom: 20px;
 }
 
@@ -70,8 +69,6 @@ input[type=text]:-ms-input-placeholder, input[type=eMail]:-ms-input-placeholder 
 input[type=text]::-ms-input-placeholder, input[type=eMail]::-ms-input-placeholder { /* Microsoft Edge */
   color: #fff;
 }
-
-
 
 
 
