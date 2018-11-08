@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var hbs = require('hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 var mongoose = require('mongoose');
 var multer = require('multer');
 //var upload = multer({dest: "./public/uploads"});
@@ -36,6 +38,17 @@ const upload = multer({
     fileFilter: fileFilter
   });
 
+const Ord = require('../models/ordbogModel')
+
+mongoose.connect('mongodb://localhost:27017/tododb', {
+  useNewUrlParser: true
+});
+var multer = require('multer');
+var upload = multer({ dest: './public/uploads' });
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
+var ordbogModel = require('../models/ordbogModel');
+var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {

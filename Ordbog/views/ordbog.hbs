@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
   <!-- Navigations panel / Header -->
   <header>
     <nav>
@@ -28,16 +27,16 @@
   <!-- Hovedafsnit -->
   <section>
     <!-- Hovedafsnit / Dine ord -->
-    <div id="dine_ord">
+    <div id="dine_ord" class="overskrift">
       <!-- Søgefelt -->
       <input type="text" id="searchInput" onkeyup="search()" placeholder="Hvilket ord søger du?" title="Skriv et ord">
 
-      <p id="overskriftTilOrdliste">Ordliste:</p>
+      <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
       <form method="POST" action="<!-- indsæt ny metode -->">
         <ul id="minListe">
           {{#each this}}
-          <li name="ord" value="{{this._id}}"><a href="#">{{this.ord}}</a></li>
+          <li name="ord" value={{this._id}} onclick="vis_ord()"><a href="#">{{this.ord}}</a></li>
           {{/each}}
         </ul>
         <input type="submit" value="slet" class="floatSlet">
@@ -48,15 +47,21 @@
     <!-- Hovedafsnit / Tilføj ord -->
     <div id="tilfoj_ord" style="display: none;">
       <form method="POST" action="ordbog/postord">
-        <p>Nyt ord:<br></p>
+        <p id="overskriftTilfojOrd" class="overskrift">Nyt ord:<br></p>
         <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
         <input type="submit" value="Gem"></input>
       </form>
     </div>
 
-    <!-- Hovedafsnit / Seneste ord -->
-    <div>
-
+    <!-- Hovedafsnit / Vis ord og billeder og redigér-->
+    <div id="vis_ord" style="display: none;">
+      <!-- <img class="visOrdBillede"> -->
+       
+        <h5 class="visOrdOrd">Ord</h5>
+        <h6 class="visOrdKategori">Kategori</p>
+        <a href="#" class="btnVisOrdAfspilLyd">Afspil lydfil</button><br>
+        <a href="#" id="btnRediger" class="btnVisOrdRediger" onclick="btn_rediger()">Redigér</a>
+      
     </div>
   </section>
 
