@@ -57,7 +57,7 @@ router.post('/updateord', function (req, res, next) {
 
 // Mangler at blive testet
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/slet', function (req, res, next) {
+router.post('/slet_ord', function (req, res, next) {
 
   ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
     if (err) return console.log(err);
