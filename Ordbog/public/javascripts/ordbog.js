@@ -3,7 +3,7 @@ function dine_ord() {
   
     document.getElementById('dine_ord').style.display = 'block';
     document.getElementById('tilfoj_ord').style.display = 'none';
-    document.getElementById('slet_ord').style.display = 'none';
+    document.getElementById('vis_ord').style.display = 'none';
   
 }
  
@@ -11,14 +11,13 @@ function tilfoj_ord() {
   
     document.getElementById('dine_ord').style.display = 'none';
     document.getElementById('tilfoj_ord').style.display = 'block';
-    document.getElementById('slet_ord').style.display = 'none';
+    document.getElementById('vis_ord').style.display = 'none';
 }
 
-function slet_ord() {
-
+function vis_ord() {
     document.getElementById('dine_ord').style.display = 'none';
     document.getElementById('tilfoj_ord').style.display = 'none';
-    document.getElementById('slet_ord').style.display = 'block';
+    document.getElementById('vis_ord').style.display = 'block';
 }
 
 function search() {
@@ -35,4 +34,10 @@ function search() {
             li[i].style.display = "none";
         }
     }
+}
+
+function btn_rediger() {
+    document.getElementById('dine_ord').style.display = 'none';
+    document.getElementById('tilfoj_ord').style.display = 'block';
+    document.getElementById('vis_ord').style.display = 'none';
 }
