@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
 var mongoose = require('mongoose');
 const multer = require('multer');
 
@@ -34,6 +35,12 @@ const Ord = require('../models/ordbogModel')
 mongoose.connect('mongodb://localhost:27017/tododb', {
   useNewUrlParser: true
 });
+=======
+var multer = require('multer');
+var upload = multer({ dest: './public/uploads' });
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
+>>>>>>> a58ae67aefd359177c1b6afdc168e37022a5d12f
 var ordbogModel = require('../models/ordbogModel');
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
@@ -76,11 +83,11 @@ router.post('/updateord', function (req, res, next) {
   ordbog.findOneAndUpdate({
     _id: id
   }, req.body, {
-    new: true
-  }, function (err, ord) {
+      new: true
+    }, function (err, ord) {
 
-    if (err) return console.log(err);
-  })
+      if (err) return console.log(err);
+    })
   res.redirect('../ordbog');
 });
 
@@ -95,37 +102,46 @@ router.post('/slet_ord', function (req, res, next) {
   });
 });
 
-router.post('/uploadimage', upload.single('ordImage') , function(req, res, next){
+router.post('/uploadimage2', upload.single('ordImage') , function(req, res, next){
   console.log(req.file);
-  
+
   const Ord = new Ord({
     _id: new mongoose.Types.ObjectId(),
     ord: req.body.ord,
 
   });
   ord
-  .save()
-  .then(result => {
-    console.log(result);
-    res.status(201).json({
-      message: "Created ord successfully",
-      createdOrd: {
-        ord: result.ord,
-        image: result.image,
-        _id: result._id,
-        request: {
-          type: 'GET',
-          url: "http://localhost:3000/ordbog/" + result._id
+    .save()
+    .then(result => {
+      console.log(result);
+      res.status(201).json({
+        message: "Created ord successfully",
+        createdOrd: {
+          ord: result.ord,
+          image: result.image,
+          _id: result._id,
+          request: {
+            type: 'GET',
+            url: "http://localhost:3000/ordbog/" + result._id
+          }
         }
-      }
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({
-      error: err
-    });
-  });
 });
+
+
+router.post('/uploadimage', upload.single('image'), function (req, res) {
+  if (req.file) {
+    res.json(req.file);
+  }
+  else throw 'error';
+})
+
 
 module.exports = router;
