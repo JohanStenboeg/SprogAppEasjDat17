@@ -1,14 +1,35 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Underviser profil</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../css/style.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h1>Underviser</h1>
-</body>
+        <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Kursist profil</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" media="screen" href="../../css/style.css" />
+            </head>
+            <body>
+            
+                
+            
+                <!--<script>hentCookie("brugernavn")</script>-->
+                <p id="welcome_msg">Personlig side</p>
+                <p id="username_profil">placeholder username</p>
+                <p id="password_profil">placerholder password</p>
+                <p id="privilege_profil">placerholder privilege</p>
+            
+            <!--script til loading a profildata-->
+            <script>
+                    window.onload = function () {
+                        if (document.cookie.length != 0) {
+                            profilDataArray = document.cookie.split("=");
+                            document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
+                            document.getElementById("username_profil").innerHTML = profilDataArray[1];
+                            document.getElementById("password_profil").innerHTML = profilDataArray[1];
+                            document.getElementById("privilege_profil").innerHTML = profilDataArray[1];
+                            console.log(profilDataArray);
+                        }
+                    }
+            </script>
+            
+            </body>
 </html>
