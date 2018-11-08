@@ -37,7 +37,7 @@
       <form method="POST" action="<!-- indsæt ny metode -->">
         <ul id="minListe">
           {{#each this}}
-          <li name="ord" value={{this._id}}><a href="#">{{this.ord}}</a></li>
+          <li name="ord" value="{{this._id}}"><a href="#">{{this.ord}}</a></li>
           {{/each}}
         </ul>
         <input type="submit" value="slet" class="floatSlet">
@@ -59,6 +59,23 @@
 
     </div>
   </section>
+
+  <script>
+    // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
+    let ordArray = document.getElementsByName("ord");
+    let ordArrayLength = ordArray.length;
+
+    for (let i = 0; i <= ordArrayLength - 3; i++) {
+      if (ordArray[i].value == 0) {
+        ordArray[i].remove();
+      }
+    }
+    
+    ordArrayLength = ordArray.length;
+    ordArray[ordArrayLength - 2].remove();
+    
+  </script>
+
 </body>
 
 </html>
