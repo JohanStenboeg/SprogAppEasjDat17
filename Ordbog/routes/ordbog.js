@@ -1,12 +1,18 @@
 var express = require('express');
 var router = express.Router();
-<<<<<<< HEAD
 var mongoose = require('mongoose');
-const multer = require('multer');
+var multer = require('multer');
+//var upload = multer({dest: "./public/uploads"});
+
+mongoose.connect('mongodb://localhost:27017/tododb', {
+  useNewUrlParser: true
+});
+var ordbogModel = require('../models/ordbogModel');
+var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 const storage = multer.diskStorage({
   destination: function(req, file, callback) {
-    callback(null, './uploads/' );
+    callback(null, './public/uploads/' );
   },
   filename: function(req, file, callback) {
     callback(null, new Date().toISOString() + file.file.originalname);
@@ -30,19 +36,6 @@ const upload = multer({
     fileFilter: fileFilter
   });
 
-const Ord = require('../models/ordbogModel')
-
-mongoose.connect('mongodb://localhost:27017/tododb', {
-  useNewUrlParser: true
-});
-=======
-var multer = require('multer');
-var upload = multer({ dest: './public/uploads' });
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
->>>>>>> a58ae67aefd359177c1b6afdc168e37022a5d12f
-var ordbogModel = require('../models/ordbogModel');
-var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
@@ -102,13 +95,10 @@ router.post('/slet_ord', function (req, res, next) {
   });
 });
 
-router.post('/uploadimage2', upload.single('ordImage') , function(req, res, next){
-  console.log(req.file);
-
-  const Ord = new Ord({
+router.post('/uploadimage2', upload.single('image') , function(req, res, next){
+  const ord = new Ord({
     _id: new mongoose.Types.ObjectId(),
     ord: req.body.ord,
-
   });
   ord
     .save()
