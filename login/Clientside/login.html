@@ -42,19 +42,22 @@ function testLogin(){
 
                 switch(this.response){
                     case "Kursist":
-                    //opretCookie("brugernavn", brugernavninput.value);
+                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
+                    console.log(document.cookie);
                     window.location.href= "http://127.0.0.1:5500/login/menu/kursist/kursistside.html"
-                    //opretCookie("brugernavn", brugernavninput.value);
+                    
                     break;
 
                     case "Sprogmakker":
+                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
                     window.location.href= "http://127.0.0.1:5500/login/menu/sprogmakker/sprogmakkerside.html"
-                    document.cookie="loginPrivilege="+this.response+""
+                    
                     break;
 
                     case "Underviser":
+                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
                     window.location.href= "http://127.0.0.1:5500/login/menu/underviser/underviserside.html"
-                    document.cookie="loginPrivilege="+this.response+""
+                    
                     break;
 
                     case "":

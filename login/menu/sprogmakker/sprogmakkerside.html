@@ -26,9 +26,18 @@
 
   <body>
 
+      <script>
+          window.onload = function () {
+            console.log(document.cookie.split("="));
+            console.log(document.getElementById("welcome_msg").innerHTML)
+            document.getElementById("welcome_msg").innerHTML = document.cookie.split("=")[1]
+          } 
+         </script>
+
  <!--Knapper-->
  <div class="buttonsmenu">
-  <button class="button" onclick="location.href='http://localhost:5500/login/Profil/sprogmakker/Sprogmakker.html'">Min Profil</button>
+  <p id="welcome_msg">welcome placeholder</p>
+  <button class="button" onclick="location.href='http://127.0.0.1:5500/login/Profil/sprogmakker/Sprogmakker.html'">Min Profil</button>
   <button class="button">Min Ordbog</button>
   <button class="button">Chat</button>
 
