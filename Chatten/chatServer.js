@@ -24,6 +24,20 @@ app.get('/getChats',function(req,res){
 
 });
 
+var chatDummy = {arr: [ { "besked": 'Johan : Hej Johan' },
+{ "besked": 'Johan : Hej' },
+{ "besked": 'Johan : virker' },
+{ "besked": 'Johan : dette' },
+{ "besked": 'Johan : mon' },
+{ "besked": 'Johan : jo' },
+{ "besked": 'Johan : det tror jeg' },
+{ "besked": 'Johan : eller' } ]};
+
+app.get('/getChat', function(request, res){
+  res.send(chatDummy);
+})
+
+
 
 
 

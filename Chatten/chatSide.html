@@ -15,6 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+      <button onclick="printTidligereBeskeder()">klik her xd</button>
+
       <select id="friendslist" onchange="vaeglVen()">
       
         </select>
@@ -78,6 +80,31 @@
 
         
 */
+
+// Metode til at printe tidligere beskeder
+function printTidligereBeskeder(){
+  //Vi henter beskederne
+  var xmlhttp2 = new XMLHttpRequest();
+
+  xmlhttp2.onreadystatechange = function(){
+    // Hvis requested kommer til stadie 4(sendt), og får status 200(Alt ok), så kører loopet. 
+    if (this.readyState == 4 && this.status == 200) {
+      // Vi parser her resultatet, fordi at den data vi henter fra myObj ikke er et rigtig json objekt.
+      var myObj = JSON.parse(this.responseText);
+
+    console.log(myObj.arr.length + "hej");
+
+  for(i = 0; i < myObj.arr.length; i++){
+    var text = myObj.arr[i].besked;
+    $('#messages').append($('<li>').text(text));
+  }
+}
+}
+
+  xmlhttp2.open("GET", "http://localhost:3000/getChat", true);
+  xmlhttp2.send();
+}
+
 
 
         //Til at printe of sende beskeder.
