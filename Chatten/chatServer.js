@@ -64,8 +64,35 @@ socket.on('disconnect',function(username){
 
 //En listener der venter på at 'chat message' eventet forekommer
   socket.on('chat message', function(msg){
+
+    //Opretter et MongoClient variabel og henter mongodb modulet
+    var MongoClient = require('mongodb').MongoClient;
+
+    //SprogAppChatDB = sacdb
+    //Opretter variabel med url'en. 
+    var url = "mongodb://localhost:27017/sprogAppChatDb";
+
+    //Database navn: sprogAppChatDb
+    var dbNavn = "sprogAppChatDb";
+    //Collection navn: c1
+    var collectionNavn = "c1";
+
+    //Connecting til databasen
+    MongoClient.connect(url, { useNewUrlParser: true }, function(err, db){
+        if(err) throw err;
+        //Database navnet den skal connecte til
+        var dbo = db.db(dbNavn);
+        //Jsonfilen der skal insættes i databasen
+        var jsonEnkelt = {brugernavn:socket.username, besked:msg};
+
+        //Vælger hvilken collection der skal indsættes data i og insætter data. 
+        dbo.collection(collectionNavn).insertOne(jsonEnkelt, function(err, db){
+            if(err) throw err;
+            console.log("Besked: " + msg + " tilføjet til databasen");
+            });
+        });
+    });
+    
   io.emit('chat message', msg);
   console.log(socket.username +' skriver til ' + msg);  
-});
-
 });

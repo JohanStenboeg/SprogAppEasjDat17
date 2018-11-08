@@ -3,21 +3,25 @@ var MongoClient = require('mongodb').MongoClient;
 
 //SprogAppChatDB = sacdb
 //Opretter variabel med url'en. 
-var url = "mongodb://localhost:27017/";
+var url = "mongodb://localhost:27017/sprogAppChatDb";
 
 //Database navn: sprogAppChatDb
 var dbNavn = "sprogAppChatDb";
 //Collection navn: c1
-var collectionNavn = "c1";
-//Antal beskeder der skal printes
-var collectionHentAntalBeskeder = 10000;
+var collectionNavn = "c2";
 
+
+
+//Opretter forbindelse til serveren
+//Opretter database og collection
 MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
+    //Skriver databasen er oprettet. 
+    console.log("Database " + dbNavn + " Oprettet");
     var dbo = db.db(dbNavn);
-    dbo.collection(collectionNavn).find({ brugernavn:"Frank"}).project({ _id: 0, brugernavn: 0 }).sort({$natural:1}).limit(collectionHentAntalBeskeder).toArray(function (err, result) {
+    dbo.createCollection(collectionNavn, function (err, res) {
         if (err) throw err;
-        console.log(result);
+        console.log("Collection " + collectionNavn + " oprettet.");
         db.close();
-    });
+    })
 });
