@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 var mongoose = require('mongoose');
