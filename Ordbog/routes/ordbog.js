@@ -3,11 +3,18 @@ var router = express.Router();
 var hbs = require('hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 var mongoose = require('mongoose');
-const multer = require('multer');
+var multer = require('multer');
+//var upload = multer({dest: "./public/uploads"});
+
+mongoose.connect('mongodb://localhost:27017/tododb', {
+  useNewUrlParser: true
+});
+var ordbogModel = require('../models/ordbogModel');
+var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 const storage = multer.diskStorage({
   destination: function(req, file, callback) {
-    callback(null, './uploads/' );
+    callback(null, './public/uploads/' );
   },
   filename: function(req, file, callback) {
     callback(null, new Date().toISOString() + file.file.originalname);
@@ -101,13 +108,10 @@ router.post('/slet_ord', function (req, res, next) {
   });
 });
 
-router.post('/uploadimage2', upload.single('ordImage') , function(req, res, next){
-  console.log(req.file);
-
-  const Ord = new Ord({
+router.post('/uploadimage2', upload.single('image') , function(req, res, next){
+  const ord = new Ord({
     _id: new mongoose.Types.ObjectId(),
     ord: req.body.ord,
-
   });
   ord
     .save()
