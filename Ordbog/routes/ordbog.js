@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
-
+const multer = require('multer');
+const upload = multer({dest: 'uploads/'});
+const Ord = require('../models/ordbogModel')
 var mongoose = require('mongoose');
+
+
 mongoose.connect('mongodb://localhost:27017/tododb', {
   useNewUrlParser: true
 });
@@ -24,7 +28,7 @@ router.post('/postord', function (req, res, next) {
   let object = {
     ord: req.body.ord,
     sprog: "dk",
-    user: "erik2310",
+    user: "/user",
     image: "",
     sound: "",
     video: "",
@@ -63,6 +67,39 @@ router.post('/slet_ord', function (req, res, next) {
     if (err) return console.log(err);
 
     res.redirect('../ordbog');
+  });
+});
+
+router.post('/', upload.single('ordImage') , function(req, res, next){
+  console.log(req.file);
+  
+  const Ord = new Ord({
+    _id: new mongoose.Types.ObjectId(),
+    ord: req.body.ord,
+
+  });
+  ord
+  .save()
+  .then(result => {
+    console.log(result);
+    res.status(201).json({
+      message: "Created ord successfully",
+      createdOrd: {
+        ord: result.ord,
+        image: result.image,
+        _id: result._id,
+        request: {
+          type: 'GET',
+          url: "http://localhost:3000/ordbog/" + result._id
+        }
+      }
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json({
+      error: err
+    });
   });
 });
 
