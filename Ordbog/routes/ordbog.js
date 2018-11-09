@@ -5,8 +5,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 var mongoose = require('mongoose');
 var multer = require('multer');
 //var upload = multer({dest: "./public/uploads"});
-var Ord = require('../models/ordbogModel')
-mongoose.connect('mongodb://localhost:27017/tododb', {  useNewUrlParser: true });
+var Ord = require('../models/ordbogModel');
+mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 var ordbogModel = require('../models/ordbogModel');
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
