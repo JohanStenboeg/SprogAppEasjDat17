@@ -4,6 +4,7 @@ var io = require('socket.io')(http);
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/chatSide.html');
+  //res.sendFile(__dirname + '/tsmtest.js');
 });
 
 
