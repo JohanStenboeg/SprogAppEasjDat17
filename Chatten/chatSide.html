@@ -114,20 +114,10 @@
 
           console.log(myObj.arr.length + " = Antal beskeder");
 
-<<<<<<< HEAD
-              
-                
-              if(msg.search(hvemSkriverJegTil)==0){
-                
-                var res = msg.replace(hvemSkriverJegTil, " ");
-                $('#messages').append($('<li>').text(" "+res));
-                  
-=======
           // For at kunne printe beskederne, laver vi et array.
           // Da JSON objekter ikke har nogen længde, går vi ind i en array subgruppe, som tæller hvor mange pladser i arrayet, vi bruger.
           // Når vi så har det tal, kan vi lave et forloop, der printer beskeder, så længe der er nogen der ikke er printet endnu. 
           for (i = 0; i < myObj.arr.length; i++) {
->>>>>>> 9823f5a42ada738ccb2e57ebae70ed1072fdf8cb
 
             // Laver variabel, der bestemmer beskeden ud fra dens plads i arrayet.
             var text = myObj.arr[i].besked;
