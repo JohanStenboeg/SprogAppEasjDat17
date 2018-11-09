@@ -3,6 +3,8 @@
 
 <head>
   <title>chat</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   <style>
     * {
       margin: 0;
@@ -49,9 +51,13 @@
 <body>
   <button onclick="printTidligereBeskeder()">klik her xd</button>
 
+
   <select id="friendslist" onchange="vaeglVen()">
 
   </select>
+
+  <button onclick="lavEtKort()"> + </button>
+
   <ul id="messages"></ul>
 
   <form action="">
@@ -59,10 +65,13 @@
   </form>
 
 
-
+  <script src= "http://localhost:3000/tsmtest"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
- 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <button onclick="hello()">TSMBISCH</button>
   <script>
 
     var hvemSkriverJegTil = "";
@@ -131,6 +140,38 @@
       xmlhttp2.send();
     }
 
+    //Kort functionerne
+    function lavEtKort(){
+          var imgUrl = "https://media1.tenor.com/images/ae95dda32c1cd4eab5184e89e8db0d1d/tenor.gif";
+          var ordetForDet = "Fortnite";
+          var lydKlipUrl = "https://www.myinstants.com/media/sounds/fortnite-dance-moves-emote-music-tv9iv8cxmo0-1.mp3";
+        
+          $('#messages').append($('<div class="card" style="width: 18rem; "><img  class="card-img-top" onclick="udskiftbillede(this)" src="'+imgUrl+'" alt="Card image cap"><div class="card-body"><h5 class="card-title" onclick="udskiftTekst(this)" >'+ordetForDet+'</h5><p class="card-text"></p><div onclick="udskiftLyd(this)"><audio onclick="udskiftLyd(this)" src="'+lydKlipUrl+'" controls=""/></div></div></div>'));
+        }
+        
+        //
+        function udskiftbillede(object){
+          if(confirm("Skift billed")){
+          var link = "https://i.pinimg.com/originals/aa/5b/15/aa5b153ff21e74693f9855ed96002475.jpg";
+          object.src=link;
+          //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
+          }
+        }
+        function udskiftTekst(object){
+          if(confirm("Skift ord")){
+            var ord = "Datboi dab";
+            object.innerHTML = ord;
+            //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
+
+          }
+        }
+        function udskiftLyd(object){
+          if(confirm("Skift ord")){
+            var link = "https://www.myinstants.com/media/sounds/deja-vu.mp3"
+            object.src = link;
+            
+          }
+        }
 
 
     //Til at printe of sende beskeder.

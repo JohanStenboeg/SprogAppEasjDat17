@@ -1,4 +1,3 @@
 function hello(){
-    alert("lol")
-
+    alert("lmao");
 }
