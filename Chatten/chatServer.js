@@ -91,8 +91,12 @@ socket.on('disconnect',function(username){
             console.log("Besked: " + msg + " tilføjet til databasen");
             });
         });
+        io.emit('chat message', msg)
+    
+        console.log(socket.username +' skriver til ' + msg);  
     });
     
-  io.emit('chat message', msg);
-  console.log(socket.username +' skriver til ' + msg);  
-});
+
+
+
+}); 
