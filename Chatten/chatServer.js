@@ -7,6 +7,13 @@ app.get('/', function(req, res){
   //res.sendFile(__dirname + '/tsmtest.js');
 });
 
+//hvordan vi sender js filer,  den nedenunder skal i html 
+//  <script src= "http://localhost:3000/tsmtest"></script>
+
+app.get('/tsmtest', function(req, res){
+  res.sendFile(__dirname + '/tsmtest.js')
+
+})
 
 //fixer Cro$s-Origin Resource Sharing (CORS)
 app.use(function(req, res, next) {
