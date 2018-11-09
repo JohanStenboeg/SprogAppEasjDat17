@@ -72,68 +72,6 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-
-// Mangler at blive tested
-/* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/updateord', function (req, res, next) {
-
-  var id = mongoose.Types.ObjectId(req.query._id);
-
-  ordbog.findOneAndUpdate({
-    _id: id
-  }, req.body, {
-      new: true
-    }, function (err, ord) {
-
-      if (err) return console.log(err);
-    })
-  res.redirect('../ordbog');
-});
-
-
-// Mangler at blive testet
-/* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/slet_ord', function (req, res, next) {
-
-  ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
-    if (err) return console.log(err);
-
-    res.redirect('../ordbog');
-  });
-});
-
-
-router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
-  const ord = new Ord({
-    _id: new mongoose.Types.ObjectId(),
-    ord: req.body.ord,
-  });
-  ord
-    .save()
-    .then(result => {
-      console.log(result);
-      res.status(201).json({
-        message: "Created ord successfully",
-        createdOrd: {
-          ord: result.ord,
-          image: result.image,
-          _id: result._id,
-          request: {
-            type: 'GET',
-            url: "http://localhost:3000/ordbog/" + result._id
-          }
-        }
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({
-        error: err
-      });
-    });
-});
-
-
 router.post('/uploadimage', upload.single('image'), function (req, res) {
   if (req.file) {
     res.json(req.file);
