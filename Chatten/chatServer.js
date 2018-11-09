@@ -4,6 +4,7 @@ var io = require('socket.io')(http);
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/chatSide.html');
+  //res.sendFile(__dirname + '/tsmtest.js');
 });
 
 
@@ -23,6 +24,20 @@ app.get('/getChats',function(req,res){
   res.send(sendListe);
 
 });
+
+var chatDummy = {arr: [ { "besked": 'Johan : Hej Johan' },
+{ "besked": 'Johan : Hej' },
+{ "besked": 'Johan : virker' },
+{ "besked": 'Johan : dette' },
+{ "besked": 'Johan : mon' },
+{ "besked": 'Johan : jo' },
+{ "besked": 'Johan : det tror jeg' },
+{ "besked": 'Johan : eller' } ]};
+
+app.get('/getChat', function(request, res){
+  res.send(chatDummy);
+})
+
 
 
 
@@ -77,8 +92,12 @@ socket.on('disconnect',function(username){
             console.log("Besked: " + msg + " tilføjet til databasen");
             });
         });
+        io.emit('chat message', msg)
+    
+        console.log(socket.username +' skriver til ' + msg);  
     });
     
-  io.emit('chat message', msg);
-  console.log(socket.username +' skriver til ' + msg);  
-});
+
+
+
+}); 
