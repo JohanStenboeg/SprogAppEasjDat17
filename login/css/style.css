@@ -18,17 +18,17 @@ p, div {
   color: #fff;
   font-weight: bold;
 }
-/*login start*/
-/*login main page*/
+/*---------login og opret bruger start-----------*/
+
 #mainlogin {
-    background-color: rgb(20, 77, 77);
-  /*background-color: #000000;*/
+    background-color: rgb(20, 77, 77);  
   padding-bottom: 20px;
 }
 
 form {
   border: 3px solid #f1f1f1;
 }
+
 
 input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], input[type=telefonNummer] {
     width: 95%;
@@ -70,8 +70,6 @@ input[type=text]:-ms-input-placeholder, input[type=eMail]:-ms-input-placeholder 
 input[type=text]::-ms-input-placeholder, input[type=eMail]::-ms-input-placeholder { /* Microsoft Edge */
   color: #fff;
 }
-
-
 
 
 
@@ -123,7 +121,7 @@ button {
     padding: 10px 18px;
     background-color: #f44336;
 }
-/*Beholder div til standard Login*/
+/*Beholder div til inputfelter på 'login.html' + 'opretBruger.html' */
 .containerlogin {
   padding: 40px 60px;
   padding-top: 10rem;
@@ -140,11 +138,37 @@ button {
   padding: 0 60px;
 }
 
-
 span.psw {
     float: right;
     padding-top: 16px;
 }
+
+
+
+.roller {
+  width: 95%;
+  padding: 12px 20px;
+  margin: 8px 2.5%;
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #fff; 
+  font: 'Arial';
+  font-weight: bold;
+}
+
+.options {
+  background-color: #005260;
+  color: #fff;
+  font: 'Arial'!important;
+  font-size: 13px!important;
+  font-weight: bold!important;
+    
+}
+
+
 
 /* login slut*/
 
@@ -217,14 +241,6 @@ width: 40%;
   margin-left: 17%;
 }
 
-
-#h3menu {
-  font-size: 66px;
-  font-family: arial;
-  margin-top: 34%;
-  margin-left: 43%;
-  color: white;
-}
 
 .buttonscore {
 background-color: #6CC5D4;

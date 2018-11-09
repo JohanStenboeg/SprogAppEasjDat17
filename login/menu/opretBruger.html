@@ -32,16 +32,18 @@ MongoClient.connect(url,{useNewUrlParser: true}, function(err, db) {
     });
 });
         </script>
-    <div id = "opretDiv">
+    <div class="containerlogin">
         <input id = "brugernavn" type="email" placeholder="Brugernavn" name="uname" required> 
         <input id = "kodeord" type="password" placeholder="Kodeord" name="psw" required> 
-        <select id = "roller"> 
-            <option value="default" selected>Vælg en rolle...</option>
-            <option value="Kursist">Kursist</option>
-            <option value="Sprogmakker">Sprogmakker</option>
-            <option value="Underviser">Underviser</option>
+           
+        <select class="roller"> 
+            <option class="options" value="default" selected>Vælg en rolle...</option>
+            <option class="options" value="Kursist">Kursist</option>
+            <option class="options" value="Sprogmakker">Sprogmakker</option>
+            <option class="options" value="Underviser">Underviser</option>
         </select>
         <button id="indsendKnap" type="submit">Opret</button>
-    </div>
+    </div>    
+    
 </body>
 </html>
