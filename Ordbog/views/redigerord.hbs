@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ordbog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
+    <script src="javascripts/ordbog.js"></script>
+</head>
+
+<body>
+    <!-- Navigations panel / Header -->
+    <header>
+        <nav>
+            <ul class="panel">
+                <li id="js_dine_ord" class="menuknap" onclick="dine_ord()"><a href="#">Dine ord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hovedafsnit -->
+    <section>
+        <!-- Hovedafsnit / Dine ord -->
+        
+
+        <!-- Hovedafsnit / Tilføj ord -->
+        <div id="tilfoj_ord" style="display: none;">
+            <form method="POST" action="ordbog/postord">
+                <p id="overskriftTilfojOrd" class="overskrift">Nyt ord:<br></p>
+                <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
+                <input type="submit" value="Gem"></input>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
+        let ordArray = document.getElementsByName("ord");
+        let ordArrayLength = ordArray.length;
+
+        for (let i = 0; i <= ordArrayLength - 3; i++) {
+            if (ordArray[i].value == 0) {
+                ordArray[i].remove();
+            }
+        }
+
+        ordArrayLength = ordArray.length;
+        ordArray[ordArrayLength - 2].remove();
+
+    </script>
+
+</body>
+
+</html>

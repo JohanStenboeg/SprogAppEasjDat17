@@ -13,15 +13,9 @@
   <header>
     <nav>
       <ul class="panel">
-        <li id="js_dine_ord" class="menuknap" onclick="dine_ord()"><a href="#">Dine ord</a></li>
-
-        <!-- Udkommenterede navigationsknapper som måske skal benyttes til senere brug: -->
-        <!--<li id="js_tilfoj_ord" class="floatTilfoj"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>-->
-        <!--<li id="js_rediger_ord" class="panel"><a href="#" onclick="rediger_ord()">Redigér ord</a></li> -->
-        <!--<li id="js_slet_ord" class="floatSlet"><a href="#" onclick="slet_ord()">Slet ord</a></li> -->
-
+        <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
       </ul>
-    </nav>
+    </nav> 
   </header>
 
   <!-- Hovedafsnit -->
@@ -33,35 +27,16 @@
 
       <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
-      <form method="POST" action="<!-- indsæt ny metode -->">
+      <form method="GET" action="/vis">
         <ul id="minListe">
           {{#each this}}
-          <li name="ord" value={{this._id}} onclick="vis_ord()"><a href="#">{{this.ord}}</a></li>
+          <li><input type="submit" name={{this._id}} value={{this.ord}}></input></li>
+          <!--<li id={{this._id}} name="ord" value={{this._id}} ><a href="#">{{this.ord}}</a></li>-->
           {{/each}}
         </ul>
-        <input type="submit" value="slet" class="floatSlet">
+        <!-- <input type="submit" value="slet" class="floatSlet"> -->
       </form>
-      <button id="js_tilfoj_ord" class="floatTilfoj" onclick="tilfoj_ord()">Tilføj ord</button>
-    </div>
-
-    <!-- Hovedafsnit / Tilføj ord -->
-    <div id="tilfoj_ord" style="display: none;">
-      <form method="POST" action="ordbog/postord">
-        <p id="overskriftTilfojOrd" class="overskrift">Nyt ord:<br></p>
-        <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
-        <input type="submit" value="Gem"></input>
-      </form>
-    </div>
-
-    <!-- Hovedafsnit / Vis ord og billeder og redigér-->
-    <div id="vis_ord" style="display: none;">
-      <!-- <img class="visOrdBillede"> -->
-       
-        <h5 class="visOrdOrd">Ord</h5>
-        <h6 class="visOrdKategori">Kategori</p>
-        <a href="#" class="btnVisOrdAfspilLyd">Afspil lydfil</button><br>
-        <a href="#" id="btnRediger" class="btnVisOrdRediger" onclick="btn_rediger()">Redigér</a>
-      
+      <button id="js_tilfoj_ord" class="floatTilfoj"><a href="/tilfojord">Tilføj ord</a></button>
     </div>
   </section>
 
@@ -78,6 +53,7 @@
     
     ordArrayLength = ordArray.length;
     ordArray[ordArrayLength - 2].remove();
+    ordArray[ordArrayLength - 3].remove();
     
   </script>
 
