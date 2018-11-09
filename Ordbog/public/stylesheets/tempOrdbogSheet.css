@@ -72,7 +72,7 @@
   margin: 0;
 }
 
-#minListe li a {
+#minListe li input {
   border: 1px solid #ddd;
   margin-top: 3px; /* Prevent double borders */
   background-color: #f6f6f6;
@@ -83,6 +83,6 @@
   display: block
 }
 
-#minListe li a:hover:not(.header) {
+#minListe li input:hover:not(.header) {
   background-color: #eee;
 }
