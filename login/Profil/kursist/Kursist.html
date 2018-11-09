@@ -22,11 +22,18 @@
         window.onload = function () {
             if (document.cookie.length != 0) {
                 profilDataArray = document.cookie.split("=");
-                document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
-                document.getElementById("username_profil").innerHTML = profilDataArray[1];
-                document.getElementById("password_profil").innerHTML = profilDataArray[1];
-                document.getElementById("privilege_profil").innerHTML = profilDataArray[1];
-                console.log(profilDataArray);
+                brugerDataObject = JSON.parse(profilDataArray[1]);
+
+                document.getElementById("welcome_msg").innerHTML = "velkommen " + brugerDataObject.navn;
+                document.getElementById("username_profil").innerHTML = "dit brugernavn til login er: " + brugerDataObject.navn;
+                document.getElementById("password_profil").innerHTML = "dit password er: " + brugerDataObject.kodeord;
+                document.getElementById("privilege_profil").innerHTML = "dine login privilegier er:  " + brugerDataObject.privilege;
+                
+                //document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
+                //document.getElementById("username_profil").innerHTML = profilDataArray[1];
+                //document.getElementById("password_profil").innerHTML = profilDataArray[1];
+                //document.getElementById("privilege_profil").innerHTML = profilDataArray[1];
+                //console.log(profilDataArray);
             }
         }
 </script>

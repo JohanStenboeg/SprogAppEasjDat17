@@ -31,6 +31,8 @@ function testLogin(){
     var params = 'brugernavn='+brugernavninput.value+'&password='+passwordinput.value+'';
     var xmlhttp = new XMLHttpRequest();
 
+    
+
     //HTTP der virker som et handshake, hvis handshake sker, så log ind og opret en cookie.
     xmlhttp.onreadystatechange = function() {
         console.log("inde")
@@ -42,20 +44,43 @@ function testLogin(){
 
                 switch(this.response){
                     case "Kursist":
-                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
+                    var brugerProfilData = {};
+                    brugerProfilData.navn = brugernavninput.value;
+                    brugerProfilData.kodeord = passwordinput.value;
+                    brugerProfilData.privilege = this.response;
+
+                    var jsonString = JSON.stringify(brugerProfilData);
+                    document.cookie = "UserData=" + jsonString + ";path=/;";
+                    //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
                     window.location.href= "http://127.0.0.1:5500/login/menu/kursist/kursistside.html"
                     
                     break;
 
                     case "Sprogmakker":
-                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
+                    var brugerProfilData = {};
+                    brugerProfilData.navn = brugernavninput.value;
+                    brugerProfilData.kodeord = passwordinput.value;
+                    brugerProfilData.privilege = this.response;
+
+                    var jsonString = JSON.stringify(brugerProfilData);
+                    document.cookie = "UserData=" + jsonString + ";path=/;";
+                    //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
+                    console.log(document.cookie);
                     window.location.href= "http://127.0.0.1:5500/login/menu/sprogmakker/sprogmakkerside.html"
                     
                     break;
 
                     case "Underviser":
-                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
+                    var brugerProfilData = {};
+                    brugerProfilData.navn = brugernavninput.value;
+                    brugerProfilData.kodeord = passwordinput.value;
+                    brugerProfilData.privilege = this.response;
+
+                    var jsonString = JSON.stringify(brugerProfilData);
+                    document.cookie = "UserData=" + jsonString + ";path=/;";
+                    //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
+                    console.log(document.cookie);
                     window.location.href= "http://127.0.0.1:5500/login/menu/underviser/underviserside.html"
                     
                     break;
