@@ -1,25 +1,3 @@
-
-function dine_ord() {
-  
-    document.getElementById('dine_ord').style.display = 'block';
-    document.getElementById('tilfoj_ord').style.display = 'none';
-    document.getElementById('vis_ord').style.display = 'none';
-  
-}
- 
-function tilfoj_ord() {
-  
-    document.getElementById('dine_ord').style.display = 'none';
-    document.getElementById('tilfoj_ord').style.display = 'block';
-    document.getElementById('vis_ord').style.display = 'none';
-}
-
-function vis_ord() {
-    document.getElementById('dine_ord').style.display = 'none';
-    document.getElementById('tilfoj_ord').style.display = 'none';
-    document.getElementById('vis_ord').style.display = 'block';
-}
-
 function search() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("searchInput");
