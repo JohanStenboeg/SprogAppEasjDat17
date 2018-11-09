@@ -11,12 +11,12 @@
 //programmet køres med >npm run start<
 var clienttoserver = require('./clienttoserver')
 var bodyParser     =   require("body-parser");
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 3000;
+var mongoose = require('mongoose');
   //Client = require('../ModelControllerRoute/clientModel'), //created model loading here
-  bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
   
 // mongoose instance connection url connection
 //mongoose.Promise = global.Promise;
