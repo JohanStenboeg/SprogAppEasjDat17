@@ -31,7 +31,7 @@ router.post('/api/postord', function(req, res, next) {
       ord: req.body.ord,
       sprog: "dk",
       user: "fra_index/test",
-      kategori: req.body.kategori,
+      kategori: "",
       date: req.body.date,
       image: req.body.image,
       sound: req.body.sound, 
@@ -45,7 +45,6 @@ router.post('/api/postord', function(req, res, next) {
     });
     res.send("1 document inserted-index_insertOne_used");
   });
-
 });
 
 /* Handler POST request og opdaterer et ord i ordbogen */
@@ -54,7 +53,7 @@ router.post('/api/updateord', function(req, res, next) {
   MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
     if (err) throw err;
     let database = db.db("tododb");
-    let myquery = { _id: ObjectId("5bdae053534f8e3eec70b571") };
+    let myquery = { _id: mongodb._id.ObjectId(req.params.id) };
     let newvalues = { $set: {ord: req.body.ord } };
     database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
@@ -62,7 +61,22 @@ router.post('/api/updateord', function(req, res, next) {
       db.close();
     });
     res.send("1 document updated-index_updateOne_used");
+//    res.redirect('/test');
   });
+});
+
+/* Handler POST sletter et ord i ordbogen */
+router.post('/api/slet_ord', function (req, res, next) {
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+  if (err) throw err;
+  let database = db.db("tododb");
+  
+  database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+    if (err) return console.log(err);
+    console.log(req.body);
+    res.redirect('/test');
+  });
+});
 });
 
 /* Handler POST request og opdaterer et image i ordbogen */
