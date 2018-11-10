@@ -54,7 +54,7 @@ router.post('/api/updateord', function(req, res, next) {
     if (err) throw err;
     let database = db.db("tododb");
     let myquery = { _id: ObjectId(req.params._id) };
-    let newvalues = { $set: {ord: req.body.ord } };
+    let newvalues = { $set: {ord: req.body.nyt_ord } };
     database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
       console.log("1 document updated-index_updateOne_used");
