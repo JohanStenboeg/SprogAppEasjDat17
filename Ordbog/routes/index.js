@@ -53,7 +53,7 @@ router.post('/api/updateord', function(req, res, next) {
   MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
     if (err) throw err;
     let database = db.db("tododb");
-    let myquery = { _id: mongodb._id.ObjectId(req.params.id) };
+    let myquery = { _id: ObjectId(req.params._id) };
     let newvalues = { $set: {ord: req.body.ord } };
     database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
@@ -61,7 +61,7 @@ router.post('/api/updateord', function(req, res, next) {
       db.close();
     });
     res.send("1 document updated-index_updateOne_used");
-//    res.redirect('/test');
+//    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
   });
 });
 
@@ -71,7 +71,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
   if (err) throw err;
   let database = db.db("tododb");
   
-  database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+  database.collection('ordbog').deleteOne({ _id: ObjectId(req.params._id) }, (err, result) => {
     if (err) return console.log(err);
     console.log(req.body);
     res.redirect('/test');
