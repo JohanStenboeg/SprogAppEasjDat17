@@ -64,12 +64,12 @@ router.post('/postord', function (req, res, next) {
   let object = {
     ord: req.body.ord,
     sprog: "dk",
-    user: "/user",
+    user: "fra_test/user",
+    kategori: "",
+    date: "",
     image: "",
     sound: "",
-    video: "",
-    kategori: "",
-    date: ""
+    video: ""
   }
 
   ordbog.create(object, function (err) {

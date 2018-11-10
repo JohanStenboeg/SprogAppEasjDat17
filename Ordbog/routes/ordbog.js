@@ -10,36 +10,6 @@ mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 var ordbogModel = require('../models/ordbogModel');
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
-/*
-var storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, './public/uploads');
-  },
-  filename: function (req, file, callback) {
-    callback(null, new Date() + '-' + file.originalname);
-  }
-});
-
-var fileFilter = (req, file, callback) => {
-  // reject a file
-  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-    callback(null, true);
-  } else {
-    callback(null, false);
-  }
-}
-
-
-var upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 10
-  },
-  fileFilter: fileFilter
-});
-*/
-
-
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
 
@@ -60,12 +30,12 @@ router.post('/postord', function (req, res, next) {
   let object = {
     ord: req.body.ord,
     sprog: "dk",
-    user: "/user",
+    user: "fra_ordbog/test",
+    kategori: "",
+    date: "",
     image: "",
     sound: "",
-    video: "",
-    kategori: "",
-    date: ""
+    video: ""
   }
 
   ordbog.create(object, function (err) {
@@ -74,8 +44,6 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-<<<<<<< HEAD
-=======
 
 // Mangler at blive tested
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
@@ -140,7 +108,6 @@ router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
 
 
 /*
->>>>>>> 6edab1a6d834e29d8fe06478c7e9e835f1523020
 router.post('/uploadimage', upload.single('image'), function (req, res) {
   if (req.file) {
     res.json(req.file);

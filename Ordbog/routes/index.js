@@ -30,7 +30,9 @@ router.post('/api/postord', function(req, res, next) {
     let object = {
       ord: req.body.ord,
       sprog: "dk",
-      user: "erik2310",
+      user: "fra_index/test",
+      kategori: req.body.kategori,
+      date: req.body.date,
       image: req.body.image,
       sound: req.body.sound, 
       video: req.body.video
@@ -38,10 +40,10 @@ router.post('/api/postord', function(req, res, next) {
 
     database.collection("ordbog").insertOne(object, function(err, res) {
       if (err) throw err;
-      console.log("1 document inserted");
+      console.log("1 document inserted-index_insertOne_used");
       db.close();
     });
-    res.send("1 document inserted");
+    res.send("1 document inserted-index_insertOne_used");
   });
 
 });
@@ -56,10 +58,10 @@ router.post('/api/updateord', function(req, res, next) {
     let newvalues = { $set: {ord: req.body.ord } };
     database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
-      console.log("1 document updated");
+      console.log("1 document updated-index_updateOne_used");
       db.close();
     });
-    res.send("1 document updated");
+    res.send("1 document updated-index_updateOne_used");
   });
 });
 
