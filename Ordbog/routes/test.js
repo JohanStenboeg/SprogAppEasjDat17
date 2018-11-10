@@ -84,9 +84,6 @@ router.post('/uploadimage', upload.single('image'), function (req, res) {
   }
   else throw 'error';
 })
-
-
-
   
 // Mangler at blive tested
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
@@ -106,11 +103,11 @@ router.post('/updateord', function (req, res, next) {
 });
 
 
-// Mangler at blive testet
+// fungerer delvist - deleter ord, men deleter også default, første doc i db når man trykker på button, uden der er et valgt ord... skal løses....
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
 
-  ordbog.findOneAndRemove(req.params._id, function (err, ord) {
+  ordbog.findOneAndDelete(req.params._id, function (err, ord) {
     if (err) return console.log(err);
 
     res.redirect('../ordbog');
