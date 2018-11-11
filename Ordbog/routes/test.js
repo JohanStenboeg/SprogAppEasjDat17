@@ -104,7 +104,7 @@ router.post('/updateord', function (req, res, next) {
 });
 
 
-// Mangler at blive testet
+// fungerer ikke - hvor er den jeg/Niels lavede der fungerer?
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
 
