@@ -1,11 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
- var multer = require('multer');
-var upload = multer({dest: "./public/uploads"});
-// var Ord = require('../models/ordbogModel');
-
-mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
@@ -36,9 +30,9 @@ router.post('/api/postord', function(req, res, next) {
     let object = {
       ord: req.body.ord,
       sprog: "dk",
-      user: "/user",
+      user: "fra_index/test",
       kategori: "",
-      date: "",
+      date: req.body.date,
       image: req.body.image,
       sound: req.body.sound, 
       video: req.body.video
@@ -46,22 +40,12 @@ router.post('/api/postord', function(req, res, next) {
 
     database.collection("ordbog").insertOne(object, function(err, res) {
       if (err) throw err;
-      console.log("1 document inserted-from index.js");
+      console.log("1 document inserted-index_insertOne_used");
       db.close();
     });
-    res.send("1 document inserted-from index.js");
+    res.send("1 document inserted-index_insertOne_used");
   });
-
 });
-
-
-
-router.post('/uploadimage', upload.single('image'), function (req, res) {
-  if (req.file) {
-    res.json(req.file);
-  }
-  else throw 'error';
-})
 
 /* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/api/updateord', function(req, res, next) {
@@ -69,15 +53,30 @@ router.post('/api/updateord', function(req, res, next) {
   MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
     if (err) throw err;
     let database = db.db("tododb");
-    let myquery = { _id: ObjectId("5bdae053534f8e3eec70b571") };
-    let newvalues = { $set: {ord: req.body.ord } };
+    let myquery = { _id: ObjectId(req.params._id) };
+    let newvalues = { $set: {ord: req.body.nyt_ord } };
     database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
-      console.log("1 document updated");
+      console.log("1 document updated-index_updateOne_used");
       db.close();
     });
-    res.send("1 document updated");
+    res.send("1 document updated-index_updateOne_used");
+//    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
   });
+});
+
+/* Handler POST sletter et ord i ordbogen */
+router.post('/api/slet_ord', function (req, res, next) {
+MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+  if (err) throw err;
+  let database = db.db("tododb");
+  
+  database.collection('ordbog').deleteOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+    if (err) return console.log(err);
+    console.log(req.body);
+    res.redirect('/test');
+  });
+});
 });
 
 /* Handler POST request og opdaterer et image i ordbogen */
