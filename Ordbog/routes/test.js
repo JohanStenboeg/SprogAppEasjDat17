@@ -85,8 +85,6 @@ router.post('/uploadimage', upload.single('image'), function (req, res) {
   else throw 'error';
 })
 
-
-
   
 // Mangler at blive tested
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
@@ -110,15 +108,15 @@ router.post('/updateord', function (req, res, next) {
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
 
-  ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
+  ordbog.findByIdAndDelete(req.params._id, function (err, ord) {
     if (err) return console.log(err);
 
-    res.redirect('../ordbog');
+    res.redirect('../test');
   });
 });
 
 
-router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
+/* router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
   const ord = new Ord({
     _id: new mongoose.Types.ObjectId(),
     ord: req.body.ord,
@@ -146,7 +144,7 @@ router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
         error: err
       });
     });
-});
+}); */
 
   module.exports = router;
 

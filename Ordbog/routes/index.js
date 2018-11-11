@@ -35,7 +35,9 @@ router.post('/api/postord', function(req, res, next) {
     let object = {
       ord: req.body.ord,
       sprog: "dk",
-      user: "erik2310",
+      user: "/user",
+      kategori: "",
+      date: "",
       image: req.body.image,
       sound: req.body.sound, 
       video: req.body.video
@@ -43,10 +45,10 @@ router.post('/api/postord', function(req, res, next) {
 
     database.collection("ordbog").insertOne(object, function(err, res) {
       if (err) throw err;
-      console.log("1 document inserted");
+      console.log("1 document inserted-from index.js");
       db.close();
     });
-    res.send("1 document inserted");
+    res.send("1 document inserted-from index.js");
   });
 
 });
