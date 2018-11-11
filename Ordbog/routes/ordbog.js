@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
  var multer = require('multer');
 var upload = multer({dest: "./public/uploads"});
 // var Ord = require('../models/ordbogModel');
+
 mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 var ordbogModel = require('../models/ordbogModel');
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
@@ -100,7 +101,7 @@ router.post('/slet_ord', function (req, res, next) {
   ordbog.findOneAndDelete(req.params._id, function (err, ord) {
     if (err) return console.log(err);
 
-    res.redirect('../ordbog');
+    res.redirect('../test');
   });
 });
 
