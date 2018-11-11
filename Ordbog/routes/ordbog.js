@@ -3,8 +3,8 @@ var router = express.Router();
 //var hbs = require('hbs');
 //hbs.registerPartials(__dirname + '/views/partials');
 var mongoose = require('mongoose');
-// var multer = require('multer');
-//var upload = multer({dest: "./public/uploads"});
+ var multer = require('multer');
+var upload = multer({dest: "./public/uploads"});
 // var Ord = require('../models/ordbogModel');
 mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 var ordbogModel = require('../models/ordbogModel');
@@ -74,8 +74,6 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-<<<<<<< HEAD
-=======
 
 // Mangler at blive tested
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
@@ -139,15 +137,14 @@ router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
 */
 
 
-/*
->>>>>>> 6edab1a6d834e29d8fe06478c7e9e835f1523020
+
 router.post('/uploadimage', upload.single('image'), function (req, res) {
   if (req.file) {
     res.json(req.file);
   }
   else throw 'error';
 })
-*/
+
 
 
 

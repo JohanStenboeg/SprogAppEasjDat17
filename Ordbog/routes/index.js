@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
+ var multer = require('multer');
+var upload = multer({dest: "./public/uploads"});
+// var Ord = require('../models/ordbogModel');
+mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
@@ -45,6 +50,14 @@ router.post('/api/postord', function(req, res, next) {
   });
 
 });
+
+
+router.post('/uploadimage', upload.single('image'), function (req, res) {
+  if (req.file) {
+    res.json(req.file);
+  }
+  else throw 'error';
+})
 
 /* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/api/updateord', function(req, res, next) {

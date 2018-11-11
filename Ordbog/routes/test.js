@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     callback(null, './public/uploads/');
   },
   filename: function (req, file, callback) {
-    callback(null, new Date().toISOString() + file.file.originalname);
+    callback(null, new Date().toISOString() + file.originalname);
   }
 });
 
