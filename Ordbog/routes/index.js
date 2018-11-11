@@ -47,14 +47,14 @@ router.post('/api/postord', function(req, res, next) {
   });
 });
 
-/* Handler POST request og opdaterer et ord i ordbogen */
+/* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
 router.post('/api/updateord', function(req, res, next) {
 
   MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
     if (err) throw err;
     let database = db.db("tododb");
     let myquery = { _id: ObjectId(req.params._id) };
-    let newvalues = { $set: {ord: req.body.nyt_ord } };
+    let newvalues = { $set: {ord: req.body.ord } };
     database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
       console.log("1 document updated-index_updateOne_used");
