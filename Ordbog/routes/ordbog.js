@@ -1,7 +1,5 @@
 var express = require('express');
 var router = express.Router();
-//var hbs = require('hbs');
-//hbs.registerPartials(__dirname + '/views/partials');
 var mongoose = require('mongoose');
  var multer = require('multer');
 var upload = multer({dest: "./public/uploads"});
@@ -50,10 +48,22 @@ router.get('/', function (req, res, next) {
   });
 });
 
-/* GET handler som henter ét ord ud fra _id */
-/*router.get('/:id', function(req, res){
-var currentOrd = document.
-});*/
+// GET handler som henter ét ord ud fra _id 
+// Da req.params._id ikke virker efter hensigten, vælger jeg at finde URL på en anden måde
+var url = require('url');
+
+router.get('/:id', function(req, res, next){
+  var reqToString = url.parse(req.originalUrl, true);
+  var reqObject = reqToString.query;
+  console.log(reqObject.id);
+
+  ordbog.findById(reqObject.id, function(err, result){
+    if(err){ return console.log(err);
+    } else{
+      res.render('visord', result);
+    }
+  });
+});
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
 router.post('/postord', function (req, res, next) {

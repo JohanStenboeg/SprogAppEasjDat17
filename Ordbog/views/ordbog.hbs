@@ -15,7 +15,7 @@
       <ul class="panel">
         <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
       </ul>
-    </nav> 
+    </nav>
   </header>
 
   <!-- Hovedafsnit -->
@@ -24,25 +24,29 @@
     <div id="dine_ord" class="overskrift">
       <!-- Søgefelt -->
       <input type="text" id="searchInput" onkeyup="search()" placeholder="Hvilket ord søger du?" title="Skriv et ord">
-
+    </div>
+    <div>
       <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
-      <form method="GET" action="/vis">
-        <ul id="minListe">
+      <form method="GET" action="/ordbog/:id">
+        <ul>
           {{#each this}}
-          <li><input type="submit" name={{this._id}} value={{this.ord}}></input></li>
-          <!--<li id={{this._id}} name="ord" value={{this._id}} ><a href="#">{{this.ord}}</a></li>-->
+          <li>
+            <label for="name">{{this.ord}}<input type="radio" name="id" value={{this._id}}></label>
+          </li>
           {{/each}}
         </ul>
-        <!-- <input type="submit" value="slet" class="floatSlet"> -->
+        <input type="submit" value="Vis" class="floatVis">
       </form>
-      <button id="js_tilfoj_ord" class="floatTilfoj"><a href="/tilfojord">Tilføj ord</a></button>
+    </div>
+    <div>
+      <button id="js_tilfoj_ord" class="floatTilfoj" onclick="location.href='/tilfojord'">Tilføj ord</button>
     </div>
   </section>
 
   <script>
     // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
-    let ordArray = document.getElementsByName("ord");
+    let ordArray = document.getElementsByName("id");
     let ordArrayLength = ordArray.length;
 
     for (let i = 0; i <= ordArrayLength - 3; i++) {
@@ -50,11 +54,11 @@
         ordArray[i].remove();
       }
     }
-    
+
     ordArrayLength = ordArray.length;
     ordArray[ordArrayLength - 2].remove();
     ordArray[ordArrayLength - 3].remove();
-    
+
   </script>
 
 </body>
