@@ -86,7 +86,7 @@ router.post('/uploadimage', upload.single('image'), function (req, res) {
 })
 
   
-// Mangler at blive tested
+// fungerer ikke
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/updateord', function (req, res, next) {
 

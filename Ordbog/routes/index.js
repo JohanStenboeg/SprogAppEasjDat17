@@ -61,12 +61,12 @@ router.post('/api/updateord', function(req, res, next) {
       db.close();
     });
     res.send("1 document updated-index_updateOne_used");
-//    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
+
   });
 });
 
-/* Handler POST sletter et ord i ordbogen */
-router.post('/api/slet_ord', function (req, res, next) {
+/* Handler POST sletter et ord i ordbogen - fungerer ikke! */
+router.post('/slet_ord', function (req, res, next) {
 MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
   if (err) throw err;
   let database = db.db("tododb");
@@ -74,7 +74,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
   database.collection('ordbog').deleteOne({ _id: ObjectId(req.params._id) }, (err, result) => {
     if (err) return console.log(err);
     console.log(req.body);
-    res.redirect('/test');
+    res.redirect('/ordbog');
   });
 });
 });
