@@ -18,6 +18,9 @@ p, div {
   color: #fff;
   font-weight: bold;
 }
+
+
+
 /*---------login og opret bruger start-----------*/
 
 #mainlogin {
@@ -29,6 +32,7 @@ form {
   border: 3px solid #f1f1f1;
 }
 
+/*-------inputfelter på login.html og opretbruger.html-------*/
 
 input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], input[type=telefonNummer] {
     width: 95%;
@@ -44,6 +48,9 @@ input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], i
     font-weight: bold;
     
 }
+
+
+/*-------  password inputfelt - sikrer at det er '******'   -------*/
 input[type=text]::placeholder, input[type=password]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #fff;
     opacity: 1; /* Firefox */
@@ -70,11 +77,6 @@ input[type=text]:-ms-input-placeholder, input[type=eMail]:-ms-input-placeholder 
 input[type=text]::-ms-input-placeholder, input[type=eMail]::-ms-input-placeholder { /* Microsoft Edge */
   color: #fff;
 }
-
-
-
-
-
 
 button {
     background-color: #FAB32A;
@@ -144,7 +146,6 @@ span.psw {
 }
 
 
-
 .roller {
   width: 95%;
   padding: 12px 20px;
@@ -170,9 +171,9 @@ span.psw {
 
 
 
-/* login slut*/
+/*-------login og opret bruger slut-------*/
 
-/* Styling til menuside*/
+/* Styling til menusider (kursist, sprogmakker og underviser)*/
 
 
 
@@ -206,7 +207,7 @@ body {
   
 }
 
-/*div om knapper og point på menuside*/
+/*div til knapper på menusider */
 .buttonsmenu {
   /*display: inline-grid;*/
   margin-top: 20%;
@@ -276,6 +277,58 @@ h2 {
 p {
   font-family: arial;
 }
+
+
+
+/*---------- Start Kursist profilside ----------*/
+
+
+.tilbageknap { /*tilbage-knap i header*/
+  width: 7%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+#headertekst { /*velkomst-besked i header*/
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: right;
+}
+
+
+.profilbillede {/*holder til profilbillede*/
+  
+  margin-top: relative;
+  margin-right: 5%;
+  float: right;
+}
+
+.dagensOrd {/*holder til dagens ord*/
+  margin-top: 20%;
+  text-align: center;
+}
+
+
+#dagens_ord {
+  font: 'Arial';
+  color: #fff; 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
