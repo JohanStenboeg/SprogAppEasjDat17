@@ -38,6 +38,10 @@ var upload = multer({
 });
 */
 
+// Get handler som henter tilfojord siden
+router.get('/tilfojord', function(req, res, next){
+  res.render('tilfojord');
+});
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
@@ -53,14 +57,15 @@ router.get('/', function (req, res, next) {
 var url = require('url');
 
 router.get('/:id', function(req, res, next){
-  var reqToString = url.parse(req.originalUrl, true);
-  var reqObject = reqToString.query;
-  console.log(reqObject.id);
+  //var reqToString = url.parse(req.originalUrl, true);
+  //var reqObject = reqToString.query;
+  console.log(req.param('id'));
 
-  ordbog.findById(reqObject.id, function(err, result){
+  ordbog.findById(req.param('id'), function(err, result){
     if(err){ return console.log(err);
     } else{
       res.render('visord', result);
+      console.log(req.param('id'));
     }
   });
 });
