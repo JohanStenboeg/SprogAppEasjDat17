@@ -31,32 +31,61 @@ function testLogin(){
     var params = 'brugernavn='+brugernavninput.value+'&password='+passwordinput.value+'';
     var xmlhttp = new XMLHttpRequest();
 
+    
+
     //HTTP der virker som et handshake, hvis handshake sker, så log ind og opret en cookie.
     xmlhttp.onreadystatechange = function() {
         console.log("inde")
         console.log(this.readyState+"   "+this.status)
         if (this.readyState == 4 && this.status == 200) {
+            //console.log(this.response)
+            
+            brugerDataObjekt = JSON.parse(this.response);
+            //console.log(brugerDataObjekt.username);
+
             if(this.response == "fejl") {
                 alert("Login fejlet!")
             }else{
 
-                switch(this.response){
+                switch(brugerDataObjekt.privilege){
                     case "Kursist":
-                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
+                    
+                
+                    var jsonString = JSON.stringify(brugerDataObjekt);
+                    document.cookie = "UserData=" + jsonString + ";path=/;";
+                    //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
-                    window.location.href= "http://127.0.0.1:5500/login/menu/kursist/kursistside.html"
+                    window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
                     
                     break;
 
                     case "Sprogmakker":
-                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
-                    window.location.href= "http://127.0.0.1:5500/login/menu/sprogmakker/sprogmakkerside.html"
+                    var brugerProfilData = {};
+                    brugerProfilData.navn = brugernavninput.value;
+                    brugerProfilData.kodeord = passwordinput.value;
+                    brugerProfilData.privilege = this.response[0].privilege;
+                    brugerProfilData.score = this.response[0].rewardLVL;
+
+                    var jsonString = JSON.stringify(brugerProfilData);
+                    document.cookie = "UserData=" + jsonString + ";path=/;";
+                    //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
+                    console.log(document.cookie);
+                    window.location.href= "http://127.0.0.1:5500/menu/sprogmakker/sprogmakkerside.html"
                     
                     break;
 
                     case "Underviser":
-                    document.cookie = "username=" + brugernavninput.value + ";password=" + ";path=/;"
-                    window.location.href= "http://127.0.0.1:5500/login/menu/underviser/underviserside.html"
+                    var brugerProfilData = {};
+                    brugerProfilData.navn = brugernavninput.value;
+                    brugerProfilData.kodeord = passwordinput.value;
+                    brugerProfilData.privilege = this.response[0].privilege;
+                    brugerProfilData.score = this.response[0].rewardLVL;
+
+                    var jsonString = JSON.stringify(brugerProfilData);
+                    document.cookie = "UserData=" + jsonString + ";path=/;";
+                    //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
+                    console.log(document.cookie);
+                    window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
                     
                     break;
 
@@ -110,7 +139,7 @@ function testLogin(){
            <button onclick="testLogin()">Log Ind</button>
                              
            <!--Knap til nyBruger siden-->
-            <button type="submit" onclick="location.href='http://localhost:5500/login/menu/opretBruger.html'">Opret Ny bruger</button>
+            <button type="submit" onclick="location.href='http://localhost:5500/menu/opretBruger.html'">Opret Ny bruger</button>
           </div>
         </div>
 

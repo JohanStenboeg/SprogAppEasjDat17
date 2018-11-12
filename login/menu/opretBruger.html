@@ -6,43 +6,25 @@
     <title>Opret Bruger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
-    <script src="main.js"></script>
+    <script src="../ModelControllerRoute/opretBruger.js"></script>
 </head>
+        <!--Logo øverst oppe-->
+      <a href=""><img class="logoutmenu" src="../billeder/logout.png" alt="tilbage">Tilbage</a>
 <body>
-    <script>
-        //variabler
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-var brugerNavnInput = document.getElementById("brugernavn");
-var brugerPassInput = document.getElementById("kodeord");
-var brugerRolleInput = document.getElementById("roller").selectedIndex;
 
-//URL
-var url = "mongodb://localhost:27017/";
-
-//Forbindelsen til MongoDB
-MongoClient.connect(url,{useNewUrlParser: true}, function(err, db) {
-    if (err){throw err};
-    var dbo = db.db("dbSprog");
-    var myobj = [{username: brugerNavnInput, password: brugerPassInput, privilege: brugerRolleInput}];
-    dbo.collection("brugere").insertMany(myobj, function(err, res){
-        if (err){throw err};
-        console.log("Document inserted");
-        db.close();
-    });
-});
-        </script>
     <div class="containerlogin">
-        <input id = "brugernavn" type="email" placeholder="Brugernavn" name="uname" required> 
-        <input id = "kodeord" type="password" placeholder="Kodeord" name="psw" required> 
+        <form method="POST" action="opretBruger/register">
+            <input type="text" name="brugernavn" id="input_brugernavn" placeholder="Skriv brugernavn">
+            <input type="password" name="kodeord" id="input_kodeord" placeholder="Skriv kodeord">
            
-        <select class="roller"> 
+        <select class="roller" name="rolle"> 
             <option class="options" value="default" selected>Vælg en rolle...</option>
             <option class="options" value="Kursist">Kursist</option>
             <option class="options" value="Sprogmakker">Sprogmakker</option>
             <option class="options" value="Underviser">Underviser</option>
         </select>
-        <button id="indsendKnap" type="submit">Opret</button>
+        <button type="submit" value="opret">Opret</button>
+        </form>
     </div>    
     
 </body>

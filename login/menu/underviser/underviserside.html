@@ -26,18 +26,29 @@
 
   <body>
 
-      <script>
-          window.onload = function () {
-            console.log(document.cookie.split("="));
-            console.log(document.getElementById("welcome_msg").innerHTML)
-            document.getElementById("welcome_msg").innerHTML = document.cookie.split("=")[1]
-          } 
-         </script>
+    <script>
+
+        window.onload = function () {
+       var cookieDataArray = document.cookie.split("=");
+       var userDataObject = JSON.parse(cookieDataArray[1]);
+
+       //console.log(userDataObject);
+       //console.log(cookieDataArray);
+
+       document.getElementById("welcome_msg").innerHTML = "velkommen " + userDataObject.username
+       
+
+       //console.log(document.cookie.split("="));
+       //console.log(document.getElementById("welcome_msg").innerHTML)
+       //document.getElementById("welcome_msg").innerHTML = document.cookie.split("=")[1]
+     }
+          
+    </script>
 
     <!--Knapper-->
       <div class="buttonsmenu">
       <p id="welcome_msg">welcome placeholder</p>
-      <button class="button" onclick="location.href='http://127.0.0.1:5500/login/Profil/underviser/Underviser.html'">Min Profil</button>
+      <button class="button" onclick="location.href='http://127.0.0.1:5500/Profil/underviser/Underviser.html'">Min Profil</button>
       <button class="button">Min Ordbog</button>
       <button class="button">Chat</button>
 
