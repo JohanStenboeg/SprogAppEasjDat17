@@ -27,11 +27,11 @@ exports.login_as_client = function(req, res){
   var user_name=req.body.brugernavn;
   var password_in=req.body.password;
   //test login system
-  if(user_name=="hello"&&password_in=="tsm"){
+  /*if(user_name=="hello"&&password_in=="tsm"){
     res.send("logged in")
   }else{
     res.send("you done messed up");
-  }
+  }*/
 }
 
 
