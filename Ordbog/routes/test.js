@@ -78,13 +78,6 @@ router.post('/postord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-router.post('/uploadimage', upload.single('image'), function (req, res) {
-  if (req.file) {
-    res.json(req.file);
-  }
-  else throw 'error';
-})
-
   
 // fungerer ikke
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
