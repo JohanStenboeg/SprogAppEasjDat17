@@ -55,7 +55,7 @@ function testLogin(){
                     document.cookie = "UserData=" + jsonString + ";path=/;";
                     //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
-                    window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
+                    window.location.href= "http://127.0.0.1:8080/menu/kursist/kursistside.html"
                     
                     break;
 
@@ -70,7 +70,7 @@ function testLogin(){
                     document.cookie = "UserData=" + jsonString + ";path=/;";
                     //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
-                    window.location.href= "http://127.0.0.1:5500/menu/sprogmakker/sprogmakkerside.html"
+                    window.location.href= "http://127.0.0.1:8080/menu/sprogmakker/sprogmakkerside.html"
                     
                     break;
 
@@ -85,31 +85,31 @@ function testLogin(){
                     document.cookie = "UserData=" + jsonString + ";path=/;";
                     //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
-                    window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                    window.location.href= "http://127.0.0.1:8080/menu/underviser/underviserside.html"
                     
                     break;
 
                     case "":
-                    window.location.href= "http://127.0.0.1:5500/login/menu/underviser/underviserside.html"
+                    window.location.href= "http://127.0.0.1:8080/login/menu/underviser/underviserside.html"
                     document.cookie="loginPrivilege="+this.response+""
                 }
 
 
                 /*if(this.response.value == "Kursist"){
-                    window.location.href= "http://127.0.0.1:5500/menu/kursist/kursistside.html"
+                    window.location.href= "http://127.0.0.1:8080/menu/kursist/kursistside.html"
                     document.cookie="loginPrivilege="+this.response+""
                 }
                 if(this.response.value == "Sprogmakker"){
-                    window.location.href = "http://127.0.0.1:5500/menu/sprogmakker/sprogmakkerside.html"
+                    window.location.href = "http://127.0.0.1:8080/menu/sprogmakker/sprogmakkerside.html"
                     document.cookie="loginPrivilege="+this.response+""
                 }
                 if(this.response.value == "Underviser"){
-                    window.location.href = "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                    window.location.href = "http://127.0.0.1:8080/menu/underviser/underviserside.html"
                     document.cookie="loginPrivilege="+this.response+""
                 }*/
 
 
-                //window.location.href= "http://127.0.0.1:5500/menu/underviser/underviserside.html"
+                //window.location.href= "http://127.0.0.1:8080/menu/underviser/underviserside.html"
                 //document.cookie="loginId="+this.response+""
                 //alert(document.cookie)
             }
@@ -120,7 +120,7 @@ function testLogin(){
     };
 
     //HTTP forespørgsel starter, og indhenter nødvendig data til genenmførsel.
-    var url = "http://localhost:3000/login";
+    var url = "http://localhost:8080/login";
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(params);
@@ -139,7 +139,7 @@ function testLogin(){
            <button onclick="testLogin()">Log Ind</button>
                              
            <!--Knap til nyBruger siden-->
-            <button type="submit" onclick="location.href='http://localhost:5500/menu/opretBruger.html'">Opret Ny bruger</button>
+            <button type="submit" onclick="location.href='http://localhost:5500/login/menu/opretBruger.html'">Opret Ny bruger</button>
           </div>
         </div>
 

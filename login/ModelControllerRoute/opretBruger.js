@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
+//var __dirname = 'localhost:8080/login';
 
 //router forbinder til css
 router.use('/css/style.css', function(req, res){
@@ -13,7 +14,7 @@ router.use('/billeder/logout.png', function(req, res){
 });
 
 //Forbind til mongoDB vha. mongoose modulet.
-mongoose.connect('mongodb://localhost:27017/dbSprog', {useNewUrlParser: true});
+mongoose.connect('mongodb://stenboeg:stenboeg1234@ds155653.mlab.com:55653/sprogappmongodb', {useNewUrlParser: true});
 //Fortæller hvilket Model den skal hente og bruge
 var BrugerModel = require('../ModelControllerRoute/brugerModel');
 //Fortæller hvilken collection i MongoDB der skal bruges
@@ -33,7 +34,7 @@ router.post('/register', function(req, res, next){
         if(err){return console.log(err)}
     });
     //send mig til opret-siden
-    res.redirect('/opretBruger');
+    res.redirect('http://localhost:8080/login/Clientside/login.html');
 });
 
 //udsend scriptet
