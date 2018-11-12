@@ -3,10 +3,14 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 
-//router fodbinder til css
+//router forbinder til css
 router.use('/css/style.css', function(req, res){
     res.sendFile(__dirname + '/css/style.css');
-  });
+});
+//router der forbinder til fortryd-knappen
+router.use('/billeder/logout.png', function(req, res){
+    res.sendFile(__dirname + '/billeder/logout.png');
+});
 
 //Forbind til mongoDB vha. mongoose modulet.
 mongoose.connect('mongodb://localhost:27017/dbSprog', {useNewUrlParser: true});
