@@ -54,7 +54,7 @@
 
   <script>
     // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
-    let ordArray = document.getElementsById("li");
+    let ordArray = document.getElementsByTagName("li");
     let ordArrayLength = ordArray.length;
 
     ordArray[ordArrayLength - 3].remove();
