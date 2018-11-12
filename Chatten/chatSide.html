@@ -90,29 +90,6 @@
 
     var username = findCookieBeskrivelse("hvemErJeg");
 
-<<<<<<< HEAD
-=======
-    xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log("inde i onreadystatechange")
-        var myObj = JSON.parse(this.responseText);
-        venneliste = myObj;
-
-        var x = document.getElementById("friendslist");
-
-        for (let index = 0; index < 4; index++) {
-          let option = document.createElement("option");
-          option.text = myObj.arr[index].name;
-          x.add(option);
-        }
-      }
-    };
-    console.log("yeet XD");
-
-    xmlhttp.open("GET", "http://192.168.43.116:8080/getChats", true);
-    xmlhttp.send();
-    console.log("venne " + venneliste);
->>>>>>> a80db0f5e56ee819b5695584be16c91877701785
 
 
 
