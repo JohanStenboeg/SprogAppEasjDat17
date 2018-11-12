@@ -1,49 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ordbog</title>
-    <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
-    <script src="javascripts/ordbog.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>Ordbog</h1>
-    </header>
-    <nav>
-      <ul>
-        <li id="js_dine_ord" class="panel" onclick="dine_ord()"><a href="#">Dine ord</a></li>
-        <li id="js_tilfoj_ord" class="panel"><a href="#" onclick="tilfoj_ord()">Tilføj ord</a></li>
-        <!--<li id="js_rediger_ord" class="panel"><a href="#" onclick="rediger_ord()">Redigér ord</a></li> -->
-        <li id="js_slet_ord" class="panel"><a href="#" onclick="slet_ord()">Slet ord</a></li>
-        
-      </ul>
-    </nav>
-    <section>
-      <div id="dine_ord">
-        <p>Ordliste:</p>
-        
-        {{#each this}}
-          <p>{{this.ord}}</p>
-        {{/each}}
-        
-      </div>
-      <div id="tilfoj_ord" style="display: none;">
-        <form method="POST" action="ordbog/postord">
-          <p>Nyt ord:<br></p>
-          <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
-          <input type="submit" value="Gem"></input>
-        </form>
-      </div>
-      <div id="slet_ord" style="display: none">
-        <form>
-        <!--<p>Rediger ord:<br></p>
-          <input type="text" name="input_rediger_ord" id="input_rediger_ord" placeholder="Redigér ord"></input>
-          <input type="submit" value="Gem"></input> -->     
-          <p>Slet ord:<br></p>
-          <input type="text" name="input_slet_ord" id="input_slet_ord" placeholder="Slet ord"></input>
-          <input type="submit" value="Slet"></input>
-        </form>
-      </div>
-    </section>
-  </body>
+
+<head>
+  <title>Ordbog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
+  <script src="javascripts/ordbog.js"></script>
+</head>
+
+<!-- Navigations panel / Header -->
+<header>
+  <div class="menuContainer">
+    <ul class="panel">
+      <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+
+  <!-- Hovedafsnit -->
+  <section>
+    <!-- Hovedafsnit / Dine ord -->
+    <div class="searchContainer">
+      <!-- Søgefelt -->
+      <input type="text" id="searchInput" onkeyup="search()" placeholder="Hvilket ord søger du?" title="Skriv et ord">
+    </div>
+
+    <div class="mainContainer">
+      <h2>Ord:</h2>
+      <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
+      <form method="POST" action="/ordbog/vis">
+        <ul id="minListe">
+          {{#each this}}
+          <li>
+            <label for={{this._id}}>{{this.ord}}</label>
+            <input type="radio" id={{this._id}} name="id" value={{this._id}}>
+
+            <div class="check">
+              <div class="inside"></div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+        <input type="submit" value="Vis" class="floatVis">
+      </form>
+    </div>
+
+    <div>
+      <button class="floatTilfoj" onclick="location.href='tilfojord'">Tilføj ord</button>
+    </div>
+  </section>
+
+  <script>
+    // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
+    let ordArray = document.getElementsById("li");
+    let ordArrayLength = ordArray.length;
+
+    ordArray[ordArrayLength - 3].remove();
+    ordArray.length;
+    ordArray[ordArrayLength - 3].remove();
+    ordArray.length;
+    ordArray[ordArrayLength - 3].remove();
+
+  </script>
+
+</body>
+
 </html>

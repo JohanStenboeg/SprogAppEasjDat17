@@ -30,7 +30,14 @@
     <button type="submit">Send</button>
 </form>
 
-<form method="POST" action="/api/sletteord">
+<form method="POST" action="./api/slet_ord">
     <input type="text" name="ord" placeholder="ord">
     <button type="submit">Slet</button>
+</form>
+
+<h1>Upload Image</h1>
+ 
+<form action="./ordbog/uploadimage" method="post" enctype="multipart/form-data">
+        <input type="file" accept="image/jpeg, image/png" name="image" >
+        <input type="submit" value="upload">
 </form>

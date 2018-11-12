@@ -1,17 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var multer = require('multer');
+var upload = multer({dest: "./public/uploads"});
 
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = "mongodb://localhost:27017/";
 
 /* Handler GET request og henter alle objects i ordbogen */
-router.get('/api/getord', function(req, res, next) {
- 
-  MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
+router.get('/api/getord', function (req, res, next) {
+
+  MongoClient.connect(url, {
+    useNewUrlParser: true
+  }, function (err, db) {
     if (err) throw err;
     let database = db.db("tododb");
-    database.collection("ordbog").find({}).toArray(function(err, result) {
+    database.collection("ordbog").find({}).toArray(function (err, result) {
       if (err) throw err;
       res.send(result);
       db.close();
@@ -21,71 +25,104 @@ router.get('/api/getord', function(req, res, next) {
 });
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
-router.post('/api/postord', function(req, res, next) {
+router.post('/api/postord', function (req, res, next) {
 
-  MongoClient.connect(url, { useNewUrlParser: true } , function(err, db) {
+  MongoClient.connect(url, {
+    useNewUrlParser: true
+  }, function (err, db) {
     if (err) throw err;
     let database = db.db("tododb");
 
     let object = {
       ord: req.body.ord,
       sprog: "dk",
-      user: "erik2310",
-      image: req.body.image,
-      sound: req.body.sound, 
+      user: "fra_index/test",
+      kategori: "",
+      date: "",
+      image: "",
+      sound: req.body.sound,
       video: req.body.video
     }
 
-    database.collection("ordbog").insertOne(object, function(err, res) {
+    database.collection("ordbog").insertOne(object, function (err, res) {
       if (err) throw err;
-      console.log("1 document inserted");
+      console.log("1 document inserted-index_insertOne_used");
       db.close();
     });
-    res.send("1 document inserted");
+    res.send("1 document inserted-index_insertOne_used");
   });
-
 });
 
-/* Handler POST request og opdaterer et ord i ordbogen */
-router.post('/api/updateord', function(req, res, next) {
+/* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
+router.post('/api/updateord', function (req, res, next) {
 
-  MongoClient.connect(url,{ useNewUrlParser: true } , function(err, db) {
+  MongoClient.connect(url, {
+    useNewUrlParser: true
+  }, function (err, db) {
     if (err) throw err;
     let database = db.db("tododb");
-    let myquery = { _id: ObjectId("5bdae053534f8e3eec70b571") };
-    let newvalues = { $set: {ord: req.body.ord } };
-    database.collection("ordbog").updateOne(myquery, newvalues, function(err, res) {
+    let myquery = {
+      _id: ObjectId(req.params._id)
+    };
+    let newvalues = {
+      $set: {
+        ord: req.body.ord
+      }
+    };
+    database.collection("ordbog").updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
-      console.log("1 document updated");
+      console.log("1 document updated-index_updateOne_used");
       db.close();
     });
-    res.send("1 document updated");
+    res.send("1 document updated-index_updateOne_used");
+
+  });
+});
+
+/* Handler POST sletter et ord i ordbogen - fungerer ikke! */
+router.post('/slet_ord', function (req, res, next) {
+  MongoClient.connect(url, {
+    useNewUrlParser: true
+  }, function (err, db) {
+    if (err) throw err;
+    let database = db.db("tododb");
+
+    database.collection('ordbog').deleteOne({
+      _id: ObjectId(req.params._id)
+    }, (err, result) => {
+      if (err) return console.log(err);
+      console.log(req.body);
+      res.redirect('/ordbog');
+    });
   });
 });
 
 /* Handler POST request og opdaterer et image i ordbogen */
-router.post('/api/updateimage', function(req, res, next) {
- 
-
+router.post('/api/uploadimage', upload.single('image'), function (req, res) {
+  if (req.file) {
+    res.json(req.file);
+  } else throw 'error';
 });
 
 /* Handler POST request og opdaterer lyd i ordbogen */
-router.post('/api/updatelyd', function(req, res, next) {
+router.post('/api/updatelyd', function (req, res, next) {
 
-  
+
 
 });
 
 /* Handler POST request og opdaterer video i ordbogen */
-router.post('/api/updatevideo', function(req, res, next) {
+router.post('/api/updatevideo', function (req, res, next) {
 
-  
+
 
 });
 
 /* GET index. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SprogApp' });
+router.get('/', function (req, res, next) {
+  res.render('index', {
+    title: 'SprogApp'
+  });
 });
 
 module.exports = router;
