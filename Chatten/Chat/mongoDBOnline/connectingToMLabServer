@@ -1,0 +1,14 @@
+
+//Opretter et MongoClient variabel og henter mongodb modulet
+var MongoClient = require('mongodb').MongoClient;
+
+//SprogAppChatDB = sacdb
+//Opretter variabel med url'en. 
+var url = "mongodb://stenboeg:stenboeg1234@ds155653.mlab.com:55653/sprogappmongodb";
+
+//Database navn: sprogAppChatDb
+var dbNavn = "sprogappmongodb";
+//Collection navn: c1
+var collectionNavn = "brugere";
+
+PASTE THIS INTO THE START OF THE JAVASCRIPT FILE

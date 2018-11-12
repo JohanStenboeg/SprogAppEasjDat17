@@ -4,7 +4,7 @@
 
     //SprogAppChatDB = sacdb
     //Opretter variabel med url'en. 
-    var url = "mongodb://localhost:27017/sprogAppChatDb";
+    var url = "mongodb://stenboeg:stenboeg1234@ds155653.mlab.com:55653/sprogappmongodb";
 
     //Database navn: sprogAppChatDb
     var dbNavn = "sprogAppChatDb";

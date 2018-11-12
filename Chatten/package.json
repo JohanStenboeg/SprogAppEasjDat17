@@ -4,6 +4,7 @@
   "description": "en sprogapp i samarbejde med Sovsen, Team T og 69",
   "main": "server.js",
   "scripts": {
+    "start": "node chatServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +21,11 @@
   },
   "homepage": "https://github.com/JohanStenboeg/SprogAppEasjDat17#readme",
   "devDependencies": {
-    "express": "^4.16.4",
+    "express": "file:node_modules/express",
     "fs": "0.0.1-security",
     "socket.io": "^2.1.1"
+  },
+  "dependencies": {
+    "mongodb": "^3.1.9"
   }
 }
