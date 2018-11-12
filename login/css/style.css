@@ -30,7 +30,7 @@ form {
 }
 
 
-input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], input[type=telefonNummer] {
+input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], input[type=telefonNummer], input[type=text] {
     width: 95%;
     padding: 12px 20px;
     margin: 8px 2.5%;
