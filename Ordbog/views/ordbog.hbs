@@ -35,7 +35,7 @@
           {{#each this}}
           <li>
             <label for={{this._id}}>{{this.ord}}</label>
-            <input type="radio" id={{this._id}} name="id" value={{this._id}}>
+            <input type="radio" id={{this._id}} name="id" value={{this._id}} checked>
 
             <div class="check">
               <div class="inside"></div>
@@ -43,7 +43,7 @@
           </li>
           {{/each}}
         </ul>
-        <input type="submit" value="Vis" class="floatVis">
+        <input id="visBtn" type="submit" value="Vis" class="floatVis">
       </form>
     </div>
 
