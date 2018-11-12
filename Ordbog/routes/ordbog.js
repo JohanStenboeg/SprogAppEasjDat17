@@ -91,7 +91,7 @@ router.post('/postord', function (req, res, next) {
 });
 
 
-// Mangler at blive tested
+// Fungerer ikke
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/updateord', function (req, res, next) {
 
@@ -109,7 +109,7 @@ router.post('/updateord', function (req, res, next) {
 });
 
 
-// Mangler at blive testet
+// Fungerer ikke
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
 
