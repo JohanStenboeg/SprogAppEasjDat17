@@ -86,12 +86,11 @@
 }
   printTidligereBeskeder();
 
+
     var hvemSkriverJegTil = findCookieBeskrivelse("hvemSkriverDuTil"); 
 
     var username = findCookieBeskrivelse("hvemErJeg");
-
-
-
+    
 
 
 
@@ -127,7 +126,7 @@
 
     //Kort functionerne
     function lavEtKort(){
-          var imgUrl = "https://www.lejminbaad.dk/wp-content/uploads/2014/01/Sports-b%C3%A5d-14.jpg";
+          var imgUrl = "http://4kl.plot.alinea.dk/wp-content/uploads/sites/37/2015/09/Video.jpg";
           var ordetForDet = "Skriv ord her";
           var lydKlipUrl = "https://www.myinstants.com/media/sounds/fortnite-dance-moves-emote-music-tv9iv8cxmo0-1.mp3";
         
@@ -138,8 +137,8 @@
         function udskiftbillede(object){
           if(confirm("Vil du skifte billedet, med det seneste taget billede?")){
             //Kør metode, der tager kameraet frem.
-            var link = "https://i.pinimg.com/originals/aa/5b/15/aa5b153ff21e74693f9855ed96002475.jpg";
-            object.src=link;
+            var nuvarendebilled = findCookieBeskrivelse("nubilled"); 
+            object.src=nuvarendebilled;
             //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
           }
         }

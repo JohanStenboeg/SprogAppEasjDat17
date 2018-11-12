@@ -36,14 +36,14 @@ app.get('/getChats',function(req,res){
 
 });
 
-var chatDummy = {arr: [ { "besked": 'Johan : Hej Johan' },
-{ "besked": 'Johan : Hej' },
-{ "besked": 'Johan : virker' },
-{ "besked": 'Johan : dette' },
-{ "besked": 'Johan : mon' },
-{ "besked": 'Johan : jo' },
-{ "besked": 'Johan : det tror jeg' },
-{ "besked": 'Johan : eller' } ]};
+var chatDummy = {arr: [ { "besked": '16:05 11/12/2018 - Frank : Hej Johan' },
+{ "besked": '16:07 11/12/2018 - Frank : Hej' },
+{ "besked": '16:08 11/12/2018 - Frank : virker' },
+{ "besked": '16:09 11/12/2018 - Frank : dette' },
+{ "besked": '16:10 11/12/2018 - Frank : mon' },
+{ "besked": '16:11 11/12/2018 - Frank : jo' },
+{ "besked": '16:12 11/12/2018 - Frank : det tror jeg' },
+{ "besked": '16:13 11/12/2018 - Frank : eller' } ]};
 
 app.get('/getChat', function(request, res){
   res.send(chatDummy);
