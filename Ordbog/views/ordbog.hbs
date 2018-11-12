@@ -28,7 +28,7 @@
     <div>
       <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
-      <form method="GET" action="/ordbog/:id">
+      <form method="POST" action="/ordbog/vis">
         <ul>
           {{#each this}}
           <li>
@@ -40,7 +40,7 @@
       </form>
     </div>
     <div>
-        <button class="floatTilfoj" onclick="location.href='/tilfojord'" >Tilføj ord</button>
+        <button class="floatTilfoj" onclick="location.href='tilfojord'" >Tilføj ord</button>
     </div>
   </section>
 

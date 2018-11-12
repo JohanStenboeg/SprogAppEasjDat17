@@ -56,16 +56,16 @@ router.get('/', function (req, res, next) {
 // Da req.params._id ikke virker efter hensigten, vælger jeg at finde URL på en anden måde
 var url = require('url');
 
-router.get('/:id', function(req, res, next){
+router.post('/vis', function(req, res, next){
   //var reqToString = url.parse(req.originalUrl, true);
   //var reqObject = reqToString.query;
-  console.log(req.param('id'));
+  //console.log(req.param('id'));
 
-  ordbog.findById(req.param('id'), function(err, result){
+  ordbog.findById(req.body.id, function(err, result){
     if(err){ return console.log(err);
     } else{
       res.render('visord', result);
-      console.log(req.param('id'));
+      console.log(req.body.id);
     }
   });
 });
