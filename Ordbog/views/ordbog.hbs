@@ -29,7 +29,7 @@
       <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
       <form method="POST" action="/ordbog/vis">
-        <ul>
+        <ul id="minListe">
           {{#each this}}
           <li>
             <label for="name">{{this.ord}}<input type="radio" name="id" value={{this._id}}></label>
@@ -46,7 +46,7 @@
 
   <script>
     // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
-    let ordArray = document.getElementsByName("id");
+    let ordArray = document.getElementsById("id");
     let ordArrayLength = ordArray.length;
 
     for (let i = 0; i <= ordArrayLength - 3; i++) {
