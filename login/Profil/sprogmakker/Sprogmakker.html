@@ -1,14 +1,44 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sprogmakker profil</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../../css/style.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h1>Sprogmakker</h1>
-</body>
+        <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Kursist profil</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" media="screen" href="../../css/style.css" />
+            </head>
+            <body>
+            
+                
+            
+                <!--<script>hentCookie("brugernavn")</script>-->
+                <p id="welcome_msg">Personlig side</p>
+                <p id="username_profil">placeholder username</p>
+                <p id="password_profil">placerholder password</p>
+                <p id="privilege_profil">placerholder privilege</p>
+                <p id="score_profil">placerholder score</p>
+            
+            <!--script til loading a profildata-->
+            <script>
+                    window.onload = function () {
+            if (document.cookie.length != 0) {
+                profilDataArray = document.cookie.split("=");
+                brugerDataObject = JSON.parse(profilDataArray[1]);
+
+                document.getElementById("welcome_msg").innerHTML = "velkommen " + brugerDataObject.username;
+                document.getElementById("username_profil").innerHTML = "dit brugernavn til login er: " + brugerDataObject.username;
+                document.getElementById("password_profil").innerHTML = "dit password er: " + brugerDataObject.kodeord;
+                document.getElementById("privilege_profil").innerHTML = "dine login privilegier er:  " + brugerDataObject.privilege;
+                document.getElementById("score_profil").innerHTML = "din nuværende score er: " + brugerDataObject.score;
+                
+                //document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
+                //document.getElementById("username_profil").innerHTML = profilDataArray[1];
+                //document.getElementById("password_profil").innerHTML = profilDataArray[1];
+                //document.getElementById("privilege_profil").innerHTML = profilDataArray[1];
+                //console.log(profilDataArray);
+            }
+        }
+            </script>
+            
+            </body>
 </html>

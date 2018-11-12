@@ -15,26 +15,42 @@
 
 
   <!--Logo øverst oppe-->
-  <a href="../../Clientside/login.html"><img class="logout" src="../../billeder/logout.png" alt="logout"></a>
+  <a href="../../Clientside/login.html"><img class="logoutmenu" src="../../billeder/logout.png" alt="logout"></a>
   <!--Galleriknap-->
-  <a href="../../inspiration/galleri.html"><img class="pictures" src="../../billeder/billeder.png" alt="flere billeder"></a>
+  <a href="../../inspiration/galleri.html"><img class="picturesmenu" src="../../billeder/billeder.png" alt="flere billeder"></a>
   <!--Kamera knap-->
-  <a href="../../inspiration/kamera/kamera.html"><img class="camera" src="../../billeder/camera.png" alt="Kamera"></a>
+  <a href="../../inspiration/kamera/kamera.html"><img class="cameramenu" src="../../billeder/camera.png" alt="Kamera"></a>
 
 
  </header>
 
   <body>
 
+    <script>
+
+        window.onload = function () {
+       var cookieDataArray = document.cookie.split("=");
+       var userDataObject = JSON.parse(cookieDataArray[1]);
+
+       //console.log(userDataObject);
+       //console.log(cookieDataArray);
+
+       document.getElementById("welcome_msg").innerHTML = "velkommen " + userDataObject.username
+       
+
+       //console.log(document.cookie.split("="));
+       //console.log(document.getElementById("welcome_msg").innerHTML)
+       //document.getElementById("welcome_msg").innerHTML = document.cookie.split("=")[1]
+     }
+          
+    </script>
+
     <!--Knapper-->
-    <div class="buttons">
-        <a href="../../Profil/underviser/Underviser.html"><button class="button1">Profil side</button></a>
-        <a href="../../inspiration/spil/spilnavigation.html"><button class="button1">Start spillet</button></a>
-        <a href="../../inspiration/baggrund/udfordring.html"><button class="button2"> Dagens opgaver</button></a>
-        <!--Point-->
-        <h3>0</h3>
-        <!--Point knap-->
-        <a href="../../inspiration/score/fremskridt.html"><button class="button3">Se Score</button></a>
+      <div class="buttonsmenu">
+      <p id="welcome_msg">welcome placeholder</p>
+      <button class="button" onclick="location.href='http://127.0.0.1:5500/Profil/underviser/Underviser.html'">Min Profil</button>
+      <button class="button">Min Ordbog</button>
+      <button class="button">Chat</button>
 
     </div>
 
