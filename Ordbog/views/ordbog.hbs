@@ -8,39 +8,47 @@
   <script src="javascripts/ordbog.js"></script>
 </head>
 
+<!-- Navigations panel / Header -->
+<header>
+  <div class="menuContainer">
+    <ul class="panel">
+      <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
+    </ul>
+  </div>
+</header>
+
 <body>
-  <!-- Navigations panel / Header -->
-  <header>
-    <nav>
-      <ul class="panel">
-        <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
-      </ul>
-    </nav>
-  </header>
 
   <!-- Hovedafsnit -->
   <section>
     <!-- Hovedafsnit / Dine ord -->
-    <div id="dine_ord" class="overskrift">
+    <div class="searchContainer">
       <!-- Søgefelt -->
       <input type="text" id="searchInput" onkeyup="search()" placeholder="Hvilket ord søger du?" title="Skriv et ord">
     </div>
-    <div>
-      <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
+
+    <div class="mainContainer">
+      <h2>Ord:</h2>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
       <form method="POST" action="/ordbog/vis">
         <ul id="minListe">
           {{#each this}}
           <li>
-            <label for="name">{{this.ord}}<input type="radio" name="id" value={{this._id}}></label>
+            <label for={{this._id}}>{{this.ord}}</label>
+            <input type="radio" id={{this._id}} name="id" value={{this._id}}>
+
+            <div class="check">
+              <div class="inside"></div>
+            </div>
           </li>
           {{/each}}
         </ul>
         <input type="submit" value="Vis" class="floatVis">
       </form>
     </div>
+
     <div>
-        <button class="floatTilfoj" onclick="location.href='tilfojord'" >Tilføj ord</button>
+      <button class="floatTilfoj" onclick="location.href='tilfojord'">Tilføj ord</button>
     </div>
   </section>
 
@@ -54,7 +62,7 @@
     ordArray[ordArrayLength - 3].remove();
     ordArray.length;
     ordArray[ordArrayLength - 3].remove();
-    
+
   </script>
 
 </body>
