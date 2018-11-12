@@ -4,6 +4,7 @@ var multer = require('multer');
 var upload = multer({dest: "./public/uploads"});
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
+var mongodb = require('mongodb');
 var url = "mongodb://localhost:27017/";
 
 /* Handler GET request og henter alle objects i ordbogen */
@@ -54,26 +55,22 @@ router.post('/api/postord', function (req, res, next) {
 
 /* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
 router.post('/api/updateord', function (req, res, next) {
+  var item = {
+    ord: req.body.ord,
+  };
+  var id = reg.body.id;
+  
   MongoClient.connect(url, {
     useNewUrlParser: true
   }, function (err, db) {
-    if (err) throw err;
+    assert.equal(null, err);
     let database = db.db("tododb");
-    let myquery = {
-      _id: ObjectId(req.params._id)
-    };
-    let newvalues = {
-      $set: {
-        ord: req.body.ord
-      }
-    };
-    database.collection("ordbog").updateOne(myquery, newvalues, function (err, res) {
+    database.collection("ordbog").updateOne(ord,  function (err, result) {
       if (err) throw err;
-      console.log("1 document updated-index_updateOne_used: " + newvalues);
+      console.log("1 document updated-index_updateOne_used: ");
       db.close();
     });
-    res.send("1 document updated-index_updateOne_used" + newvalues);
-
+    res.send("1 document updated-index_updateOne_used");
   });
 });
 
@@ -120,5 +117,14 @@ router.get('/', function (req, res, next) {
     title: 'SprogApp'
   });
 });
+
+/* let myquery = {
+  _id: mongodb.ObjectID( req.params.id)
+};
+let newvalues = {
+  $set: {
+    ord: req.body.ord
+  } */
+
 
 module.exports = router;
