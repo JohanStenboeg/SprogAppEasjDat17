@@ -38,18 +38,20 @@ function testLogin(){
         console.log("inde")
         console.log(this.readyState+"   "+this.status)
         if (this.readyState == 4 && this.status == 200) {
+            //console.log(this.response)
+            
+            brugerDataObjekt = JSON.parse(this.response);
+            //console.log(brugerDataObjekt.username);
+
             if(this.response == "fejl") {
                 alert("Login fejlet!")
             }else{
 
-                switch(this.response){
+                switch(brugerDataObjekt.privilege){
                     case "Kursist":
-                    var brugerProfilData = {};
-                    brugerProfilData.navn = brugernavninput.value;
-                    brugerProfilData.kodeord = passwordinput.value;
-                    brugerProfilData.privilege = this.response;
-
-                    var jsonString = JSON.stringify(brugerProfilData);
+                    
+                
+                    var jsonString = JSON.stringify(brugerDataObjekt);
                     document.cookie = "UserData=" + jsonString + ";path=/;";
                     //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
@@ -61,7 +63,8 @@ function testLogin(){
                     var brugerProfilData = {};
                     brugerProfilData.navn = brugernavninput.value;
                     brugerProfilData.kodeord = passwordinput.value;
-                    brugerProfilData.privilege = this.response;
+                    brugerProfilData.privilege = this.response[0].privilege;
+                    brugerProfilData.score = this.response[0].rewardLVL;
 
                     var jsonString = JSON.stringify(brugerProfilData);
                     document.cookie = "UserData=" + jsonString + ";path=/;";
@@ -75,7 +78,8 @@ function testLogin(){
                     var brugerProfilData = {};
                     brugerProfilData.navn = brugernavninput.value;
                     brugerProfilData.kodeord = passwordinput.value;
-                    brugerProfilData.privilege = this.response;
+                    brugerProfilData.privilege = this.response[0].privilege;
+                    brugerProfilData.score = this.response[0].rewardLVL;
 
                     var jsonString = JSON.stringify(brugerProfilData);
                     document.cookie = "UserData=" + jsonString + ";path=/;";

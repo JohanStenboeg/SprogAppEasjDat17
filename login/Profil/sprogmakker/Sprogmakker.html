@@ -16,6 +16,7 @@
                 <p id="username_profil">placeholder username</p>
                 <p id="password_profil">placerholder password</p>
                 <p id="privilege_profil">placerholder privilege</p>
+                <p id="score_profil">placerholder score</p>
             
             <!--script til loading a profildata-->
             <script>
@@ -24,10 +25,11 @@
                 profilDataArray = document.cookie.split("=");
                 brugerDataObject = JSON.parse(profilDataArray[1]);
 
-                document.getElementById("welcome_msg").innerHTML = "velkommen " + brugerDataObject.navn;
-                document.getElementById("username_profil").innerHTML = "dit brugernavn til login er: " + brugerDataObject.navn;
+                document.getElementById("welcome_msg").innerHTML = "velkommen " + brugerDataObject.username;
+                document.getElementById("username_profil").innerHTML = "dit brugernavn til login er: " + brugerDataObject.username;
                 document.getElementById("password_profil").innerHTML = "dit password er: " + brugerDataObject.kodeord;
                 document.getElementById("privilege_profil").innerHTML = "dine login privilegier er:  " + brugerDataObject.privilege;
+                document.getElementById("score_profil").innerHTML = "din nuværende score er: " + brugerDataObject.score;
                 
                 //document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
                 //document.getElementById("username_profil").innerHTML = profilDataArray[1];
