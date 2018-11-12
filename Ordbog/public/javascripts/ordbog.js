@@ -19,3 +19,4 @@ function btn_rediger() {
     document.getElementById('tilfoj_ord').style.display = 'block';
     document.getElementById('vis_ord').style.display = 'none';
 }
+
