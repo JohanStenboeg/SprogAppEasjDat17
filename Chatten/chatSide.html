@@ -72,7 +72,7 @@
   </form>
 
 
-  <script src= "http://localhost:3000/tsmtest"></script>
+  <script src= "http://localhost:8080/tsmtest"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -90,6 +90,29 @@
 
     var username = findCookieBeskrivelse("hvemErJeg");
 
+<<<<<<< HEAD
+=======
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("inde i onreadystatechange")
+        var myObj = JSON.parse(this.responseText);
+        venneliste = myObj;
+
+        var x = document.getElementById("friendslist");
+
+        for (let index = 0; index < 4; index++) {
+          let option = document.createElement("option");
+          option.text = myObj.arr[index].name;
+          x.add(option);
+        }
+      }
+    };
+    console.log("yeet XD");
+
+    xmlhttp.open("GET", "http://192.168.43.116:8080/getChats", true);
+    xmlhttp.send();
+    console.log("venne " + venneliste);
+>>>>>>> a80db0f5e56ee819b5695584be16c91877701785
 
 
 
@@ -121,7 +144,7 @@
         }
       }
 
-      xmlhttp2.open("GET", "http://localhost:3000/getChat", true);
+      xmlhttp2.open("GET", "http://localhost:8080/getChat", true);
       xmlhttp2.send();
     }
 
