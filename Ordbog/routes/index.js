@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var upload = multer({dest: "./public/uploads"});
-
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = "mongodb://localhost:27017/";
@@ -55,7 +54,6 @@ router.post('/api/postord', function (req, res, next) {
 
 /* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
 router.post('/api/updateord', function (req, res, next) {
-
   MongoClient.connect(url, {
     useNewUrlParser: true
   }, function (err, db) {
@@ -71,10 +69,10 @@ router.post('/api/updateord', function (req, res, next) {
     };
     database.collection("ordbog").updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
-      console.log("1 document updated-index_updateOne_used");
+      console.log("1 document updated-index_updateOne_used: " + newvalues);
       db.close();
     });
-    res.send("1 document updated-index_updateOne_used");
+    res.send("1 document updated-index_updateOne_used" + newvalues);
 
   });
 });
@@ -87,14 +85,12 @@ router.post('/slet_ord', function (req, res, next) {
     if (err) throw err;
     let database = db.db("tododb");
 
-    database.collection('ordbog').deleteOne({
-      _id: ObjectId(req.params._id)
-    }, (err, result) => {
-      if (err) return console.log(err);
-      console.log(req.body);
-      res.redirect('/ordbog');
-    });
-  });
+    database.collection('ordbog').remove({_id: mongodb.ObjectID( req.params.id)}, (err, result) => {
+      if (err) return console.log(err)
+      console.log(req.body)
+      res.redirect('/ordbog')
+    })
+  })
 });
 
 /* Handler POST request og opdaterer et image i ordbogen */
