@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <style>
-    * {
+       * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -44,24 +44,31 @@
     #messages li:nth-child(odd) {
       background: #eee;
     }
+    #smartKnap{
+          width: 50px;
+          border-radius: 50%;
+          height: 50px;
+          position: absolute;
+          bottom: 43px;
+          font-size: 15px;
+
+          float: left;
+          
+      }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-  <button onclick="printTidligereBeskeder()">klik her xd</button>
 
 
-  <select id="friendslist" onchange="vaeglVen()">
 
-  </select>
-
-  <button onclick="lavEtKort()"> + </button>
 
   <ul id="messages"></ul>
 
   <form action="">
     <input id="m" autocomplete="off" /><button>Send</button>
+     <img id="smartKnap" src="http://pluspng.com/img-png/free-png-plus-sign-plus-symbol-clipart-library-600.png" onclick="lavEtKort()" height="32px" width="32px">
   </form>
 
 
@@ -71,41 +78,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
-  <button onclick="hello()">TSMBISCH</button>
   <script>
+    
+   function findCookieBeskrivelse(name) {
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) return match[2];
+}
+  printTidligereBeskeder();
 
-    var hvemSkriverJegTil = "";
-    //Via dropdown, vælger man hvem du skriver til.
-    function vaeglVen() {
-      hvemSkriverJegTil = document.getElementById("friendslist").value;
-      console.log(document.getElementById("friendslist").value)
-    }
+    var hvemSkriverJegTil = findCookieBeskrivelse("hvemSkriverDuTil"); 
 
+    var username = findCookieBeskrivelse("hvemErJeg");
 
-    //Henter ens Venneliste over Request
-    var venneliste = [];
-    var xmlhttp = new XMLHttpRequest();
-
-    xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        console.log("inde i onreadystatechange")
-        var myObj = JSON.parse(this.responseText);
-        venneliste = myObj;
-
-        var x = document.getElementById("friendslist");
-
-        for (let index = 0; index < 4; index++) {
-          let option = document.createElement("option");
-          option.text = myObj.arr[index].name;
-          x.add(option);
-        }
-      }
-    };
-    console.log("yeet XD");
-
-    xmlhttp.open("GET", "http://192.168.43.116:3000/getChats", true);
-    xmlhttp.send();
-    console.log("venne " + venneliste);
 
 
 
@@ -143,24 +127,25 @@
 
     //Kort functionerne
     function lavEtKort(){
-          var imgUrl = "https://media1.tenor.com/images/ae95dda32c1cd4eab5184e89e8db0d1d/tenor.gif";
-          var ordetForDet = "Fortnite";
+          var imgUrl = "https://www.lejminbaad.dk/wp-content/uploads/2014/01/Sports-b%C3%A5d-14.jpg";
+          var ordetForDet = "Skriv ord her";
           var lydKlipUrl = "https://www.myinstants.com/media/sounds/fortnite-dance-moves-emote-music-tv9iv8cxmo0-1.mp3";
         
-          $('#messages').append($('<div class="card" style="width: 18rem; "><img  class="card-img-top" onclick="udskiftbillede(this)" src="'+imgUrl+'" alt="Card image cap"><div class="card-body"><h5 class="card-title" onclick="udskiftTekst(this)" >'+ordetForDet+'</h5><p class="card-text"></p><div onclick="udskiftLyd(this)"><audio onclick="udskiftLyd(this)" src="'+lydKlipUrl+'" controls=""/></div></div></div>'));
+          $('#messages').append($('<div class="card" style="width: 18rem; "><img  class="card-img-top" onclick="udskiftbillede(this)" src="'+imgUrl+'" alt="Card image cap" height="250px" width="250px" ><div class="card-body"><h5 class="card-title" onclick="udskiftTekst(this)" >'+ordetForDet+'</h5><p class="card-text"></p><div onclick="udskiftLyd(this)"><audio onclick="udskiftLyd(this)" src="'+lydKlipUrl+'" controls=""/></div></div></div>'));
         }
         
         //
         function udskiftbillede(object){
-          if(confirm("Skift billed")){
-          var link = "https://i.pinimg.com/originals/aa/5b/15/aa5b153ff21e74693f9855ed96002475.jpg";
-          object.src=link;
-          //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
+          if(confirm("Vil du skifte billedet, med det seneste taget billede?")){
+            //Kør metode, der tager kameraet frem.
+            var link = "https://i.pinimg.com/originals/aa/5b/15/aa5b153ff21e74693f9855ed96002475.jpg";
+            object.src=link;
+            //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
           }
         }
         function udskiftTekst(object){
-          if(confirm("Skift ord")){
-            var ord = "Datboi dab";
+          if(confirm("Vil du skifte ordet?")){
+            var ord =prompt("Hval vil du udskifte "+ object.innerHTML +" med?");
             object.innerHTML = ord;
             //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
 
@@ -180,8 +165,8 @@
       var socket = io();
 
       //Spørger om dit brugernavn
-      var username = prompt('Hvad er dit brugernavn ?');
-      alert("Husk og vælg hvem du vil skrive med.")
+      //var username = prompt('Hvad er dit brugernavn ?');
+      //alert("Husk og vælg hvem du vil skrive med.")
       //var hvemSkriverJegTil = prompt("Hvem vil du skrive til?");
 
 
