@@ -65,7 +65,7 @@
   </form>
 
 
-  <script src= "http://localhost:3000/tsmtest"></script>
+  <script src= "http://localhost:8080/tsmtest"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -103,7 +103,7 @@
     };
     console.log("yeet XD");
 
-    xmlhttp.open("GET", "http://192.168.43.116:3000/getChats", true);
+    xmlhttp.open("GET", "http://192.168.43.116:8080/getChats", true);
     xmlhttp.send();
     console.log("venne " + venneliste);
 
@@ -137,7 +137,7 @@
         }
       }
 
-      xmlhttp2.open("GET", "http://localhost:3000/getChat", true);
+      xmlhttp2.open("GET", "http://localhost:8080/getChat", true);
       xmlhttp2.send();
     }
 
