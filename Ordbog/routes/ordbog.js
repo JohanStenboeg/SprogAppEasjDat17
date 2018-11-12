@@ -88,7 +88,7 @@ router.post('/postord', function (req, res, next) {
 
 // Fungerer ikke
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/updateord', function (req, res, next) {
+router.post('/api/updateord', function (req, res, next) {
 
   var id = mongoose.Types.ObjectId(req.query._id);
 
