@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var multer = require('multer');
-//var upload = multer({dest: "./public/uploads"});
-// var Ord = require('../models/ordbogModel');
 
 mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
 var ordbogModel = require('../models/ordbogModel');
@@ -18,8 +16,6 @@ var storage = multer.diskStorage({
     callback(null, Date.now() + '-' + file.originalname);
   }
 });
-
-
 var fileFilter = (req, file, callback) => {
   // reject a file
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -28,8 +24,6 @@ var fileFilter = (req, file, callback) => {
     callback(null, false);
   }
 }
-
-
 var upload = multer({
   storage: storage,
   
@@ -39,7 +33,6 @@ var upload = multer({
   fileFilter: fileFilter
  
 });
-
 
 // Get handler som henter tilfojord siden
 router.get('/tilfojord', function(req, res, next){
