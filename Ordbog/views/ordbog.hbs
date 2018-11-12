@@ -28,8 +28,8 @@
     <div>
       <p id="overskriftOrdliste" class="overskrift">Ordliste:</p>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
-      <form method="GET" action="/ordbog/:id">
-        <ul>
+      <form method="POST" action="/ordbog/vis">
+        <ul id="minListe">
           {{#each this}}
           <li>
             <label for="name">{{this.ord}}<input type="radio" name="id" value={{this._id}}></label>
@@ -40,25 +40,21 @@
       </form>
     </div>
     <div>
-      <button id="js_tilfoj_ord" class="floatTilfoj" onclick="location.href='/tilfojord'">Tilføj ord</button>
+        <button class="floatTilfoj" onclick="location.href='tilfojord'" >Tilføj ord</button>
     </div>
   </section>
 
   <script>
     // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
-    let ordArray = document.getElementsByName("id");
+    let ordArray = document.getElementsById("li");
     let ordArrayLength = ordArray.length;
 
-    for (let i = 0; i <= ordArrayLength - 3; i++) {
-      if (ordArray[i].value == 0) {
-        ordArray[i].remove();
-      }
-    }
-
-    ordArrayLength = ordArray.length;
-    ordArray[ordArrayLength - 2].remove();
     ordArray[ordArrayLength - 3].remove();
-
+    ordArray.length;
+    ordArray[ordArrayLength - 3].remove();
+    ordArray.length;
+    ordArray[ordArrayLength - 3].remove();
+    
   </script>
 
 </body>
