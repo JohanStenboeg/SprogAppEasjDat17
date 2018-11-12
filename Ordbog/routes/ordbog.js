@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
   }
 });
 
-/*
+
 var fileFilter = (req, file, callback) => {
   // reject a file
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -28,16 +28,16 @@ var fileFilter = (req, file, callback) => {
     callback(null, false);
   }
 }
-*/
+
 
 var upload = multer({
-  storage: storage
-  /*
+  storage: storage,
+  
   limits: {
     fileSize: 1024 * 1024 * 10
   },
   fileFilter: fileFilter
-  */
+ 
 });
 
 
