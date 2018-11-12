@@ -72,11 +72,11 @@ router.post('/postord', function (req, res, next) {
     ord: req.body.ord,
     sprog: "dk",
     user: "/user",
+    kategori: "",
+    date: "",
     image: "",
     sound: "",
-    video: "",
-    kategori: "",
-    date: ""
+    video: ""
   }
 
   ordbog.create(object, function (err) {
