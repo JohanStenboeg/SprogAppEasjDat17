@@ -38,8 +38,8 @@ router.post('/api/postord', function (req, res, next) {
       sprog: "dk",
       user: "fra_index/test",
       kategori: "",
-      date: req.body.date,
-      image: req.body.image,
+      date: "",
+      image: "",
       sound: req.body.sound,
       video: req.body.video
     }
