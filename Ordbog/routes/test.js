@@ -22,7 +22,8 @@ const storage = multer.diskStorage({
     callback(null, './public/uploads/');
   },
   filename: function (req, file, callback) {
-    callback(null, new Date().toISOString() + file.originalname);
+    callback(null, file.originalname);
+    /* callback(null, '_' + new Date().toUTCString() +  file.originalname); */
   }
 });
 
@@ -43,6 +44,12 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
+router.post('/uploadimage', upload.single('image'), function (req, res) {
+  if (req.file) {
+    res.json(req.file);
+  }
+  else throw 'error';
+});
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
@@ -65,11 +72,11 @@ router.post('/postord', function (req, res, next) {
     ord: req.body.ord,
     sprog: "dk",
     user: "/user",
+    kategori: "",
+    date: "",
     image: "",
     sound: "",
-    video: "",
-    kategori: "",
-    date: ""
+    video: ""
   }
 
   ordbog.create(object, function (err) {
@@ -97,8 +104,8 @@ router.post('/updateord', function (req, res, next) {
 });
 
 
-// fungerer ikke - hvor er den jeg/Niels lavede der fungerer?
-/* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+// fungerer ikke
+/* Handler der sletter et ord i ordbogen. sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
 
   ordbog.findByIdAndDelete(req.params._id, function (err, ord) {
@@ -107,37 +114,6 @@ router.post('/slet_ord', function (req, res, next) {
     res.redirect('../test');
   });
 });
-
-
-/* router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
-  const ord = new Ord({
-    _id: new mongoose.Types.ObjectId(),
-    ord: req.body.ord,
-  });
-  ord
-    .save()
-    .then(result => {
-      console.log(result);
-      res.status(201).json({
-        message: "Created ord successfully",
-        createdOrd: {
-          ord: result.ord,
-          image: result.image,
-          _id: result._id,
-          request: {
-            type: 'GET',
-            url: "http://localhost:3000/ordbog/" + result._id
-          }
-        }
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({
-        error: err
-      });
-    });
-}); */
 
   module.exports = router;
 
