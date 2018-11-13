@@ -103,7 +103,7 @@ router.post('/updateord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-// Hentet fra i lørdags (tror det er den rigtigte... se også index.js!)
+// Hentet fra i lørdags (tror ikke det er den rigtigte... se også index.js!)
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
   ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
