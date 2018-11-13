@@ -3,8 +3,13 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var multer = require('multer');
 
+// Laver en forbindelse til vores database og bruger den nye URL Parser
 mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
+
+// Importerer ordbogModel module
 var ordbogModel = require('../models/ordbogModel');
+
+// Kompilerer det til et ordbog objekt, som bruger vores ordbogSchema og ordbog collection
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 
