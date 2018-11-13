@@ -9,6 +9,7 @@ var url = "mongodb://localhost:27017/";
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 
+/* 
 var Schema = mongoose.Schema({
   ordbog: String,
   ord: String
@@ -42,11 +43,9 @@ router.put('/update/: id', function(req, res){
             if(req.body.ord) {
               foundObject.ord = req.body.ord;
             }
-
             if(req.body.ordbog) {
               foundObject.ordbog = req.body.ordbog;
             }
-
             foundObject.save(function(err, updatedObject) {
               if(err) {
                   console.log(err);
@@ -61,7 +60,7 @@ router.put('/update/: id', function(req, res){
 
 });
 
-
+ */
 
 
 /* Handler GET request og henter alle objects i ordbogen */
