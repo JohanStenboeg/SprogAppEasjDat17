@@ -15,20 +15,18 @@
         </div>
     </header>
 <body>
-    <section>
+    <section class="section">
         <!-- Hovedafsnit / Vis ord og billeder og redigér-->
         {{#if this}}
-        <div class=".one">   
-            </br>
-                <div class="one">
-                    </br>
-                    <img src="../uploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg" height="150" width="150">
-
+        <div class="one">               
+                    
+                    <img src="../uploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg">
+                    
                     <h1 class="visOrdOrd">{{this.ord}}</h1>
                     <h6 class="visOrdKategori">{{this.kategori}}</h6>
                     <a href="#" class="btnVisOrdAfspilLyd">Afspil lydfil</button><br>
-                    </br>
-                </div>
+                    
+                
             
         </div>
         {{/if}}
