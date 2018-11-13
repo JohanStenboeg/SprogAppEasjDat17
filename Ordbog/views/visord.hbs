@@ -11,7 +11,7 @@
 <header>
         <nav>
             <ul class="panel">
-                <li id="js_dine_ord" class="menuknap">Dine ord</li>
+                <li><a href="../ordbog">Dine ord</li>
             </ul>
         </nav>
     </header>
@@ -22,7 +22,7 @@
         <div id="vis_ord">
             <center>
             
-            <img src="1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg" alt="A Horse" height="150" width="150">
+            <img src="../uploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg" height="150" width="150">
 
             <h5 class="visOrdOrd">{{this.ord}}</h5>
             <h6 class="visOrdKategori">{{this.kategori}}</p>
@@ -31,8 +31,12 @@
         </div>
         {{/if}}
         <div>
-            <button id="btnRediger" class="floatTilfoj" onclick="#">Redigér</button>
-            <button>Slet</button>
+            <form action="#" method="POST">
+                <button id="btnRediger" type="submit" class="floatTilfoj">Redigér</button>
+            </form>
+            <form action="" method="POST">
+                <button id="btnSlet" type="submit" class="floatVis">Slet</button>
+            </form>
         </div>
         
     </section>
