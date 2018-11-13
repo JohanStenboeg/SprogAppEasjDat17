@@ -70,7 +70,6 @@ width: 55px;
 height: 45px;
 padding-left:0px;
 text-align: center;
-border-radius: 50%;
       }
 
       
@@ -86,7 +85,7 @@ border-radius: 50%;
  <!--denne form gør det muligt at sende et billede til vores google database-->
 <form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
  <input type="file"accept="image/*" name="file"class="">
- <button form="SendpictoDB" name ="SendpictoDBbtn"onclick="indsaetIdb()">Upload</button>
+ <button form="BilledeUpload" name ="SendpictoDBbtn"onclick="indsaetIdb()">Upload</button>
  </form>
     <!--Denne form gør det muligt at sende beskeder til chatten og indeholder også mads' smart button.--> 
   <form id="ChatInput" name="testtest"action="">
@@ -96,7 +95,6 @@ border-radius: 50%;
   </form>
 
    <!--Scripts som gør det muligt at bruge følgende : Socket.io / Jquery / bootstrap / AJAX--> 
-  <script src= "http://localhost:8080/tsmtest"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -107,7 +105,7 @@ border-radius: 50%;
     // den genererer et 9cifret link til billedet, og gemmer dette i en cookie til senere brug.
     function indsaetIdb(){
         let randomnummer = Math.floor(Math.random()*999999999)+1;      
-        var billedenavn = document.getElementById("SendpictoDB");
+        var billedenavn = document.getElementById("BilledeUpload");
         var url = "https://storage.googleapis.com/sprogappdat17easj/billeder/"+randomnummer
 
         // sætter action elementet i billedeupload lig med URL'et
@@ -184,7 +182,7 @@ border-radius: 50%;
         function udskiftbillede(object){
           if(confirm("Vil du skifte billedet, med det seneste taget billede?")){
             //Kør metode, der tager kameraet frem.
-            var nuvarendebilled = findCookieBeskrivelse("nubilled"); 
+            var nuvarendebilled = findCookieBeskrivelse("linket"); 
             object.src=nuvarendebilled;
             //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
           }
