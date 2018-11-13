@@ -6,6 +6,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var mongodb = require('mongodb');
 var url = "mongodb://localhost:27017/";
+var mongoose = require('mongoose');
 
 /* Handler GET request og henter alle objects i ordbogen */
 router.get('/api/getord', function (req, res, next) {
@@ -54,7 +55,7 @@ router.post('/api/postord', function (req, res, next) {
 });
 
 /* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
-router.post('/api/updateord', function (req, res, next) {
+/* router.post('/api/updateord', function (req, res, next) {
   var item = {
     ord: req.body.ord,
   };
@@ -72,7 +73,7 @@ router.post('/api/updateord', function (req, res, next) {
     });
     res.send("1 document updated-index_updateOne_used");
   });
-});
+}); */
 
 /* Handler POST sletter et ord i ordbogen - fungerer ikke! */
 router.post('/slet_ord', function (req, res, next) {

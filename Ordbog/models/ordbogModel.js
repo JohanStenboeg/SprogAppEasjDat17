@@ -11,14 +11,14 @@ var ordbogSchema = new Schema({
   user: { type: String ,    Required:  'User cannot be left blank.'},
 
   image: { type: String },
+  
+  kategori: { type: String },
+
+  date: { type: String ,  Required:  'Date cannot be left blank.' },
 
   sound: { type: String },
 
-  video: { type: String },
-
-  kategori: { type: String },
-
-  date: { type: String ,  Required:  'Date cannot be left blank.' }
+  video: { type: String }
 
 });
 
