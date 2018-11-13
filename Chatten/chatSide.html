@@ -70,7 +70,6 @@ width: 55px;
 height: 45px;
 padding-left:0px;
 text-align: center;
-border-radius: 50%;
       }
 
       
@@ -86,12 +85,12 @@ border-radius: 50%;
  <!--denne form gør det muligt at sende et billede til vores google database-->
 <form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
  <input type="file"accept="image/*" name="file"class="">
- <button form="SendpictoDB" name ="SendpictoDBbtn"onclick="indsaetIdb()">Upload</button>
+ <button form="BilledeUpload" name ="SendpictoDBbtn"onclick="indsaetIdb()">Upload</button>
  </form>
     <!--Denne form gør det muligt at sende beskeder til chatten og indeholder også mads' smart button.--> 
   <form id="ChatInput" name="testtest"action="">
     <input name="input1" id="m" autocomplete="off" />
-    <button onclick="indsaetIdb()" name="Tekstfieldknap">Send</button>
+    <button name="Tekstfieldknap">Send</button>
     <img id="smartKnap" src="http://pluspng.com/img-png/free-png-plus-sign-plus-symbol-clipart-library-600.png" onclick="lavEtKort()" height="32px" width="32px">
   </form>
 
@@ -107,7 +106,7 @@ border-radius: 50%;
     // den genererer et 9cifret link til billedet, og gemmer dette i en cookie til senere brug.
     function indsaetIdb(){
         let randomnummer = Math.floor(Math.random()*999999999)+1;      
-        var billedenavn = document.getElementById("SendpictoDB");
+        var billedenavn = document.getElementById("BilledeUpload");
         var url = "https://storage.googleapis.com/sprogappdat17easj/billeder/"+randomnummer
 
         // sætter action elementet i billedeupload lig med URL'et
