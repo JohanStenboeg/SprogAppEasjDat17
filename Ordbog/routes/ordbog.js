@@ -14,6 +14,8 @@ var storage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     callback(null, file.originalname + '-' + Date.now() + '-' + file.originalname);
+    
+    /* callback(null, new Date().toUTCString() + '_' + file.originalname); */
   }
 });
 var fileFilter = (req, file, callback) => {
