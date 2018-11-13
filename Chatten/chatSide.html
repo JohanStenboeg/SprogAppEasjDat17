@@ -91,7 +91,13 @@
 
     var username = findCookieBeskrivelse("hvemErJeg");
     
+    function sorterNavn(navna,navnb){
+      if(navna>navnb){return ""+navnb+navnb+""}
+      if(navna<navnb){return ""+navna+navnb+""}
+      else{return ""+navna+navnb+""}
+    }
 
+    var chatId = sorterNavn(username,hvemSkriverJegTil);
 
 
     // Metode til at printe tidligere beskeder
@@ -170,7 +176,7 @@
 
 
       //Når man connector til socket'en
-      socket.emit('new_client', username);
+      socket.emit('new_client', chatId);
       document.title = username + ' - ' + document.title;
 
       //Når vi sender beskeder.

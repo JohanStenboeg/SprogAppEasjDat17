@@ -74,6 +74,8 @@ socket.on('disconnect',function(username){
   console.log( socket.username+' disconnected');
 });
 
+
+
 //En listener der venter på at 'chat message' eventet forekommer
   socket.on('chat message', function(msg){
 
@@ -94,6 +96,11 @@ var collectionNavn = "chatBeskeder"; //Skriv navnet på den collection der skal 
         if(err) throw err;
         //Database navnet den skal connecte til
         var dbo = db.db(dbNavn);
+
+
+
+        
+        
         //Jsonfilen der skal insættes i databasen
         var jsonEnkelt = {brugernavn:socket.username, besked:msg};
 
