@@ -109,7 +109,6 @@ router.post('/api/postord', function (req, res, next) {
   });
 });
 
-
 /* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
 /* router.post('/api/updateord', function (req, res, next) {
   var item = {
@@ -131,8 +130,44 @@ router.post('/api/postord', function (req, res, next) {
   });
 }); */
 
+/* Handler POST request og opdaterer et ord i ordbogen */
+router.post('/api/updateord', function (req, res, next) {
+
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    if (err) throw err;
+    let database = db.db("tododb");
+    let myquery = { _id: mongodb._id.ObjectId(req.params.id) };
+    let myquery = { _id: ObjectId(req.params._id) };
+    let newvalues = { $set: { ord: req.body.ord } };
+    database.collection("ordbog").updateOne(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log("1 document updated-index_updateOne_used");
+      db.close();
+    });
+    res.send("1 document updated-index_updateOne_used");
+    //    res.redirect('/test');
+    //    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
+  });
+});
+// Hentet fra i lørdags -> tror en af dem er den rigtige - skal testes!
+/* Handler POST sletter et ord i ordbogen */
+router.post('/api/slet_ord', function (req, res, next) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    if (err) throw err;
+    let database = db.db("tododb");
+
+    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+      database.collection('ordbog').deleteOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+        if (err) return console.log(err);
+        console.log(req.body);
+        res.redirect('/test');
+      });
+    });
+  });
+}); 
+
 /* Handler POST sletter et ord i ordbogen - fungerer ikke! */
-router.post('/slet_ord', function (req, res, next) {
+/* router.post('/slet_ord', function (req, res, next) {
   MongoClient.connect(url, {
     useNewUrlParser: true
   }, function (err, db) {
@@ -144,8 +179,8 @@ router.post('/slet_ord', function (req, res, next) {
       console.log(req.body)
       res.redirect('/ordbog')
     })
-  })
-});
+  }) */
+
 
 /* Handler POST request og opdaterer et image i ordbogen */
 router.post('/api/uploadimage', upload.single('image'), function (req, res) {
