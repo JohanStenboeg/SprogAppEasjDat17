@@ -112,7 +112,7 @@ router.post('/slet_ord', function (req, res, next) {
       res.redirect('../ordbog');
     });
   });
-
+}); 
 
 // fungerer ikke
 /* Handler der sletter et ord i ordbogen. sound og video mangler at arbejdes på */
@@ -122,8 +122,7 @@ router.post('/slet_ord', function (req, res, next) {
     if (err) return console.log(err);
 
     res.redirect('../test');
-  });
-}); */
+  }); */
+
 
   module.exports = router;
-
