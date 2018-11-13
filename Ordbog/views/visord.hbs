@@ -4,30 +4,32 @@
 <head>
     <title>Vis ord</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../stylesheets/tempOrdbogSheet.css">
-    <script src="javascripts/ordbog.js"></script>
-    
+    <link rel="stylesheet" href="../stylesheets/tempVisordSheet.css">
+    <script src="javascripts/ordbog.js"></script> 
 </head>
 <header>
-        <nav>
+        <div class="menuContainer">
             <ul class="panel">
-                <li><a href="../ordbog">Dine ord</li>
+                <li id="js_dine_ord" class="menuknap"><a href="../ordbog">Dine ord</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 <body>
     <section>
         <!-- Hovedafsnit / Vis ord og billeder og redigér-->
         {{#if this}}
-        <div id="vis_ord">
-            <center>
-            
-            <img src="../uploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg" height="150" width="150">
+        <div class=".one">   
+            </br>
+                <div class="one">
+                    </br>
+                    <img src="../uploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg" height="150" width="150">
 
-            <h5 class="visOrdOrd">{{this.ord}}</h5>
-            <h6 class="visOrdKategori">{{this.kategori}}</p>
-            <a href="#" class="btnVisOrdAfspilLyd">Afspil lydfil</button><br>
-            </center>
+                    <h1 class="visOrdOrd">{{this.ord}}</h1>
+                    <h6 class="visOrdKategori">{{this.kategori}}</h6>
+                    <a href="#" class="btnVisOrdAfspilLyd">Afspil lydfil</button><br>
+                    </br>
+                </div>
+            
         </div>
         {{/if}}
         <div>
