@@ -21,7 +21,7 @@ p, div {
 
 
 
-/*---------login og opret bruger start-----------*/
+/*--------- START login og opret bruger -----------*/
 
 #mainlogin {
     background-color: rgb(20, 77, 77);  
@@ -106,7 +106,7 @@ button {
     font-weight: bold;
 }
 
-.lgnsocialbtn {
+/*.lgnsocialbtn {
   width: 80%;
   padding: 12px 20px;
   margin: 12px 10%;
@@ -116,23 +116,28 @@ button {
   box-sizing: border-box;
   background-color: #005260;
   color: #fff;
-}
+}*/
 
-.cancelbtn {
+/*.cancelbtn {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
-}
+}*/
+
+
 /*Beholder div til inputfelter på 'login.html' + 'opretBruger.html' */
 .containerlogin {
   padding: 40px 60px;
   padding-top: 10rem;
   margin-bottom: 50px;
 }
-/*Beholder div til Facebook og Google login*/
+/*
+Beholder div til Facebook og Google login
 .containerloginsocialbtn {
   padding: 40px 60px;
-}
+}*/
+
+
 .container div {
   padding: 0 60px;
 }
@@ -145,7 +150,7 @@ span.psw {
     padding-top: 16px;
 }
 
-
+/*------ "roller" felt på opretbruger.html--------*/
 .roller {
   width: 95%;
   padding: 12px 20px;
@@ -159,7 +164,7 @@ span.psw {
   font: 'Arial';
   font-weight: bold;
 }
-
+/*---- styling af valgmuligheder på opretBruger.html----*/
 .options {
   background-color: #005260;
   color: #fff;
@@ -169,11 +174,11 @@ span.psw {
     
 }
 
+/*------- SLUT login og opret bruger -------*/
 
 
-/*-------login og opret bruger slut-------*/
 
-/* Styling til menusider (kursist, sprogmakker og underviser)*/
+/*---- START Styling til menusider (kursist, sprogmakker og underviser) ----*/
 
 
 
@@ -229,7 +234,7 @@ width: 40%;
 
 }
 
-.buttondagopgave {
+/*.buttondagopgave {
   background-color: #73A5A9;
   border-color: white;
   border-width: 2px;
@@ -240,10 +245,10 @@ width: 40%;
   font-family: arial;
   margin-top: 12%;
   margin-left: 17%;
-}
+}*/
 
 
-.buttonscore {
+/*.buttonscore {
 background-color: #6CC5D4;
 border-color: white;
 border-width: 2px;
@@ -254,7 +259,7 @@ font-size: 12px;
 font-family: arial;
 margin-top: 5%;
 margin-left: 28%;
-}
+}*/
 
 
 
