@@ -60,13 +60,7 @@ function testLogin(){
                     break;
 
                     case "Sprogmakker":
-                    var brugerProfilData = {};
-                    brugerProfilData.navn = brugernavninput.value;
-                    brugerProfilData.kodeord = passwordinput.value;
-                    brugerProfilData.privilege = this.response[0].privilege;
-                    brugerProfilData.score = this.response[0].rewardLVL;
-
-                    var jsonString = JSON.stringify(brugerProfilData);
+                    var jsonString = JSON.stringify(brugerDataObjekt);;
                     document.cookie = "UserData=" + jsonString + ";path=/;";
                     //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
@@ -75,13 +69,7 @@ function testLogin(){
                     break;
 
                     case "Underviser":
-                    var brugerProfilData = {};
-                    brugerProfilData.navn = brugernavninput.value;
-                    brugerProfilData.kodeord = passwordinput.value;
-                    brugerProfilData.privilege = this.response[0].privilege;
-                    brugerProfilData.score = this.response[0].rewardLVL;
-
-                    var jsonString = JSON.stringify(brugerProfilData);
+                    var jsonString = JSON.stringify(brugerDataObjekt);
                     document.cookie = "UserData=" + jsonString + ";path=/;";
                     //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                     console.log(document.cookie);
