@@ -95,7 +95,6 @@ text-align: center;
   </form>
 
    <!--Scripts som gør det muligt at bruge følgende : Socket.io / Jquery / bootstrap / AJAX--> 
-  <script src= "http://localhost:8080/tsmtest"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -183,7 +182,7 @@ text-align: center;
         function udskiftbillede(object){
           if(confirm("Vil du skifte billedet, med det seneste taget billede?")){
             //Kør metode, der tager kameraet frem.
-            var nuvarendebilled = findCookieBeskrivelse("nubilled"); 
+            var nuvarendebilled = findCookieBeskrivelse("linket"); 
             object.src=nuvarendebilled;
             //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
           }
