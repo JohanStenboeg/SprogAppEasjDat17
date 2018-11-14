@@ -90,10 +90,10 @@ router.post('/postord', function (req, res, next) {
 /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/updateord', function (req, res, next) {
 
-  var id = mongoose.Types.ObjectId(req.query._id);
+  _id = mongoose.Types.ObjectId(req.query._id);
 
   ordbog.findOneAndUpdate({
-    _id: id
+    _id: _id
   }, req.body, {
       new: true
     }, function (err, ord) {
@@ -103,26 +103,16 @@ router.post('/updateord', function (req, res, next) {
   res.redirect('../ordbog');
 });
 
-// Hentet fra i lørdags (tror ikke det er den rigtigte... se også index.js!)
+// ById Virker ikke. findOneAndDelete sletter bare det øverste ord i db
 /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/slet_ord', function (req, res, next) {
-  ordbog.findByIdAndRemove(req.params._id, function (err, ord) {
-    ordbog.findOneAndRemove(req.params._id, function (err, ord) {
+      ordbog.findByIdAndDelete(req.params._id, function (err, ord) {
+//    ordbog.findOneAndDelete(req.params._id, function (err, ord) {
       if (err) return console.log(err);
-      res.redirect('../ordbog');
+      res.redirect('../test');
     });
   });
-}); 
 
-// fungerer ikke
-/* Handler der sletter et ord i ordbogen. sound og video mangler at arbejdes på */
-/* router.post('/slet_ord', function (req, res, next) {
-
-  ordbog.findByIdAndDelete(req.params._id, function (err, ord) {
-    if (err) return console.log(err);
-
-    res.redirect('../test');
-  }); */
 
 
   module.exports = router;

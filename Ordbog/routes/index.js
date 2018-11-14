@@ -132,34 +132,42 @@ router.post('/api/postord', function (req, res, next) {
 
 /* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/api/updateord', function (req, res, next) {
-
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     let database = db.db("tododb");
-    let myquery = { _id: mongodb._id.ObjectId(req.params.id) };
+    //let myquery = { _id: mongodb._id.ObjectId(req.params._id) };
     let myquery = { _id: ObjectId(req.params._id) };
-    let newvalues = { $set: { ord: req.body.ord } };
-    database.collection("ordbog").updateOne(myquery, newvalues, function (err, res) {
+    //let newvalues = { $set: { ord: req.body.ord } };
+    let newvalues = { $set: { nyt_ord: req.body.nyt_ord } };
+    console.log(req.body);
+    database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+      if (err) return console.log(err);  
+    
+    database.collection('ordbog').updateOne( myquery, newvalues, function (err, res) {
       if (err) throw err;
-      console.log("1 document updated-index_updateOne_used");
+      console.log(newvalues);
       db.close();
     });
     res.send("1 document updated-index_updateOne_used");
-    //    res.redirect('/test');
+     //   res.redirect('/ordbog');
     //    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
+    });
   });
 });
-// Hentet fra i lørdags -> tror en af dem er den rigtige - skal testes!
+// Hentet fra i fredags/lørdags -> FUNGERER! Finder og sletter!
 /* Handler POST sletter et ord i ordbogen */
 router.post('/api/slet_ord', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     let database = db.db("tododb");
 
-    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
-      database.collection('ordbog').deleteOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+//    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+      database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
         if (err) return console.log(err);
         console.log(req.body);
+
+        database.collection('ordbog').deleteOne(req.body, (err, result) => {
+          if (err) return console.log(err);  
         res.redirect('/test');
       });
     });
