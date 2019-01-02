@@ -9,59 +9,6 @@ var url = "mongodb://localhost:27017/";
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 
-/* 
-var Schema = mongoose.Schema({
-  ordbog: String,
-  ord: String
-});
-var ordbogModel = mongoose.model('ordbog', Schema);
-
-// GET home page
-router.get('/', function(req, res) {
-  res.render( 'index', {title: 'SprogApp'});
-});
-
-router.get('/ordbog', function(req, res) {
-  var responseObject = { message: 'hello ordbog'};
-  res.send(responseObject);
-});
-
-var database = [];
-
-//Her skal router.post være!
-
-router.put('/update/: id', function(req, res){
-  var id = req.params.id;
-  ordbogModel.findOne({_id: id}, function(err, foundObject) {
-      if(err) {
-        console.log(err);
-        res.status(500).send();
-      } else {
-        if(!foundObject) {
-          res.status(404).send();
-        } else {
-            if(req.body.ord) {
-              foundObject.ord = req.body.ord;
-            }
-            if(req.body.ordbog) {
-              foundObject.ordbog = req.body.ordbog;
-            }
-            foundObject.save(function(err, updatedObject) {
-              if(err) {
-                  console.log(err);
-                  res.status(500).send();
-              }  else {
-                    res.send(updatedObject);
-              }
-            })
-        }
-      }
-  });
-
-});
-
- */
-
 
 /* Handler GET request og henter alle objects i ordbogen */
 router.get('/api/getord', function (req, res, next) {
@@ -109,27 +56,6 @@ router.post('/api/postord', function (req, res, next) {
   });
 });
 
-/* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
-/* router.post('/api/updateord', function (req, res, next) {
-  var item = {
-    ord: req.body.ord,
-  };
-  var id = reg.body.id;
-  
-  MongoClient.connect(url, {
-    useNewUrlParser: true
-  }, function (err, db) {
-    assert.equal(null, err);
-    let database = db.db("tododb");
-    database.collection("ordbog").updateOne(ord,  function (err, result) {
-      if (err) throw err;
-      console.log("1 document updated-index_updateOne_used: ");
-      db.close();
-    });
-    res.send("1 document updated-index_updateOne_used");
-  });
-}); */
-
 /* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/api/updateord', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
@@ -173,7 +99,7 @@ router.post('/api/slet_ord', function (req, res, next) {
   });
 }); 
 
-/* Handler POST sletter et ord i ordbogen - fungerer ikke! */
+/* Handler POST sletter et ord i ordbogen - mongoose - fungerer ikke! */
 /* router.post('/slet_ord', function (req, res, next) {
   MongoClient.connect(url, {
     useNewUrlParser: true
