@@ -86,33 +86,47 @@ router.post('/postord', function (req, res, next) {
 });
 
   
-// fungerer ikke
-/* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+/* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/updateord', function (req, res, next) {
-
-  _id = mongoose.Types.ObjectId(req.query._id);
-
-  ordbog.findOneAndUpdate({
-    _id: _id
-  }, req.body, {
-      new: true
-    }, function (err, ord) {
-
-      if (err) return console.log(err);
-    })
-  res.redirect('../ordbog');
-});
-
-// ById Virker ikke. findOneAndDelete sletter bare det øverste ord i db
-/* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/slet_ord', function (req, res, next) {
-      ordbog.findByIdAndDelete(req.params._id, function (err, ord) {
-//    ordbog.findOneAndDelete(req.params._id, function (err, ord) {
-      if (err) return console.log(err);
-      res.redirect('../test');
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    
+    if (err) throw err;
+    
+    let database = db.db("tododb");
+    
+    let myquery = { ord: req.body.ord };
+    
+    let newvalues = { $set: { ord: req.body.nyt_ord } };
+    
+    database.collection('ordbog').updateOne( myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log("1 document updated");
+      db.close();
+    });
+    res.send("1 document updated-index_updateOne_used");
+     //   res.redirect('/ordbog');
+        res.redirect('/test'); 
     });
   });
 
+/* Handler POST sletter et ord i ordbogen */
+router.post('/slet_ord', function (req, res, next) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    if (err) throw err;
+    let database = db.db("tododb");
+
+//    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+      database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+        if (err) return console.log(err);
+        console.log(req.body);
+
+        database.collection('ordbog').deleteOne(req.body, (err, result) => {
+          if (err) return console.log(err);  
+        res.redirect('/test');
+      });
+    });
+  });
+}); 
 
 
   module.exports = router;
