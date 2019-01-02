@@ -122,38 +122,6 @@ router.post('/slet_ord', function (req, res, next) {
   });
 });
 
-/*
-router.post('/uploadimage2', upload.single('image'), function (req, res, next) {
-  const ord = new Ord({
-    _id: new mongoose.Types.ObjectId(),
-    ord: req.body.ord,
-  });
-  ord
-    .save()
-    .then(result => {
-      console.log(result);
-      res.status(201).json({
-        message: "Created ord successfully",
-        createdOrd: {
-          ord: result.ord,
-          image: result.image,
-          _id: result._id,
-          request: {
-            type: 'GET',
-            url: "http://localhost:3000/ordbog/" + result._id
-          }
-        }
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({
-        error: err
-      });
-    });
-});
-*/
-
 
 router.post('/uploadimage', upload.single('image'), function (req, res) {
   if (req.file) {
