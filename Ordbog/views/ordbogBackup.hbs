@@ -30,16 +30,20 @@
     <div class="mainContainer">
       <h2>Ord:</h2>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
-      <form method="POST" action="/ordbog/vis" id="ord">
+      <form method="POST" action="/ordbog/vis">
         <ul id="minListe">
           {{#each this}}
-          <li onclick="document.getElementById('ord').submit();">
+          <li>
             <label for={{this._id}}>{{this.ord}}</label>
             <input type="radio" id={{this._id}} name="id" value={{this._id}} checked>
+
+            <div class="check">
+              <div class="inside"></div>
+            </div>
           </li>
           {{/each}}
         </ul>
-        
+        <input id="visBtn" type="submit" value="Vis" class="floatVis">
       </form>
     </div>
 

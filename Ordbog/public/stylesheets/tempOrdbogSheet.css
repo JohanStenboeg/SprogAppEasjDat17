@@ -55,7 +55,7 @@ ul li{
     border-bottom: 1px solid #333;
 }
 
-ul li input[type=radio]{
+ul li input/*[type=radio]*/{
     position: absolute;
     visibility: hidden;
 }
@@ -65,12 +65,13 @@ ul li label{
     position: relative;
     font-weight: 300;
     font-size: 1.0em;
-    padding: 16px 25px 10px 60px;
+    padding: 16px 25px 10px 20px;
     margin: 5px auto;
     height: 30px;
     z-index: 9;
     cursor: default;
     -webkit-transition: all 0.25s linear;
+    transition: all 0.25s linear;
 }
 
 ul li:hover label{
@@ -109,15 +110,15 @@ ul li .check{
       -webkit-transition: background 0.25s linear;
   }
   
-  input[type=radio]:checked ~ .check {
+  input/*[type=radio]*/:checked ~ .check {
     border: 5px solid #0C9;
   }
   
-  input[type=radio]:checked ~ .check::before{
+  input/*[type=radio]*/:checked ~ .check::before{
     background: #0C9;
   }
   
-  input[type=radio]:checked ~ label{
+  input/*[type=radio]*/:checked ~ label{
     color: #0C9;
   }
 
