@@ -1,0 +1,44 @@
+<h1>Hello Test</h1>
+<h2>insert ord eller insert/vælg nyt image/sound/video:</h2>
+<form method="POST" action="/api/postord">
+    <input type="text" name="ord" placeholder="ord">
+    <input type="file" accept="image/*" capture="user" name="image">
+    <input type="file" accept="audio/*" capture="user" name="sound">
+    <input type="file" accept="video/*" capture="user" name="video">
+    <button type="submit">Send</button>
+</form>
+
+<h2>Edit ord/image/sound/video:</h2>
+
+<form method="POST" action="/api/updateord">
+    <input type="text" id= 'id' name="ord" placeholder="ord">
+    <input type="text" name="nyt_ord" placeholder="nyt_ord">
+    <button type="submit">Send</button>
+</form>
+
+<form method="POST" action="/api/updateimage">
+    <input type="text" name="image" placeholder="image">
+    <button type="submit">Send</button>
+</form>
+
+<form method="POST" action="/api/updatesound">
+    <input type="text" name="sound" placeholder="sound">
+    <button type="submit">Send</button>
+</form>
+
+<form method="POST" action="/api/updatevideo">
+    <input type="text" name="video" placeholder="video">
+    <button type="submit">Send</button>
+</form>
+
+<form method="POST" action="./api/slet_ord">
+    <input type="text" name="ord" placeholder="ord">
+    <button type="submit">Slet</button>
+</form>
+
+<h1>Upload Image</h1>
+ 
+<form action="./ordbog/uploadimage" method="post" enctype="multipart/form-data">
+        <input type="file" accept="image/jpeg, image/png" name="image" >
+        <input type="submit" value="upload">
+</form>

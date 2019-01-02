@@ -21,13 +21,20 @@ var path = require('path');
 var opretRouter = require('./ModelControllerRoute/opretBruger');
 //var loginRouter = require('./Clientside/logintoServer');
 
+app.get('/login', function(req,res){
+  res.sendFile(__dirname + '/Clientside/login.html')
+})
 //Henter fra roden af URL og til indholdet af opretBruger.html
 app.get('/opretBruger', function(req, res){
-  res.sendFile(path.join(__dirname + '/menu/opretBruger.html'));
+  res.sendFile(path.join(__dirname + '/views/opretBruger.html'));
 });
 
 app.use('/css/style.css', function(req, res){
   res.sendFile(__dirname + '/css/style.css');
+});
+
+app.get('/kursistside',function(req, res){
+  res.sendFile(__dirname + '/menu/kursist/kursistside.html');
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,7 +48,7 @@ app.use(function(req, res, next) {
 });
 
 
-//var routes = require('../ModelControllerRoute/routes'); //importing route
+  //var routes = require('../ModelControllerRoute/routes'); //importing route
 //routes(app); //register the route
 
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ordbog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
+  <script src="javascripts/ordbog.js"></script>
+</head>
+
+<!-- Navigations panel / Header -->
+<header>
+  <div class="menuContainer">
+    <ul class="panel">
+      <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
+    </ul>
+  </div>
+</header>
+
+<body>
+
+  <!-- Hovedafsnit -->
+  <section>
+    <!-- Hovedafsnit / Dine ord -->
+    <div class="searchContainer">
+      <!-- Søgefelt -->
+      <input type="text" id="searchInput" onkeyup="search()" placeholder="Hvilket ord søger du?" title="Skriv et ord">
+    </div>
+
+    <div class="mainContainer">
+      <h2>Ord:</h2>
+      <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
+      <form method="POST" action="/ordbog/vis">
+        <ul id="minListe">
+          {{#each this}}
+          <li>
+            <label for={{this._id}}>{{this.ord}}</label>
+            <input type="radio" id={{this._id}} name="id" value={{this._id}} checked>
+
+            <div class="check">
+              <div class="inside"></div>
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+        <input id="visBtn" type="submit" value="Vis" class="floatVis">
+      </form>
+    </div>
+
+    <div>
+      <button class="floatTilfoj" onclick="location.href='tilfojord'">Tilføj ord</button>
+    </div>
+  </section>
+
+  <script>
+    // Kører her efter siden er indlæst og fjerner de 3 sidste tomme ord html objekter.
+    let ordArray = document.getElementsByTagName("li");
+    let ordArrayLength = ordArray.length;
+
+    ordArray[ordArrayLength - 3].remove();
+    ordArray.length;
+    ordArray[ordArrayLength - 3].remove();
+    ordArray.length;
+    ordArray[ordArrayLength - 3].remove();
+
+  </script>
+
+</body>
+
+</html>

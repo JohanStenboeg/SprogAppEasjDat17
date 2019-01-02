@@ -1,0 +1,64 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <ul id="messages"></ul>
+
+    
+
+
+
+ <!--Script-->
+ <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    document.cookie = "hvemErJeg=Frank;"
+    document.cookie = "nubilled=https://sw0022.smartweb-static.com/upload_dir/shop/Soft12-Mat-lacquer-oak.jpg"
+
+    //Henter ens Venneliste over Request
+    var venneliste = [];  
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("inde i onreadystatechange")
+        var myObj = JSON.parse(this.responseText);
+        venneliste = myObj;
+
+        console.log("asdas"+myObj.arr.length)
+        for (let index = 0; index < myObj.arr.length; index++) {
+            let holder  = myObj.arr[index].name;
+            console.log(myObj.arr[index].name)
+            $('#messages').append($('<button id="'+holder+'" onclick="goNextPage(this)">'+holder+'</button>'));
+
+        }
+      }
+    };
+    console.log("yeet XD");
+
+    xmlhttp.open("GET", "https://sprogapp.appspot.com/getChats", true);
+    xmlhttp.send();
+    console.log("venne " + venneliste);
+
+
+
+    function goNextPage(object){
+        //Til at skifte within domain.
+        document.cookie ="hvemSkriverDuTil="+object.id +";"
+
+        window.location.replace("chatside");   
+         
+
+
+    }
+
+    
+        
+</script>
+
+</body>
+</html>

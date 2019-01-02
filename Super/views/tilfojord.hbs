@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tilføj ord</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="panel">
+                <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div id="tilfoj_ord">
+            <form method="POST" action="./ordbog/postord">
+                <p id="overskriftTilfojOrd" class="overskrift">Nyt ord:<br></p>
+                <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
+                <input type="submit" value="Gem"></input>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Underviserside</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+<header>
+
+
+
+  <!--Logo øverst oppe-->
+  <a href="../../Clientside/login.html"><img class="logoutmenu" src="../../billeder/logout.png" alt="logout"></a>
+  <!--Galleriknap-->
+  <a href="../../inspiration/galleri.html"><img class="picturesmenu" src="../../billeder/billeder.png" alt="flere billeder"></a>
+  <!--Kamera knap-->
+  <a href="../../inspiration/kamera/kamera.html"><img class="cameramenu" src="../../billeder/camera.png" alt="Kamera"></a>
+
+
+ </header>
+
+  <body>
+
+    <script>
+
+        window.onload = function () {
+       var cookieDataArray = document.cookie.split("=");
+       var userDataObject = JSON.parse(cookieDataArray[1]);
+
+       //console.log(userDataObject);
+       //console.log(cookieDataArray);
+
+       document.getElementById("welcome_msg").innerHTML = "velkommen " + userDataObject.username
+       
+
+       //console.log(document.cookie.split("="));
+       //console.log(document.getElementById("welcome_msg").innerHTML)
+       //document.getElementById("welcome_msg").innerHTML = document.cookie.split("=")[1]
+     }
+          
+    </script>
+
+    <!--Knapper-->
+      <div class="buttonsmenu">
+      <p id="welcome_msg">welcome placeholder</p>
+      <button class="button" onclick="location.href='http://127.0.0.1:8080/Profil/underviser/Underviser.html'">Min Profil</button>
+      <button class="button">Min Ordbog</button>
+      <button class="button">Chat</button>
+
+    </div>
+
+  </body>
+</html>
