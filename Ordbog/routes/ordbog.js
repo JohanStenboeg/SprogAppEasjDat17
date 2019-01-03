@@ -151,10 +151,10 @@ router.post('/updateord', function (req, res, next) {
     })
   res.redirect('../ordbog');
 });
-
+/* 
 
  // Fungerer ikke
- /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+ /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på 
 router.post('/slet_ord', function (req, res, next) {
 
   ordbog.findOneAndDelete(req.params._id, function (err, ord) {
@@ -163,7 +163,7 @@ router.post('/slet_ord', function (req, res, next) {
     res.redirect('../test');
   });
 });
-
+ */
 
 /* Handler GET request og henter alle objects i ordbogen */
 router.get('/getord', function (req, res, next) {
