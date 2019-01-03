@@ -1,4 +1,4 @@
-function search() {
+ function search() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();

@@ -47,11 +47,11 @@ var upload = multer({
   },
   fileFilter: fileFilter
 });
-
+/* 
 // Get handler som henter tilfojord siden 
 router.get('/tilfojord', function(req, res, next){
   res.render('tilfojord');
-}); 
+});  */
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
