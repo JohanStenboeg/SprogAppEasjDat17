@@ -5,9 +5,7 @@ var multer = require('multer');
 var upload = multer({dest: "./public/uploads"});
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
-var mongodb = require('mongodb');
 var url = "mongodb://localhost:27017/";
-var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/ordbog');
 
 
