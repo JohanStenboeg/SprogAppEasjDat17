@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var multer = require('multer');
-var upload = multer({dest: "./public/uploads"});
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = "mongodb://localhost:27017/";
@@ -19,17 +18,17 @@ var ordbogModel = require('../models/ordbogModel');
 var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 
-var storage = multer.diskStorage({
+var imagestorage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, './public/uploads');
+    callback(null, './public/imageuploads');
   },
   filename: function (req, file, callback) {
-    callback(null, file.originalname + '-' + Date.now() + '-' + file.originalname);
+    callback(null, Date.now() + '-' + file.originalname);
     
-     callback(null, new Date().toUTCString() + '_' + file.originalname); 
   }
 });
-var fileFilter = (req, file, callback) => {
+
+var imagefileFilter = (req, file, callback) => {
   // reject a file
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg') {
     callback(null, true);
@@ -37,19 +36,56 @@ var fileFilter = (req, file, callback) => {
     callback(null, false);
   }
 }
-var upload = multer({
-  storage: storage,
+
+var imageupload = multer({
+  storage: imagestorage,
   
   limits: {
     fileSize: 1024 * 1024 * 10
   },
-  fileFilter: fileFilter
+  fileFilter: imagefileFilter
 });
-/* 
-// Get handler som henter tilfojord siden 
-router.get('/tilfojord', function(req, res, next){
-  res.render('tilfojord');
-});  */
+
+router.post('/uploadimage', imageupload.single('image'), function (req, res) {
+  
+    res.json(req.file);
+ 
+});
+
+
+var audiostorage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './public/audiouploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, Date.now() + '-' + file.originalname);
+    
+  }
+});
+
+var audiofileFilter = (req, file, callback) => {
+  // reject a file
+  
+    callback(null, true);
+  
+}
+
+var audioupload = multer({
+  storage: audiostorage,
+  
+  limits: {
+    fileSize: 1024 * 1024 * 10
+  },
+  fileFilter: audiofileFilter
+});
+
+
+router.post('/uploadaudio', audioupload.single('audio'), function (req, res) {
+  
+    res.json(req.file);
+ 
+})
+
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
@@ -217,14 +253,5 @@ router.post('/slet_ord', function (req, res, next) {
     });
   });
 }); 
-
-
-router.post('/uploadimage', upload.single('image'), function (req, res) {
-  if (req.file) {
-    res.json(req.file);
-  }
-  else throw 'error';
-})
-
 
 module.exports = router;

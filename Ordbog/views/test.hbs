@@ -37,8 +37,15 @@
 </form>
 
 <h1>Upload Image</h1>
- 
-<form action="./ordbog/uploadimage" method="post" enctype="multipart/form-data">
-        <input type="file" accept="image/jpeg, image/png" name="image" >
-        <input type="submit" value="upload">
+
+<form action="./ordbog/uploadimage" method="POST" enctype="multipart/form-data">
+    <input type="file" accept="image/jpeg, image/png" name="image">
+    <input type="submit" value="upload">
+</form>
+
+<h1>Upload Audio</h1>
+
+<form action="./ordbog/uploadaudio" method="POST" enctype="multipart/form-data">
+    <input type="file" accept="audio/*" name="audio">
+    <input type="submit" value="upload">
 </form>
