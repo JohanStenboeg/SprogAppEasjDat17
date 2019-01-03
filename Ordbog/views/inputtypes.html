@@ -1,5 +1,6 @@
 <!DOCTYPE <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,36 +9,31 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
+
 <body>
-    
 
 
 
-<form enctype="multipart/form-data" method="post">
-    <h2>Regular file upload</h2>
-    <input type="file">
-    
-    <h2>capture=camera</h2>
-    <input type="file" accept="image/*;capture=camera">
-    
-    <h2>capture=camcorder</h2>
-    <input type="file" accept="video/*;capture=camcorder">
-    
-    <h2>capture=microphone</h2>
-    <input type="file" accept="audio/*;capture=microphone">
 
-    <input type="file" accept="audio/*" capture id="recorder">
-    <audio id="player" controls></audio>
-    <script>
-      var recorder = document.getElementById('recorder');
-      var player = document.getElementById('player');
-    
-      recorder.addEventListener('change', function(e) {
-        var file = e.target.files[0];
-        // Do something with the audio file.
-        player.src =  URL.createObjectURL(file);
-      });
-    </script>
-  </form>
+    <form enctype="multipart/form-data" method="post">
+        <h2>Regular file upload</h2>
+        <input type="file">
+
+        <h2>capture=camera</h2>
+        <input type="file" accept="image/*;capture=camera">
+
+        <h2>capture=camcorder</h2>
+        <input type="file" accept="video/*;capture=camcorder">
+
+        <h2>capture=microphone</h2>
+        <input type="file" accept="audio/*;capture=microphone">
+
+        <input type="file" accept="audio/*" capture id="recorder">
+        <audio id="player" controls></audio>
+
+        <a id="download">Download</a>
+        <button id="stop">Stop</button>
+    </form>
 </body>
-  </html>
+
+</html>
