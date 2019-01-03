@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost/ordbog');
 
 // Laver en forbindelse til vores database og bruger den nye URL Parser
 mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
- 
+
 // Importerer ordbogModel module
 var ordbogModel = require('../models/ordbogModel');
 
@@ -24,7 +24,7 @@ var imagestorage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
-    
+
   }
 });
 
@@ -39,7 +39,7 @@ var imagefileFilter = (req, file, callback) => {
 
 var imageupload = multer({
   storage: imagestorage,
-  
+
   limits: {
     fileSize: 1024 * 1024 * 10
   },
@@ -47,9 +47,9 @@ var imageupload = multer({
 });
 
 router.post('/uploadimage', imageupload.single('image'), function (req, res) {
-  
-    res.json(req.file);
- 
+
+  res.json(req.file);
+
 });
 
 
@@ -59,20 +59,20 @@ var audiostorage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     callback(null, Date.now() + '-' + file.originalname);
-    
+
   }
 });
 
 var audiofileFilter = (req, file, callback) => {
   // reject a file
-  
-    callback(null, true);
-  
+
+  callback(null, true);
+
 }
 
 var audioupload = multer({
   storage: audiostorage,
-  
+
   limits: {
     fileSize: 1024 * 1024 * 10
   },
@@ -81,11 +81,45 @@ var audioupload = multer({
 
 
 router.post('/uploadaudio', audioupload.single('audio'), function (req, res) {
-  
-    res.json(req.file);
- 
-})
 
+  res.json(req.file);
+
+});
+
+
+var videostorage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './public/videouploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, Date.now() + '-' + file.originalname);
+
+  }
+});
+
+var videofileFilter = (req, file, callback) => {
+  // reject a file
+  if (file.mimetype === 'video/x-flv' || file.mimetype === 'video/mp4' || file.mimetype === 'application/x-mpegURL' || file.mimetype === 'video/MP2T' || file.mimetype === 'video/3gpp' || file.mimetype === 'video/quicktime' || file.mimetype === 'video/x-msvideo' || file.mimetype === 'video/x-ms-wmv') {
+    callback(null, true);
+  } else {
+    callback(null, false);
+  }
+}
+
+var videoupload = multer({
+  storage: videostorage,
+
+  limits: {
+    fileSize: 1024 * 1024 * 500
+  },
+  fileFilter: videofileFilter
+});
+
+router.post('/uploadvideo', videoupload.single('video'), function (req, res) {
+
+  res.json(req.file);
+
+});
 
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
@@ -94,20 +128,21 @@ router.get('/', function (req, res, next) {
     if (err) return console.log(err);
     res.render('ordbog', result);
   });
-});  
+});
 
- 
+
 // GET handler som henter ét ord ud fra _id 
 // Da req.params._id ikke virker efter hensigten, vælger jeg at finde URL på en anden måde */
 
-router.post('/vis', function(req, res, next){
+router.post('/vis', function (req, res, next) {
   //var reqToString = url.parse(req.originalUrl, true);
   //var reqObject = reqToString.query;
   //console.log(req.param('id'));
 
-  ordbog.findById(req.body.id, function(err, result){
-    if(err){ return console.log(err);
-    } else{
+  ordbog.findById(req.body.id, function (err, result) {
+    if (err) {
+      return console.log(err);
+    } else {
       res.render('visord', result);
       console.log(req.body.id);
     }
@@ -135,8 +170,8 @@ router.post('/postord', function (req, res, next) {
 });
 
 
- // Fungerer ikke
- /* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
+// Fungerer ikke
+/* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
 router.post('/updateord', function (req, res, next) {
 
   var id = mongoose.Types.ObjectId(req.query._id);
@@ -214,25 +249,25 @@ router.post('/postord', function (req, res, next) {
 /* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/updateord', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
-    
+
     if (err) throw err;
-    
+
     let database = db.db("tododb");
-    
+
     let myquery = { ord: req.body.ord };
-    
+
     let newvalues = { $set: { ord: req.body.nyt_ord } };
-    
-    database.collection('ordbog').updateOne( myquery, newvalues, function (err, res) {
+
+    database.collection('ordbog').updateOne(myquery, newvalues, function (err, res) {
       if (err) throw err;
       console.log("1 document updated");
       db.close();
     });
     res.send("1 document updated-index_updateOne_used");
-        res.redirect('/ordbog');
+    res.redirect('/ordbog');
     //    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
-    });
   });
+});
 
 // Hentet fra i fredags/lørdags -> FUNGERER! Finder og sletter!
 /* Handler POST sletter et ord i ordbogen */
@@ -241,17 +276,17 @@ router.post('/slet_ord', function (req, res, next) {
     if (err) throw err;
     let database = db.db("tododb");
 
-//    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
-      database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
-        if (err) return console.log(err);
-        console.log(req.body);
+    //    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+    database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+      if (err) return console.log(err);
+      console.log(req.body);
 
-        database.collection('ordbog').deleteOne(req.body, (err, result) => {
-          if (err) return console.log(err);  
+      database.collection('ordbog').deleteOne(req.body, (err, result) => {
+        if (err) return console.log(err);
         res.redirect('/ordbog');
       });
     });
   });
-}); 
+});
 
 module.exports = router;
