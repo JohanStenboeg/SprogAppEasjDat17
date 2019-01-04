@@ -22,7 +22,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {_id : 0,}}).toArray(function(err, result) {
     if (err) throw err;
     if(result !== 'undefined' && result[0] !== 'undefined') {
-      console.log(result[0].username);
+      console.log(result[0].username + " loggede ind!");
       var profilDataResponse = {};
 
       profilDataResponse.username = result[0].username;
