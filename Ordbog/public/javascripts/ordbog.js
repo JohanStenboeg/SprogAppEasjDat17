@@ -1,4 +1,4 @@
- function search() {
+function search() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
@@ -12,7 +12,7 @@
             li[i].style.display = "none";
         }
     }
-}
+ }
 
 function btn_rediger() {
     document.getElementById('dine_ord').style.display = 'none';

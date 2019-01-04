@@ -5,7 +5,6 @@ var multer = require('multer');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = "mongodb://localhost:27017/";
-mongoose.connect('mongodb://localhost/ordbog');
 
 
 // Laver en forbindelse til vores database og bruger den nye URL Parser
