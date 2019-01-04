@@ -37,6 +37,7 @@
     <p id="password_profil">placerholder password</p>
     <p id="privilege_profil">placerholder privilege</p>
     <p id="score_profil">placerholder score</p>
+    <p id="contact">placeholder til debug</p>
 
     <div class="dagensOrd">
         <p id="dagens_ord">Dagens Ord</p>
@@ -54,6 +55,7 @@
                 document.getElementById("password_profil").innerHTML = "dit password er: " + brugerDataObject.kodeord;
                 document.getElementById("privilege_profil").innerHTML = "dine login privilegier er:  " + brugerDataObject.privilege;
                 document.getElementById("score_profil").innerHTML = "din nuværende score er: " + brugerDataObject.score;
+                document.getElementById("contact").innerHTML = brugerDataObject.contact + " er din kursist";
 
                 //document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
                 //document.getElementById("username_profil").innerHTML = profilDataArray[1];
