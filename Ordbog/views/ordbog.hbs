@@ -3,8 +3,6 @@
 
 <head>
   <title>Ordbog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheets/tempOrdbogSheet.css">
   <script src="javascripts/ordbog.js"></script>
 </head>
 
@@ -12,7 +10,23 @@
 
   <!-- Hovedafsnit -->
   <section>
+    <div class="container">
 
+      <div class="card-columns">
+        {{#each this}}
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="images/defaultPicture.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{this.ord}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's
+              content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
     <div class="mainContainer">
       <h2>Ord:</h2>
       <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
@@ -25,12 +39,8 @@
           </li>
           {{/each}}
         </ul>
-        
-      </form>
-    </div>
 
-    <div>
-      <button class="floatTilfoj" onclick="location.href='tilfojord'">Tilføj ord</button>
+      </form>
     </div>
   </section>
 
