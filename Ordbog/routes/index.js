@@ -6,8 +6,6 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var mongodb = require('mongodb');
 var url = "mongodb://localhost:27017/";
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
 
 
 /* Handler GET request og henter alle objects i ordbogen */
@@ -142,14 +140,6 @@ router.get('/', function (req, res, next) {
     title: 'SprogApp'
   });
 });
-
-/* let myquery = {
-  _id: mongodb.ObjectID( req.params.id)
-};
-let newvalues = {
-  $set: {
-    ord: req.body.ord
-  } */
 
 
 module.exports = router;

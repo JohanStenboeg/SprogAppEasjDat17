@@ -1,21 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
 var multer = require('multer');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var url = "mongodb://localhost:27017/";
-mongoose.connect('mongodb://localhost/ordbog');
-
-
-// Laver en forbindelse til vores database og bruger den nye URL Parser
-mongoose.connect('mongodb://localhost:27017/tododb', { useNewUrlParser: true });
-
-// Importerer ordbogModel module
-var ordbogModel = require('../models/ordbogModel');
-
-// Kompilerer det til et ordbog objekt, som bruger vores ordbogSchema og ordbog collection */
-var ordbog = mongoose.model('Ordbog', ordbogModel.ordbogSchema, 'ordbog');
 
 
 var imagestorage = multer.diskStorage({
@@ -66,7 +54,7 @@ var audiostorage = multer.diskStorage({
 var audiofileFilter = (req, file, callback) => {
   // reject a file
 
-  if (file.mimetype === 'audio/aac' || file.mimetype === 'audio/ac3' || file.mimetype === 'audio/AMR' || file.mimetype === 'audio/AMR-WB' || file.mimetype === 'audio/amr-wb+' || file.mimetype === 'audio/flac' ) {
+  if (file.mimetype === 'audio/aac' || file.mimetype === 'audio/ac3' || file.mimetype === 'audio/AMR' || file.mimetype === 'audio/AMR-WB' || file.mimetype === 'audio/amr-wb+' || file.mimetype === 'audio/flac') {
     callback(null, true);
   } else {
     callback(null, false);
@@ -128,127 +116,53 @@ router.post('/uploadvideo', videoupload.single('video'), function (req, res) {
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
 
-  ordbog.find({}, function (err, result) {
-    if (err) return console.log(err);
-    res.render('ordbog', result);
-  });
-});
-
-
-// GET handler som henter ét ord ud fra _id 
-// Da req.params._id ikke virker efter hensigten, vælger jeg at finde URL på en anden måde */
-
-router.post('/vis', function (req, res, next) {
-  //var reqToString = url.parse(req.originalUrl, true);
-  //var reqObject = reqToString.query;
-  //console.log(req.param('id'));
-
-  ordbog.findById(req.body.id, function (err, result) {
-    if (err) {
-      return console.log(err);
-    } else {
-      res.render('visord', result);
-      console.log(req.body.id);
-    }
-  });
-});
-
-/* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
-router.post('/postord', function (req, res, next) {
-
-  let object = {
-    ord: req.body.ord,
-    sprog: "dk",
-    user: "/user",
-    kategori: "",
-    date: "",
-    image: "",
-    sound: "",
-    video: ""
-  }
-
-  ordbog.create(object, function (err) {
-    if (err) return console.log(err);
-  })
-  res.redirect('../ordbog');
-});
-
-
-// Fungerer ikke
-/* Handler der updater et ord i ordbogen. Image, sound og video mangler at arbejdes på */
-router.post('/updateord', function (req, res, next) {
-
-  var id = mongoose.Types.ObjectId(req.query._id);
-
-  ordbog.findOneAndUpdate({
-    _id: id
-  }, req.body, {
-      new: true
-    }, function (err, ord) {
-
-      if (err) return console.log(err);
-    })
-  res.redirect('../ordbog');
-});
-/* 
-
- // Fungerer ikke
- /* Handler der sletter et ord i ordbogen. Image, sound og video mangler at arbejdes på 
-router.post('/slet_ord', function (req, res, next) {
-
-  ordbog.findOneAndDelete(req.params._id, function (err, ord) {
-    if (err) return console.log(err);
-
-    res.redirect('../test');
-  });
-});
- */
-
-/* Handler GET request og henter alle objects i ordbogen */
-router.get('/getord', function (req, res, next) {
-
-  MongoClient.connect(url, {
-    useNewUrlParser: true
-  }, function (err, db) {
+  MongoClient.connect(url, function (err, db) {
     if (err) throw err;
-    let database = db.db("tododb");
-    database.collection("ordbog").find({}).toArray(function (err, result) {
+    var dbo = db.db("tododb");
+    dbo.collection("ordbog").find({}).toArray(function (err, result) {
       if (err) throw err;
-      res.send(result);
       db.close();
+      res.render('ordbog', result);
     });
   });
-
 });
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
 router.post('/postord', function (req, res, next) {
 
-  MongoClient.connect(url, {
-    useNewUrlParser: true
-  }, function (err, db) {
+  MongoClient.connect(url, function (err, db) {
     if (err) throw err;
-    let database = db.db("tododb");
+    var dbo = db.db("tododb");
 
     let object = {
       ord: req.body.ord,
       sprog: "dk",
-      user: "fra_ordbog",
+      user: "/user",
       kategori: "",
       date: "",
       image: "",
-      sound: req.body.sound,
-      video: req.body.video
+      sound: "",
+      video: ""
     }
 
-    database.collection("ordbog").insertOne(object, function (err, res) {
+    dbo.collection("ordbog").insertOne(object, function (err, res) {
       if (err) throw err;
-      console.log("1 document inserted-index_insertOne_used");
+      console.log("1 document inserted");
       db.close();
     });
-    res.send("1 document inserted-index_insertOne_used");
+
+    res.redirect('../ordbog');
   });
 });
+
+
+/* Handler GET request og henter tilfojord siden. */
+router.get('/tilfojord', function(req, res, next) {
+
+    res.render('tilfojord');
+
+});
+
 
 /* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/updateord', function (req, res, next) {
