@@ -66,7 +66,11 @@ var audiostorage = multer.diskStorage({
 var audiofileFilter = (req, file, callback) => {
   // reject a file
 
-  callback(null, true);
+  if (file.mimetype === 'audio/aac' || file.mimetype === 'audio/ac3' || file.mimetype === 'audio/AMR' || file.mimetype === 'audio/AMR-WB' || file.mimetype === 'audio/amr-wb+' || file.mimetype === 'audio/flac' ) {
+    callback(null, true);
+  } else {
+    callback(null, false);
+  }
 
 }
 
