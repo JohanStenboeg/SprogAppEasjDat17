@@ -63,6 +63,9 @@ app.use('/css/style.css', function(req, res){
 app.use('/billeder/logout.png', function(req, res){
   res.sendFile(__dirname + '/billeder/logout.png')
 });
+app.use('/billeder/camera.png', function(req, res){
+  res.sendFile(__dirname + '/billeder/camera.png')
+});
 app.use('/billeder/tilbage_knap.png', function(req, res){
   res.sendFile(__dirname + '/billeder/tilbage_knap.png')
 });

@@ -29,6 +29,7 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
       profilDataResponse.kodeord = result[0].password;
       profilDataResponse.privilege = result[0].privilege;
       profilDataResponse.score = result[0].rewardLVL;
+      profilDataResponse.contact = result[0].contact;
 
       responseString = JSON.stringify(profilDataResponse);
 
