@@ -22,14 +22,14 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   dbo.collection("brugere").find({brugernavn : brugernavn, kodeord : password},{projection : {_id : 0,}}).toArray(function(err, result) {
     if (err) throw err;
     if(result !== 'undefined' && result[0] !== 'undefined') {
-      
-      console.log(result[0].brugernavn);
+      console.log(result[0].username + " loggede ind!");
       var profilDataResponse = {};
 
       profilDataResponse.username = result[0].brugernavn;
       profilDataResponse.kodeord = result[0].kodeord;
       profilDataResponse.privilege = result[0].rolle;
       profilDataResponse.score = result[0].rewardLVL;
+      profilDataResponse.contact = result[0].contact;
 
       responseString = JSON.stringify(profilDataResponse);
 
@@ -49,5 +49,5 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
 });
 
 
-}
+};
     

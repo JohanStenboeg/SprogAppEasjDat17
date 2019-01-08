@@ -22,19 +22,29 @@ var bruger = mongoose.model('Bruger', BrugerModel.BrugerSchema, 'brugere');
 
 //Laver en POST forespørgsel på siden, og indsætter indhold i databasen fra sidens indhold
 router.post('/register', function(req, res, next){
+    var kontaktTemp = "fejl";
+
+    if (req.body.contact == "") {
+        kontaktTemp = "ingen makker knyttet til"
+    } else{ 
+        kontaktTemp = req.body.contact
+    }
+
+
     //lokal variabel til at skabe et objekt, som databasen kan læse fra
     let object = {
-        brugernavn : req.body.brugernavn,
-        kodeord : req.body.kodeord,
-        rolle : req.body.rolle,
-        rewardLvL : 0
+        username : req.body.brugernavn,
+        password : req.body.kodeord,
+        privilege : req.body.rolle,
+        rewardLVL : 0,
+        contact : kontaktTemp
     }
     //opret brugeren
     bruger.create(object, function(err){
         if(err){return console.log(err)}
     });
     //send mig til opret-siden
-    res.redirect('http://localhost:8080/login/Clientside/login.html');
+    res.redirect('/');
 });
 
 //udsend scriptet

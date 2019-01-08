@@ -9,13 +9,14 @@
     <script src="../ModelControllerRoute/opretBruger.js"></script>
 </head>
         <!--Logo øverst oppe-->
-      <a href="../Clientside/login.html"><img class="logoutmenu" src="../billeder/logout.png" alt="tilbage"></a>
+      <a href="http://localhost:3000"><img class="logoutmenu" src="../billeder/logout.png" alt="tilbage"></a>
 <body>
 
     <div class="containerlogin">
         <form method="POST" action="opretBruger/register">
             <input type="text" name="brugernavn" id="input_brugernavn" placeholder="Skriv brugernavn">
             <input type="password" name="kodeord" id="input_kodeord" placeholder="Skriv kodeord">
+            <input type="text" name="contact" id="input_contact" placeholder="Write your contact">
            
         <select class="roller" name="rolle"> 
             <option class="options" value="default" selected>Vælg en rolle...</option>
