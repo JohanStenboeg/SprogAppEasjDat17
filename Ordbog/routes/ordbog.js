@@ -160,9 +160,9 @@ router.post('/postord', function (req, res, next) {
 
 
 /* Handler GET request og henter tilfojord siden. */
-router.get('/tilfojord', function(req, res, next) {
+router.get('/tilfojord', function (req, res, next) {
 
-    res.render('tilfojord');
+  res.render('tilfojord');
 
 });
 
@@ -190,23 +190,20 @@ router.post('/updateord', function (req, res, next) {
   });
 });
 
-// Hentet fra i fredags/lørdags -> FUNGERER! Finder og sletter!
-/* Handler POST sletter et ord i ordbogen */
-router.post('/slet_ord', function (req, res, next) {
+/* Handler GET request og sletter ordet i ordbogen ved hjælp af id */
+router.get('/slet_ord/:id', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
-    let database = db.db("tododb");
+    var dbo = db.db("tododb");
 
-    //    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
-    database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
-      if (err) return console.log(err);
-      console.log(req.body);
+    var myquery = { _id: ObjectId(req.params.id) };
 
-      database.collection('ordbog').deleteOne(req.body, (err, result) => {
-        if (err) return console.log(err);
-        res.redirect('/ordbog');
-      });
+    dbo.collection("ordbog").deleteOne(myquery, function (err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      db.close();
     });
+    res.redirect('/ordbog');
   });
 });
 
