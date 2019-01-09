@@ -134,6 +134,9 @@ router.post('/postord', function (req, res, next) {
     if (err) throw err;
     var dbo = db.db("tododb");
 
+    var dato = new Date.now.toString;
+    console.log(dato); 
+
     let object = {
       ord: req.body.ord,
       sprog: "dk",
