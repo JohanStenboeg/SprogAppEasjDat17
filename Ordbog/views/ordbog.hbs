@@ -26,21 +26,6 @@
         {{/each}}
       </div>
     </div>
-    <div class="mainContainer">
-      <h2>Ord:</h2>
-      <!-- Form hvor ord indsættes. Ord kan markeres og slettes med 'Slet'-submit knap. -->
-      <form method="POST" action="/ordbog/vis" id="ord">
-        <ul id="minListe">
-          {{#each this}}
-          <li onclick="document.getElementById('ord').submit();">
-            <label for={{this._id}}>{{this.ord}}</label>
-            <input type="radio" id={{this._id}} name="id" value={{this._id}} checked>
-          </li>
-          {{/each}}
-        </ul>
-
-      </form>
-    </div>
   </section>
 
   <script>
