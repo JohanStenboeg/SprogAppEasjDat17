@@ -8,17 +8,32 @@ var url = "mongodb://localhost:27017/";
 router.get('/:id', function (req, res, next) {
 
     MongoClient.connect(url, function (err, db) {
-      if (err) throw err;
-      var dbo = db.db("tododb");
-      dbo.collection("ordbog").findOne({_id: ObjectId(req.params.id)}, function(err, result) {
         if (err) throw err;
-        
-        console.log(req.params.id);
+        var dbo = db.db("tododb");
+        dbo.collection("ordbog").findOne({ _id: ObjectId(req.params.id) }, function (err, result) {
+            if (err) throw err;
 
-        res.render('redigerord', result);
-        db.close();
-      });
+            console.log(req.params.id);
+
+            res.render('redigerord', result);
+            db.close();
+        });
     });
-  });
+});
+
+router.post('/', function (req, res, next) {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("tododb");
+        dbo.collection("ordbog").updateOne({ _id: req.body.id }, { $set: { ord: req.body.ord, kategori: req.body.kategori }}, function (err, res) {
+            if (err) throw err;
+            console.log("1 document updated");
+            db.close;
+
+        
+        });
+        res.redirect('/ordbog');
+    });
+});
 
 module.exports = router;
