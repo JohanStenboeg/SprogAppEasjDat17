@@ -1,8 +1,48 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(20, 77, 77);  
+/*padding-bottom: 20px;*/
 }
 
 a {
   color: #00B7FF;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #fff;
+  font-weight: bold;
+}
+
+#mainOrdbog {
+  background-color: rgb(20, 77, 77);  
+padding-bottom: 20px;
+}
+
+#a {
+  background-color: #FAB32A;
+  /*background-color: rgb(67, 156, 230);*/
+  color: #fff;
+  padding: 10px 20px;
+  margin: 8px 20%;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 60%;
+  font: 'Arial';
+  font-weight: bold;
+}
+
+#b {
+  background-color: #FAB32A;
+  /*background-color: rgb(67, 156, 230);*/
+  color: #fff;
+  padding: 10px 20px;
+  margin: 8px 20%;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 60%;
+  font: 'Arial';
+  font-weight: bold;
 }

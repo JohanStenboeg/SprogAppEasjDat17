@@ -10,17 +10,17 @@
   <br>
   <!-- Hovedafsnit -->
   <section>
-    <div class="container">
+    <div class="container" id="mainOrdbog">
 
       <div class="card-columns">
         {{#each this}}
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 18rem, background-color: #e3f2fd;">
           <img class="card-img-top" src="images/defaultPicture.png" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{this.ord}}</h5>
             <p class="card-text">Kategori: {{kategori}} </p>
-            <a href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
-            <a href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
+            <a id="a" href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
+            <a id="b" href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
           </div>
         </div>
         {{/each}}
