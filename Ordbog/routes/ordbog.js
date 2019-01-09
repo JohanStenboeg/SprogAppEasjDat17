@@ -138,7 +138,7 @@ router.post('/postord', function (req, res, next) {
       ord: req.body.ord,
       sprog: "dk",
       user: "/user",
-      kategori: "",
+      kategori: req.body.kategori,
       date: "",
       image: "",
       sound: "",
