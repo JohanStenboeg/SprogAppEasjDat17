@@ -66,12 +66,13 @@
         for (let index = 0; index < myObj.arr.length; index++) {
             let holder  = myObj.arr[index].name;
             console.log(myObj.arr[index].name)
-            $('#messages').append($('<button id="'+holder+'" onclick="goNextPage(this)">'+holder+'</button>'));
+            $('#messages').append($('<button id="'+holder+'" onclick="goNextPage(this,false)">'+holder+'</button>'));
 
         }
       }
     };
     console.log("yeet XD");
+    $('#messages').append($('<button id="btn_tilrewards" onclick="goNextPage(this,true)"> Gå til rewards </button>'));
 
     xmlhttp.open("GET", "http://localhost:8081/getChats", true);
     xmlhttp.send();
@@ -79,14 +80,14 @@
 
 
 
-    function goNextPage(object){
-        //Til at skifte within domain.
-        document.cookie ="hvemSkriverDuTil="+object.id +";"
-
-        window.location.replace("chatside");   
-         
-
-
+    function goNextPage(object,chatElEj){
+        if(chatElEj==false){
+            //Til at skifte within domain.
+            document.cookie ="hvemSkriverDuTil="+object.id +";"
+            window.location.replace("chatside");   
+        }else{
+            window.location.replace("rewards");
+        }
     }
 
     

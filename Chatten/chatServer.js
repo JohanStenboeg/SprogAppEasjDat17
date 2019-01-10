@@ -11,6 +11,11 @@ app.get('/chatside', function(req,res){
 
   
 })
+app.get('/rewards', function(req,res){
+  res.sendFile(__dirname + '/rewards.html');
+
+  
+})
 //hvordan vi sender js filer,  den nedenunder skal i html 
 //  <script src= "http://localhost:3000/tsmtest"></script>
 
