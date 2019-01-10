@@ -116,12 +116,19 @@ router.post('/uploadvideo', videoupload.single('video'), function (req, res) {
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
 
-  MongoClient.connect(url, function (err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true } , function (err, db) {
     if (err) throw err;
     var dbo = db.db("tododb");
     dbo.collection("ordbog").find({}).toArray(function (err, result) {
       if (err) throw err;
       db.close();
+
+      for (let i = 0; i < result.length; i++) {
+          if (result[i].image == "") {
+              result[i].image = "images/defaultPicture.PNG";
+          }
+      }
+
       res.render('ordbog', result);
     });
   });
