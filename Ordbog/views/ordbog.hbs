@@ -15,12 +15,16 @@
       <div class="card-columns">
         {{#each this}}
         <div class="card" style="width: 18rem, background-color: #e3f2fd;">
-          <img class="card-img-top" src="{{image}}" alt="Card image cap">
+          <a href="#collapse{{_id}}" data-toggle="collapse">
+            <img class="card-img-top" src="{{image}}" alt="Card image cap">
+          </a>
           <div class="card-body">
             <h5 class="card-title">{{this.ord}}</h5>
             <p class="card-text">Kategori: {{kategori}} </p>
-            <a id="a" href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
-            <a id="b" href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
+            <div id="collapse{{_id}}" class="collapse">
+              <a id="a" href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
+              <a id="b" href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
+            </div>
           </div>
         </div>
         {{/each}}
