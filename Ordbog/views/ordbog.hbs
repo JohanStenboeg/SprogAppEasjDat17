@@ -13,15 +13,17 @@
     <div class="container" id="mainOrdbog">
 
       <div class="card-columns">
-        {{#each this}}
-        <div class="card" style="width: 18rem, background-color: #e3f2fd;">
-          <a href="#collapse{{_id}}" data-toggle="collapse">
-            <img class="card-img-top" src="{{image}}" alt="Card image cap">
-          </a>
-          <div class="card-body">
-            <h5 class="card-title">{{this.ord}}</h5>
-            <p class="card-text">Kategori: {{kategori}} </p>
-            <div id="collapse{{_id}}" class="collapse">
+        <div id="accordion">
+          {{#each this}}
+          <div class="card" style="width: 18rem, background-color: #e3f2fd;">
+            <a href="#collapse{{_id}}" data-toggle="collapse">
+              <img class="card-img-top" src="{{image}}" alt="Card image cap">
+
+              <div class="card-body">
+                <h5 class="card-title" style="color: grey">{{this.ord}}</h5>
+            </a>
+            <div id="collapse{{_id}}" class="collapse" data-parent="#accordion">
+              <p class="card-text">Kategori: {{kategori}} </p>
               <a id="a" href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
               <a id="b" href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
             </div>
@@ -29,6 +31,7 @@
         </div>
         {{/each}}
       </div>
+    </div>
     </div>
   </section>
 
