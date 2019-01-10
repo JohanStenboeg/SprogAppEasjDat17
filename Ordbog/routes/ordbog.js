@@ -128,14 +128,14 @@ router.get('/', function (req, res, next) {
 });
 
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
-router.post('/postord', function (req, res, next) {
+router.post('/postord', imageupload.single('image'), function (req, res, next) {
+
+  let imagePath = req.file.path;
+  let imagePathSliced = imagePath.slice(7);
 
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     var dbo = db.db("tododb");
-
-    /* var dato = new Date.now.toString;
-    console.log(dato);  */
 
     let object = {
       ord: req.body.ord,
@@ -143,7 +143,7 @@ router.post('/postord', function (req, res, next) {
       user: "/user",
       kategori: req.body.kategori,
       date: "",
-      image: "",
+      image: imagePathSliced,
       sound: "",
       video: ""
     }
