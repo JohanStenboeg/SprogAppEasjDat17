@@ -116,7 +116,7 @@ router.post('/uploadvideo', videoupload.single('video'), function (req, res) {
 /* GET handler som henter ordbog siden med ordene */
 router.get('/', function (req, res, next) {
 
-  MongoClient.connect(url, { useNewUrlParser: true } , function (err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     var dbo = db.db("tododb");
     dbo.collection("ordbog").find({}).toArray(function (err, result) {
@@ -124,9 +124,9 @@ router.get('/', function (req, res, next) {
       db.close();
 
       for (let i = 0; i < result.length; i++) {
-          if (result[i].image == "") {
-              result[i].image = "images/defaultPicture.PNG";
-          }
+        if (result[i].image == "") {
+          result[i].image = "images/defaultPicture.PNG";
+        }
       }
 
       res.render('ordbog', result);
@@ -137,8 +137,14 @@ router.get('/', function (req, res, next) {
 /* Handler POST request og indsætter et ord i ordbogen, gem af image, sound og video mangler at arbejdes på */
 router.post('/postord', imageupload.single('image'), function (req, res, next) {
 
-  let imagePath = req.file.path;
-  let imagePathSliced = imagePath.slice(7);
+  let imagePath, imagePathSliced;
+  
+  if (req.file == undefined) {
+    imagePathSliced = "";
+  } else {
+    imagePath = req.file.path;
+    imagePathSliced = imagePath.slice(7);
+  }
 
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
