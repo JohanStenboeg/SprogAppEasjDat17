@@ -53,8 +53,8 @@ app.get('/getChat', function(request, res){
 
 
 
-http.listen(8080, function(){
-  console.log('listening on *:8080');
+http.listen(8081, function(){
+  console.log('listening on *:8081');
 });
 
 io.on('connection', function(socket){
