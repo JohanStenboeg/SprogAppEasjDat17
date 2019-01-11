@@ -119,7 +119,7 @@ router.get('/', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     var dbo = db.db("tododb");
-    dbo.collection("ordbog").find({}).toArray(function (err, result) {
+    dbo.collection("ordbog").find({}).sort('ord', 1).toArray(function (err, result) {
       if (err) throw err;
       db.close();
 
@@ -171,6 +171,25 @@ router.post('/postord', imageupload.single('image'), function (req, res, next) {
   });
 });
 
+router.get('/seneste', function (req, res, next) {
+
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    if (err) throw err;
+    var dbo = db.db("tododb");
+    dbo.collection("ordbog").find({}).sort({$natural:-1}).limit(3).toArray(function (err, result) {
+      if (err) throw err;
+      db.close();
+
+      for (let i = 0; i < result.length; i++) {
+        if (result[i].image == "") {
+          result[i].image = "images/defaultPicture.PNG";
+        }
+      }
+
+      res.render('seneste', result);
+    });
+  });
+});
 
 /* Handler GET request og henter tilfojord siden. */
 router.get('/tilfojord', function (req, res, next) {
