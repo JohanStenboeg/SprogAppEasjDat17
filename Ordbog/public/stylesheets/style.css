@@ -19,21 +19,7 @@ h1, h2, h3, h4, h5 {
 padding-bottom: 20px;
 }
 
-#a {
-  background-color: #FAB32A;
-  /*background-color: rgb(67, 156, 230);*/
-  color: #fff;
-  padding: 10px 20px;
-  margin: 8px 20%;
-  border: 2px solid #fff;
-  border-radius: 25px;
-  cursor: pointer;
-  width: 60%;
-  font: 'Arial';
-  font-weight: bold;
-}
-
-#b {
+#buttonStyle {
   background-color: #FAB32A;
   /*background-color: rgb(67, 156, 230);*/
   color: #fff;

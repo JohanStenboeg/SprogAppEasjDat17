@@ -38,3 +38,7 @@ function btn_rediger() {
     document.getElementById('vis_ord').style.display = 'none';
 }
 
+function playAudio() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}

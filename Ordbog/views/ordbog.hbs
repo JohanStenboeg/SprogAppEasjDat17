@@ -24,8 +24,13 @@
             </a>
             <div id="collapse{{_id}}" class="collapse" data-parent="#accordion">
               <p class="card-text">Kategori: {{kategori}} </p>
-              <a id="a" href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
-              <a id="b" href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
+              <a id="buttonStyle" href="/ordbog/redigerord/{{_id}}" class="btn btn-primary">Rediger</a>
+              <a id="buttonStyle" href="/ordbog/slet_ord/{{_id}}" class="btn btn-primary">Slet</a>
+              {{!-- <audio id="audio">
+                <source src="{{sound}}" type="audio/wav">
+                Your browser does not support the audio element.
+              </audio>
+              <a id="buttonStyle" class="btn btn-primary" onclick="playAudio();">Afspil lyd</a> --}}
             </div>
           </div>
         </div>
