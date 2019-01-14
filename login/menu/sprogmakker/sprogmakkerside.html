@@ -15,13 +15,11 @@
 
 
   <!--Logo øverst oppe-->
-  <a href="http://localhost:3000"><img class="logoutmenu" src="../../billeder/tilbage_knap.png" alt="logout"></a>
-  <!--Galleriknap-->
-  <a href="../../inspiration/galleri.html"><img class="picturesmenu" src="../../billeder/billeder.png" alt="flere billeder"></a>
-  <!--Kamera knap-->
-  <a href="../../inspiration/kamera/kamera.html"><img class="cameramenu" src="../../billeder/camera.png" alt="Kamera"></a>
-
-
+  <a href="http://localhost:3000"><img class="logoutmenu" src="../../billeder/logout.png" alt="logout"></a>
+  <!--Velkomstbesked-->
+  <p id="welcome_msg">welcome placeholder</p>
+ 
+ 
  </header>
 
   <body>
@@ -47,10 +45,10 @@
 
  <!--Knapper-->
  <div class="buttonsmenu">
-  <p id="welcome_msg">welcome placeholder</p>
+ 
   <button class="button" onclick="location.href='http://localhost:3000/Sprogmakker' /* + et ID*/">Min Profil</button>
-  <button class="button">Min Ordbog</button>
-  <button class="button">Chat</button>
+  <button class="button" onclick="location.href='http://localhost:3001/ordbog'">Min Ordbog</button>
+  <button class="button" >Chat(disabled)</button>
 
     </div>
 

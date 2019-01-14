@@ -21,7 +21,12 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
   var dbo = db.db("dbSprog");
   dbo.collection("brugere").find({username : brugernavn, password : password},{projection : {_id : 0,}}).toArray(function(err, result) {
     if (err) throw err;
-    if(result !== 'undefined' && result[0] !== 'undefined') {
+    console.log(result);
+    if (result == {}){
+      console.log("Noget gik galt i ClientToServer!")
+      res.send("fejl");
+      db.close();
+    }else if(result !== 'undefined' && result[0] !== 'undefined') {
       console.log(result[0].username + " loggede ind!");
       var profilDataResponse = {};
 
@@ -33,18 +38,17 @@ MongoClient.connect(url,{ useNewUrlParser: true }, function(err, db) {
 
       responseString = JSON.stringify(profilDataResponse);
 
+      res.send(responseString);
+
     
       //privilege = result[0].privilege;
     }
-    db.close();
+    /*db.close();
     //console.log(result.length);
     if (result.length == 0){
       console.log("Noget gik galt i ClientToServer!")
       res.send("fejl");
-    }
-    else{
-      res.send(responseString);
-    }
+    }*/
   });
 });
 

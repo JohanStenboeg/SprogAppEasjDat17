@@ -44,7 +44,7 @@
                     brugerDataObjekt = JSON.parse(this.response);
                     //console.log(brugerDataObjekt.username);
 
-                    if (this.response == "fejl") {
+                    if (brugerDataObjekt.username == "undefined") {
                         alert("Login fejlet!")
                     } else {
 
@@ -121,7 +121,7 @@
             <!--Beholder til Login indhold-->
             <div class="containerlogin">
                 <!--Indsamling af Brugernavn og Kodeord-->
-                <input id="brugernavn" type="email" placeholder="Email" name="uname" required>
+                <input id="brugernavn" type="email" placeholder="Brugernavn" name="uname" required>
                 <input id="password" type="password" placeholder="Kodeord" name="psw" required>
                 <div>
                     <!--Funktion til at teste om login har korrekte oplysninger-->
