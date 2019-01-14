@@ -17,7 +17,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 5%;
+        width: 40%;
         background-color: rgb(219, 151, 16);
         border-color:rgb(219, 151, 16);
     }
@@ -72,9 +72,9 @@
       }
     };
     console.log("yeet XD");
-    $('#messages').append($('<button id="btn_tilrewards" onclick="goNextPage(this,true)"> Gå til rewards </button>'));
+    $('#messages').append($('<button id="btn_tilrewards" onclick="goNextPage(this,true)"> Gå til Præmier </button>'));
 
-    xmlhttp.open("GET", "http://localhost:8081/getChats", true);
+    xmlhttp.open("GET", "http://localhost:8080/getChats", true);
     xmlhttp.send();
     console.log("venne " + venneliste);
 
