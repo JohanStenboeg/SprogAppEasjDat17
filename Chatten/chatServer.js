@@ -11,6 +11,11 @@ app.get('/chatside', function(req,res){
 
   
 })
+app.get('/rewards', function(req,res){
+  res.sendFile(__dirname + '/rewards.html');
+
+  
+})
 //hvordan vi sender js filer,  den nedenunder skal i html 
 //  <script src= "http://localhost:3000/tsmtest"></script>
 
@@ -53,8 +58,8 @@ app.get('/getChat', function(request, res){
 
 
 
-http.listen(8080, function(){
-  console.log('listening on *:8080');
+http.listen(8081, function(){
+  console.log('listening on *:8081');
 });
 
 io.on('connection', function(socket){

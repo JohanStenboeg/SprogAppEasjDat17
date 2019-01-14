@@ -16,12 +16,12 @@
 <p><img id="output" width="200" /></p>
 
 
- <form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
-  <input type="file" accept="image/*" name="file" ondblclick="gogogoogle()">
-  <button onclick="gogogoogle()">Submit</button>
+<form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
+  <input type="file" accept="image/*" name="file" ondblclick="indsaetIdb()"class="">
+  <button onclick="indsaetIdb()">Submit</button>
  </form>
 <script>
-function gogogoogle(){
+function indsaetIdb(){
         let randomnummer = Math.floor(Math.random()*999999999)+1;      
         var billedenavn = document.getElementById("BilledeUpload");
         var url = "https://storage.googleapis.com/sprogappdat17easj/billeder/"+randomnummer

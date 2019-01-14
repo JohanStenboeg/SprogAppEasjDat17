@@ -13,25 +13,34 @@
     }
     body {
       font: 13px Helvetica, Arial;
+      background-color: rgb(27, 77, 77);
     }
     form {
-      background: #000;
-      padding: 3px;
+      display: inline-block;
+      
+      padding: 4px;
       position: fixed;
       bottom: 0;
-      width: 100%;
+      width: 90%;
+    
+    }
+    h1{
+      color:white;
+      text-align: center;
     }
     form input {
       border: 0;
       padding: 10px;
-      width: 90%;
-      margin-right: .5%;
+      width: 64%;
+      margin-right: 4%;
+      margin-bottom: 10%;
     }
     form button {
       width: 9%;
-      background: rgb(130, 224, 255);
+      background: rgb(219, 151, 16);
       border: none;
       padding: 10px;
+      color: white;
     }
     #messages {
       list-style-type: none;
@@ -40,45 +49,73 @@
     }
     #messages li {
       padding: 5px 10px;
+      color:white;
     }
     #messages li:nth-child(odd) {
-      background: #eee;
+      background: rgb(19, 54, 54);
     }
     #smartKnap{
-          width: 50px;
+          width: 40px;
           border-radius: 50%;
-          height: 50px;
+          height: 40px;
           position: absolute;
           bottom: 43px;
+          color: white;
           font-size: 15px;
 
           float: left;
           
+      }
+      table{
+        border: 2px solid black;
+        text-align:center;
       }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
+<h1>Sprogapp Chat</h1>
 
-
-
-
+<table>
   <ul id="messages"></ul>
+</table>
 
-  <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
-     <img id="smartKnap" src="http://pluspng.com/img-png/free-png-plus-sign-plus-symbol-clipart-library-600.png" onclick="lavEtKort()" height="32px" width="32px">
+ <!--denne form gør det muligt at sende et billede til vores google database-->
+<form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
+ <input type="file"accept="image/*" name="file"class="">
+ <button form="BilledeUpload" name ="SendpictoDBbtn"onclick=" indsaetIdb()">Upload</button>
+ </form>
+    <!--Denne form gør det muligt at sende beskeder til chatten og indeholder også mads' smart button.--> 
+  <form id="ChatInput" name="testtest"action="">
+    <input name="input1" id="m" autocomplete="off" />
+    <button name="Tekstfieldknap">Send</button>
+    <img id="smartKnap" src="http://pluspng.com/img-png/free-png-plus-sign-plus-symbol-clipart-library-600.png" onclick="lavEtKort()" height="32px" width="32px">
   </form>
 
 
-  <script src= "http://localhost:8080/tsmtest"></script>
+  <script src= "http://localhost:8081/tsmtest"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
   <script>
+    // metode til at indsætte vores fil i google cloud
+    // den genererer et 9cifret link til billedet, og gemmer dette i en cookie til senere brug.
+    function indsaetIdb(){
+        let randomnummer = Math.floor(Math.random()*999999999)+1;      
+        var billedenavn = document.getElementById("BilledeUpload");
+        var url = "https://storage.googleapis.com/sprogappdat17easj/billeder/"+randomnummer
+
+        // sætter action elementet i billedeupload lig med URL'et
+        billedenavn.action=url;
+
+        document.cookie="linket="+url;
+        //document.getElementById("BilledeUpload").reset();
+        console.log(findCookieBeskrivelse("linket"));
+        return false;
+}
     
    function findCookieBeskrivelse(name) {
   var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -126,7 +163,7 @@
         }
       }
 
-      xmlhttp2.open("GET", "http://localhost:8080/getChat", true);
+      xmlhttp2.open("GET", "http://localhost:8081/getChat", true);
       xmlhttp2.send();
     }
 
@@ -138,12 +175,14 @@
         
           $('#messages').append($('<div class="card" style="width: 18rem; "><img  class="card-img-top" onclick="udskiftbillede(this)" src="'+imgUrl+'" alt="Card image cap" height="250px" width="250px" ><div class="card-body"><h5 class="card-title" onclick="udskiftTekst(this)" >'+ordetForDet+'</h5><p class="card-text"></p><div onclick="udskiftLyd(this)"><audio onclick="udskiftLyd(this)" src="'+lydKlipUrl+'" controls=""/></div></div></div>'));
         }
+
+    
         
         //
         function udskiftbillede(object){
           if(confirm("Vil du skifte billedet, med det seneste taget billede?")){
             //Kør metode, der tager kameraet frem.
-            var nuvarendebilled = findCookieBeskrivelse("nubilled"); 
+            var nuvarendebilled = findCookieBeskrivelse("linket"); 
             object.src=nuvarendebilled;
             //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
           }
@@ -180,7 +219,7 @@
       document.title = username + ' - ' + document.title;
 
       //Når vi sender beskeder.
-      $('form').submit(function () {
+      $('#ChatInput').submit(function () {
         //socket.emit('chat message',username+' : '+ $('#m').val());
         //9:25 9/11 + mads : hej
         var tidDato = new Date().toLocaleTimeString('dk-DK',{hour12:false,hour:"numeric",minute:"numeric"})+ " "+new Date().toLocaleDateString();
