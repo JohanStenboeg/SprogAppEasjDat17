@@ -16,6 +16,11 @@ app.get('/rewards', function(req,res){
 
   
 })
+app.get('/dagensopgaver', function(req,res){
+  res.sendFile(__dirname + '/dagensopgaver.html');
+
+  
+})
 //hvordan vi sender js filer,  den nedenunder skal i html 
 //  <script src= "http://localhost:3000/tsmtest"></script>
 
@@ -58,8 +63,8 @@ app.get('/getChat', function(request, res){
 
 
 
-http.listen(8081, function(){
-  console.log('listening on *:8081');
+http.listen(8080, function(){
+  console.log('listening on *:8080');
 });
 
 io.on('connection', function(socket){
