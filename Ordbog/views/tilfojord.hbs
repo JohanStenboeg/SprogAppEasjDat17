@@ -8,19 +8,19 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul class="panel">
-                <li id="js_dine_ord" class="menuknap"><a href="ordbog#">Dine ord</a></li>
-            </ul>
-        </nav>
-    </header>
     <section>
         <div id="tilfoj_ord">
-            <form method="POST" action="./ordbog/postord">
-                <p id="overskriftTilfojOrd" class="overskrift">Nyt ord:<br></p>
-                <input type="text" name="ord" id="input_nyt_ord" placeholder="Skriv her"></input>
-                <input type="submit" value="Gem"></input>
+            <h3 class="m-4">Nyt ord<br></h3>
+            <form method="POST" action="./postord" enctype="multipart/form-data">
+
+                <input class="form-control ml-4" type="text" name="ord" id="input_nyt_ord" placeholder="Ord">
+                <br>
+                <input class="form-control ml-4" type="text" name="kategori" id="input_nyt_ord" placeholder="Kategori">
+                <br>
+                <input class="form-control ml-4" type="file" accept="image/jpeg, image/png, image/jpg" name="image" capture>
+                <br>
+                <input class="btn btn-primary ml-4" type="submit" value="Gem">
+
             </form>
         </div>
     </section>

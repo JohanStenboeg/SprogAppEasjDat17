@@ -1,6 +1,3 @@
-{"_id":{"$oid":"5c38253c09992a203cf7b2fc"},"ord":"hest","sprog":"dk","user":"/user","kategori":"dyr","date":"","image":"imageuploads\\1547183419935-hest.jpg","sound":"","video":""}
-{"_id":{"$oid":"5c38255c09992a203cf7b2fd"},"ord":"hund","sprog":"dk","user":"/user","kategori":"dyr","date":"","image":"imageuploads\\1547183451863-hund.jpg","sound":"","video":""}
-{"_id":{"$oid":"5c38257a09992a203cf7b2fe"},"ord":"får","sprog":"dk","user":"/user","kategori":"dyr","date":"","image":"imageuploads\\1547183481991-får.jpg","sound":"","video":""}
 {"_id":{"$oid":"5bdae053534f8e3eec70b571"},"ord":"hest","sprog":"dk","user":"","image":"imageuploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg","sound":"","video":"","kategori":"dyr","date":""}
 {"_id":{"$oid":"5be95a9a5425c02c446105d5"},"ord":"svane","sprog":"dk","user":"fra_index/test","kategori":"dyr","date":"","image":"imageuploads\\1547113141290-svane.jpg","sound":"","video":""}
 {"_id":{"$oid":"5be97589b154261b4815f8f8"},"ord":"pattegris","sprog":"dk","user":"fra_index/test","kategori":"dyr","date":"","image":"imageuploads\\1547114080561-pattegris.jpg","sound":"","video":""}
