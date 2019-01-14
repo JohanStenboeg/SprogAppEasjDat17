@@ -1,0 +1,28 @@
+{
+  "name": "sprogappk-gesamarbejde",
+  "version": "1.0.0",
+  "description": "\u0000",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongo": "^0.1.0",
+    "mongodb": "^3.1.8",
+    "mongoose": "^5.3.5",
+    "nodemon": "^1.18.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohanStenboeg/SprogAppK-geSamarbejde.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohanStenboeg/SprogAppK-geSamarbejde/issues"
+  },
+  "homepage": "https://github.com/JohanStenboeg/SprogAppK-geSamarbejde#readme"
+}

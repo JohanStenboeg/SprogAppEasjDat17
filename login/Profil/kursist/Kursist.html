@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kursist profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+</head>
+
+<header>
+    <!--Logo øverst oppe-->
+    <a href="http://localhost:3000/kursistside"><img class="tilbageknap" src="../../billeder/tilbage_knap.png" alt="tilbage"></a>
+    <p id="headertekst">Personlig side</p>
+</header>
+
+<!-----Profilbillede------>
+<nav>
+    <div class="profilbillede">
+        <div style="font-size: 80px;">
+            <i class="fas fa-user-circle fa-10px"></i>
+        </div>
+    </div>
+</nav>
+
+
+<body>
+
+
+
+    <!--<script>hentCookie("brugernavn")</script>-->
+    <p id="welcome_msg">Personlig side</p>
+    <p id="username_profil">placeholder username</p>
+    <p id="password_profil">placerholder password</p>
+    <p id="privilege_profil">placerholder privilege</p>
+    <p id="score_profil">placerholder score</p>
+
+    <div class="dagensOrd">
+        <p id="dagens_ord">Dagens Ord</p>
+    </div>
+
+
+    <!--script til loading a profildata-->
+    <script>
+        window.onload = function () {
+            if (document.cookie.length != 0) {
+                profilDataArray = document.cookie.split("=");
+                brugerDataObject = JSON.parse(profilDataArray[1]);
+
+                document.getElementById("welcome_msg").innerHTML = "velkommen " + brugerDataObject.username;
+                document.getElementById("username_profil").innerHTML = "dit brugernavn til login er: " + brugerDataObject.username;
+                document.getElementById("password_profil").innerHTML = "dit password er: " + brugerDataObject.kodeord;
+                document.getElementById("privilege_profil").innerHTML = "dine login privilegier er:  " + brugerDataObject.privilege;
+                document.getElementById("score_profil").innerHTML = "din nuværende score er: " + brugerDataObject.score;
+
+                //document.getElementById("welcome_msg").innerHTML = "velkommen " + profilDataArray[1];
+                //document.getElementById("username_profil").innerHTML = profilDataArray[1];
+                //document.getElementById("password_profil").innerHTML = profilDataArray[1];
+                //document.getElementById("privilege_profil").innerHTML = profilDataArray[1];
+                //console.log(profilDataArray);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

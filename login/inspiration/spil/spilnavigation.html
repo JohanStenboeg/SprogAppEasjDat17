@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style2.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- "Wrapper" klassen indeholder alt hvad "body" klassen
+      indeholder. Den er til for at man bedre kan stylé
+      den individuelle body i hver html-fil, uden at skulle
+      bruge en separat css-fil.-->
+    <div class="spilnav-wrapper">
+
+
+      <!-- i headeren har vi vores primære navigation, som består af
+        en "tilbage"-knap.
+        "a" elementet er et link som er blevet smidt på og "img" elementet
+        er refferencen til det billede der skal bruges.
+        klassen som hedder "spilside-hjemknap" bliver brugt på mange
+        af HTML-siderne da de stylés éns.-->
+      <header>
+        <a href="menuside.html"><div class="spilnav-hjemknap">
+            <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+          </div></a>
+
+        <div class="spilnav-h1">
+          <h1>Vælg Sprog Niveau</h1>
+        </div>
+      </header>
+
+      <!-- 3 links som skal linke til de forskellige sværhedsgrader
+      som brugeren kan vælge. I "let" har de 2 valgmuligheder, "Middel" 4
+      og "Svært" 8 valgmuligheder. Lige nu er der i alt 9 spilsider, 3
+      til hver sværhedsgrad på nuværende tidspunkt.
+      Det tænkes at når man klikker på "let" så kommer man ind
+      på en tilfældig side af den bestemte sværhedsgrad.
+      Som brugere tager billeder og beskriver hvad det er,
+      antages det at flere spilsider kommer op, hvor brugerens
+      billede bliver en del af dem. Med andre ord, bliver deres billeder
+      + beskrivelser en del af "spilside"-pølen. -->
+      <section>
+      <a href="spilside2.html">  <div class="spilnav-niveau1">
+          <h1>Let</h1>
+        </div> </a>
+
+      <a href="spilside4.html">  <div class="spilnav-niveau2">
+          <h1>Middel</h1>
+        </div> </a>
+
+      <a href="spilside9.html">  <div class="spilnav-niveau3">
+          <h1>Svært</h1>
+        </div> </a>
+      </section>
+
+    </div>
+  </body>
+</html>

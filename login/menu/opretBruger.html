@@ -1,0 +1,32 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Opret Bruger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
+    <script src="../ModelControllerRoute/opretBruger.js"></script>
+</head>
+        <!--Logo øverst oppe-->
+      <a href="http://localhost:3000"><img class="logoutmenu" src="../billeder/logout.png" alt="tilbage"></a>
+<body>
+
+    <div class="containerlogin">
+        <form method="POST" action="opretBruger/register">
+            <input type="text" name="brugernavn" id="input_brugernavn" placeholder="Skriv brugernavn">
+            <input type="password" name="kodeord" id="input_kodeord" placeholder="Skriv kodeord">
+            <input type="text" name="contact" id="input_contact" placeholder="Write your contact">
+           
+        <select class="roller" name="rolle"> 
+            <option class="options" value="default" selected>Vælg en rolle...</option>
+            <option class="options" value="Kursist">Kursist</option>
+            <option class="options" value="Sprogmakker">Sprogmakker</option>
+            <option class="options" value="Underviser">Underviser</option>
+        </select>
+        <button type="submit" value="opret">Opret</button>
+        </form>
+    </div>    
+    
+</body>
+</html>

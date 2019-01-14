@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- "Wrapper" klassen indeholder alt hvad "body" klassen
+      indeholder. Den er til for at man bedre kan stylé
+      den individuelle body i hver html-fil, uden at skulle
+      bruge en separat css-fil.-->
+    <div class="spilside-wrapper">
+
+
+      <!-- i headeren har vi vores primære navigation, som består af
+        en "tilbage"-knap.
+        "a" elementet er et link som er blevet smidt på og "img" elementet
+        er refferencen til det billede der skal bruges.
+        klassen som hedder "spilside-hjemknap" bliver brugt på mange
+        af HTML-siderne da de stylés éns.-->
+      <header>
+        <a href="spilnavigation.html"><div class="spilside-hjemknap">
+            <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+          </div></a>
+      </header>
+
+
+      <!-- Spilsidens primære fokus er 1 billede, med efterfølgende
+      2, 4 eller 8 valgmuligheder. Brugeren skal vælge det ord/valgmulighed
+      som passer til, hvad man ser på billedet.
+      Linket fra det rigtige svar findes i javaScriptet, da
+      der er tilføjet en forsinkelse på reaktionen, for at give
+      brugeren en chance for at opdage at det valgte ord var rigtigt.-->
+      <div class="spilside-billede">
+        <img src="billeder/stol.png" alt="Et billede af en stol">
+      </div>
+
+      <div class="spilside-info">
+        <h1>Match ord og billede</h1>
+      </div>
+
+      <div class="spilside-valgmuligheder">
+        <div class="spilside-sandtvalg1">
+          <h1>Stol</h1>
+        </div>
+
+        <div class="spilside-forkertvalg1">
+          <h1>Kage</h1>
+        </div>
+
+      </div>
+  </div>
+  
+  <!-- Der bliver referret til js filen og jQuery biblioteket
+  som det sidste for at sørge for at det er det sidste som bliver
+  indlæst i koden. En ekstra foranstaltning er dog taget i js filen.-->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src='javascript.js'></script>
+  </body>
+</html>

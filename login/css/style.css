@@ -1,0 +1,1545 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Arial'
+}
+h1, h2, h3, h4, h5 {
+  color: #fff;
+  font-weight: bold;
+}
+p, div {
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+/*--------- START login og opret bruger -----------*/
+
+#mainlogin {
+    background-color: rgb(20, 77, 77);  
+  padding-bottom: 20px;
+}
+
+form {
+  /*border: 3px solid #f1f1f1;*/
+}
+
+/*-------inputfelter på login.html og opretbruger.html-------*/
+
+input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], input[type=telefonNummer], input[type=text] {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 2.5%;
+    display: inline-block;
+    border: 3px solid #fff;
+    border-radius: 25px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #fff; 
+    font: 'Arial';
+    font-weight: bold;
+    
+}
+
+
+/*-------  password inputfelt - sikrer at det er '******'   -------*/
+input[type=text]::placeholder, input[type=password]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+}
+
+input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+input[type=text]::-ms-input-placeholder, input[type=password]::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+}
+
+
+input[type=text]::placeholder, input[type=eMail]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+
+input[type=text]:-ms-input-placeholder, input[type=eMail]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fff;
+}
+
+input[type=text]::-ms-input-placeholder, input[type=eMail]::-ms-input-placeholder { /* Microsoft Edge */
+  color: #fff;
+}
+
+button {
+    background-color: #FAB32A;
+    /*background-color: rgb(67, 156, 230);*/
+    color: #fff;
+    padding: 10px 20px;
+    margin: 8px 20%;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 60%;
+    font: 'Arial';
+    font-weight: bold;
+}
+
+.btnlogin {
+    background-color: #FAB32A;
+    /*background-color: rgb(67, 156, 230);*/
+    color: #fff;
+    padding: 10px 20px;
+    margin: 8px 20%;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 60%;
+    font: 'Arial';
+    font-weight: bold;
+}
+
+/*.lgnsocialbtn {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 12px 10%;
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: #005260;
+  color: #fff;
+}*/
+
+/*.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}*/
+
+
+/*Beholder div til inputfelter på 'login.html' + 'opretBruger.html' */
+.containerlogin {
+  padding: 40px 60px;
+  padding-top: 10rem;
+  margin-bottom: 50px;
+}
+/*
+Beholder div til Facebook og Google login
+.containerloginsocialbtn {
+  padding: 40px 60px;
+}*/
+
+
+.container div {
+  padding: 0 60px;
+}
+.container2 div {
+  padding: 0 60px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/*------ "roller" felt på opretbruger.html--------*/
+.roller {
+  width: 95%;
+  padding: 12px 20px;
+  margin: 8px 2.5%;
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #fff; 
+  font: 'Arial';
+  font-weight: bold;
+}
+/*---- styling af valgmuligheder på opretBruger.html----*/
+.options {
+  background-color: #005260;
+  color: #fff;
+  font: 'Arial'!important;
+  font-size: 13px!important;
+  font-weight: bold!important;
+    
+}
+
+/*------- SLUT login og opret bruger -------*/
+
+
+
+/*---- START Styling til menusider (kursist, sprogmakker og underviser) ----*/
+
+
+
+.logoutmenu {
+  width: 7%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.picturesmenu {
+  width: 8%;
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: right;
+}
+
+.cameramenu {
+    width: 10%;
+    height: auto;
+    margin-top: 3%;
+    margin-right: 8%;
+    float: right;
+}
+
+
+body {
+  background-color: rgb(20, 77, 77); 
+  padding-bottom: 20px;
+  
+}
+
+/*div til knapper på menusider */
+.buttonsmenu {
+  /*display: inline-grid;*/
+  margin-top: 20%;
+  margin-left: 5%;
+}
+
+.buttonstartspil {
+background-color: #FAB32A;
+border-color: white;
+border-width: 2px;
+border-radius: 42px;
+color: white;
+padding: 23px 94px;
+font-size: 10px;
+font-size: 20px;
+font-family: arial;
+margin-top: 50%;
+width: 40%;
+
+}
+
+/*.buttondagopgave {
+  background-color: #73A5A9;
+  border-color: white;
+  border-width: 2px;
+  color: white;
+  padding: 13px 38px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-family: arial;
+  margin-top: 12%;
+  margin-left: 17%;
+}*/
+
+
+/*.buttonscore {
+background-color: #6CC5D4;
+border-color: white;
+border-width: 2px;
+color: white;
+border-radius: 30px;
+padding: 7px 34px;
+font-size: 12px;
+font-family: arial;
+margin-top: 5%;
+margin-left: 28%;
+}*/
+
+
+
+body {
+  margin: 0%; 
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: arial;
+}
+
+h2 {
+  font-family: arial;
+}
+
+p {
+  font-family: arial;
+}
+
+
+
+/*---------- Start Kursist profilside ----------*/
+
+
+.tilbageknap { /*tilbage-knap i header*/
+  width: 7%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+#headertekst { /*velkomst-besked i header*/
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: right;
+}
+
+
+.profilbillede {/*holder til profilbillede*/
+  
+  margin-top: relative;
+  margin-right: 5%;
+  float: right;
+}
+
+.dagensOrd {/*holder til dagens ord*/
+  margin-top: 20%;
+  text-align: center;
+}
+
+
+#dagens_ord {
+  font: 'Arial';
+  color: #fff; 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*kamara start*/
+/*
+#headcam {
+  position: fixed;
+}
+
+
+#camera, #camera--view, #camera--sensor, #camera--output{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#camera--view, #camera--sensor, #camera--output{
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+
+#camera--trigger{
+  width: 200px;
+  background-color: #ADCCCC;
+  color: white;
+  font-size: 16px;
+  border-radius: 30px;
+  border: 3px #fff;
+  padding: 15px 20px;
+  text-align: center;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+  position: fixed;
+  bottom: 30px;
+  left: calc(50% - 100px);
+}
+
+.taken{
+  height: 100px!important;
+  width: 100px!important;
+  transition: all 0.5s ease-in;
+  border: solid 3px white;
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}*/
+
+/*kamera slut*/
+
+/*Færdigheder Start*/
+/*
+#section-b {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+.txt {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+.h1f {
+  color: #005260;
+  text-align: center;
+  margin: 1rem;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+.container-chart{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.container-chart .box .chart {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 30px;
+  line-height: 150px;
+}
+.container-chart .box h2 {
+  text-align: center;
+}
+.container-chart .box canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+*/
+/*Færdigheder slut*/
+/*
+.spilnav-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #adcccc;
+}
+
+.spilnav-hjemknap {
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.spilnav-hjemknap img {
+  width: 40px;
+}
+
+.spilnav-h1 h1 {
+  color: #ffffff;
+  margin-top: 0%;
+  font-size: 24px;
+  text-align: center;
+}
+
+.spilnav-niveau1 {
+  color: #ffffff;
+  height: 70px;
+  width: 80%;
+  margin-top: 22%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 40px;
+}
+
+.spilnav-niveau1 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.spilnav-niveau2 {
+  color: #ffffff;
+  height: 70px;
+  width: 80%;
+  margin-top: 22%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 40px;
+}
+
+.spilnav-niveau2 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.spilnav-niveau3 {
+  color: #ffffff;
+  height: 70px;
+  width: 80%;
+  margin-top: 22%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 40px;
+}
+
+.spilnav-niveau3 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.spilside-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #95b5b7;
+}
+
+.spilside-hjemknap {
+  position: absolute;
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.spilside-billede {
+  width: 100%;
+  height: auto;
+  padding-top: 7%;
+  text-align: center;
+}
+
+.spilside-billede img {
+  width: 90%;
+}
+
+.spilside-info {
+  color: #ffffff;
+  margin-top: 16%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.spilside-valgmuligheder {
+  color: #ffffff;
+  margin-top: 16%;
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.spilside-valg1 {
+  width: 38%;
+  float: left;
+  margin-left: 8%;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.spilside-valg2 {
+  width: 38%;
+  float: right;
+  margin-right: 8%;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.galleri-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #cccccc;
+}
+
+.galleri-hjemknap {
+  position: absolute;
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.galleri-billede {
+  width: 100%;
+  height: auto;
+  padding-top: 7%;
+  text-align: center;
+}
+
+.galleri-billede img {
+  width: 90%;
+}
+
+.galleri-lydoptagelse {
+  color: #ffffff;
+  font-size: 90px;
+  text-align: center;
+  margin-top: 15%;
+}
+
+.galleri-lydoptagelse2 {
+  color: red;
+  font-size: 90px;
+  text-align: center;
+  margin-top: 15%;
+  display: none;
+}
+
+.galleri-note {
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.galleri-note {
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.galleri-note h1 {
+  margin-bottom: 16px;
+}
+
+.galleri-note textarea {
+  color: #cccccc;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+}
+
+.udfordring-wrapper {
+  margin: 0%;
+  width: 100%;
+  background-color: #abc7c9;
+}
+
+.udfordring-hjemknap {
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.udfordring-bjaelke {
+  position: relative;
+  height: 30px;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.udfordring-dag1 {
+  position: absolute;
+  width:24%;
+  height: 100%;
+  margin: 0%;
+  border-radius: 20px;
+}
+
+.udfordring-dag5 {
+  position: absolute;
+  width:23%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 77%;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.udfordring-dag2 {
+  position: absolute;
+  width:20%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 20%;
+  background-color: white;
+}
+
+.udfordring-dag3 {
+  position: absolute;
+  width:20%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40%;
+  background-color: white;
+}
+
+.udfordring-dag4 {
+  position: absolute;
+  width:20%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 60%;
+  background-color: white;
+}
+
+.udfordring-streg1 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 20%;
+}
+
+.udfordring-streg2 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 40%;
+}
+
+.udfordring-streg3 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 60%;
+}
+
+.udfordring-streg4 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 80%;
+}
+
+
+
+.udfordring-udfordringer {
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.udfordring-udfordring1 h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  font-size: 27px;
+  color: #558c94;
+}
+
+.udfordring-udfordring2 h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  font-size: 27px;
+  color: #558c94;
+}
+
+.udfordring-udfordring3 h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  font-size: 27px;
+  color: #558c94;
+}
+
+.udfordring-udfordring1 h2 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.udfordring-udfordring2 h2 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.udfordring-udfordring3 h2 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.udfordring-udfordring1 .udfordring-noncompletion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+}
+
+.udfordring-udfordring1 .udfordring-completion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: none;
+}
+
+.udfordring-udfordring2 .udfordring-noncompletion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+}
+
+.udfordring-udfordring2 .udfordring-completion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: none;
+}
+
+.udfordring-udfordring3 .udfordring-noncompletion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+}
+
+.udfordring-udfordring3 .udfordring-completion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: none;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+*/
+/*Styling til forside*/
+/*
+.forside {
+  width: 100%;
+  height: auto;
+  opacity: 0.4;
+  z-index: -2;
+  position: relative; /*For at opacity ikke ligger sig oven på tekst
+
+}*/
+
+/*
+
+.logo {
+  position: absolute;
+  width: 50%;
+  height: auto;
+  margin-top: -144%;
+  margin-left: 25%;
+}
+
+.start {
+text-align: center;
+color: #FAB32A;
+font-family: arial;
+font-size: 30px;
+font-weight: bold;
+margin-top: -79%;
+text-decoration: none;
+
+}
+
+
+
+.spilnav-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #adcccc;
+}
+
+.spilnav-hjemknap {
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.spilnav-hjemknap img {
+  width: 40px;
+}
+
+.spilnav-h1 h1 {
+  color: #ffffff;
+  margin-top: 0%;
+  font-size: 24px;
+  text-align: center;
+}
+
+.spilnav-niveau1 {
+  color: #ffffff;
+  height: 70px;
+  width: 80%;
+  margin-top: 22%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 40px;
+}
+
+.spilnav-niveau1 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.spilnav-niveau2 {
+  color: #ffffff;
+  height: 70px;
+  width: 80%;
+  margin-top: 22%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 40px;
+}
+
+.spilnav-niveau2 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.spilnav-niveau3 {
+  color: #ffffff;
+  height: 70px;
+  width: 80%;
+  margin-top: 22%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 40px;
+}
+
+.spilnav-niveau3 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.spilside-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 800px;
+  background-color: #95b5b7;
+}
+
+.spilside-hjemknap {
+  position: absolute;
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.spilside-hjemknap img {
+  width: 40px;
+}
+
+.spilside-billede {
+  width: 100%;
+  height: auto;
+  padding-top: 7%;
+  text-align: center;
+}
+
+.spilside-billede img {
+  width: 90%;
+}
+
+.spilside-info {
+  color: #ffffff;
+  margin-top: 16%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.spilside-valgmuligheder {
+  color: #ffffff;
+  margin-top: 12%;
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.spilside-sandtvalg1 {
+  margin-top: 3%;
+  width: 38%;
+  float: left;
+  margin-left: 8%;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.spilside-sandtvalg2 {
+  margin-top: 3%;
+  width: 38%;
+  float: right;
+  margin-right: 8%;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.spilside-forkertvalg1 {
+  margin-top: 3%;
+  width: 38%;
+  float: right;
+  margin-right: 8%;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.spilside-forkertvalg2 {
+  margin-top: 3%;
+  width: 38%;
+  float: left;
+  margin-left: 8%;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.galleri-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #C3D2D3;
+}
+
+.galleri-hjemknap {
+  float: left;
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.galleri-hjemknap img {
+  width: 40px;
+}
+
+.galleri-h1 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.galleri-h1 h1 {
+  margin-top: 0px;
+  padding-top: 12px;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.galleri-kamera {
+  color: #ffffff;
+  float: right;
+  margin-right: 4%;
+  padding-top: 0.8%;
+  font-size: 40px;
+}
+
+.galleri-kamera a {
+  color: #ffffff;
+}
+
+.galleri-album {
+  width: 100%;
+  height: auto;
+  padding-top: 0%;
+}
+
+.galleri-billede {
+  width: 28%;
+  height: 64.94px;
+  margin-top: 6%;
+  padding-bottom: 0px;
+  float: left;
+  margin-left: 2%;
+  border:5px solid #021a40;
+  border-radius: 4px;
+  border-color: #ffffff;
+}
+
+.galleri-billede img {
+  width: 100%;
+  height: auto;
+}
+
+.noter-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #C3D2D3;
+}
+
+.noter-hjemknap {
+  position: absolute;
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.noter-hjemknap img {
+  width: 40px;
+}
+
+.noter-billede {
+  width: 100%;
+  height: auto;
+  padding-top: 7%;
+  text-align: center;
+}
+
+.noter-billede img {
+  width: 90%;
+}
+
+.noter-lydoptagelse {
+  color: #ffffff;
+  font-size: 90px;
+  float: right;
+  margin-top: 0%;
+  margin-right: 9%;
+}
+
+.noter-lydoptagelse img {
+width: 65px;
+margin-right: 0px;
+}
+
+.noter-lydoptagelse2 {
+  color: #ffffff;
+  font-size: 90px;
+  float: right;
+  margin-top: 0%;
+  margin-right: 9%;
+  display: none;
+}
+
+.noter-lydoptagelse2 img {
+width: 65px;
+margin-right: 0px;
+}
+
+.noter-lydoptagelse3 {
+  color: red;
+  font-size: 90px;
+  float: right;
+  margin-top: 0%;
+  margin-right: 3%;
+}
+
+.noter-lydoptagelse3 img {
+  width: 65px;
+  margin-right: 0px;
+}
+
+.noter-note {
+  text-align: center;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.noter-note {
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.noter-note h1 {
+  float: left;
+  margin-bottom: 0px;
+  margin-left: 9%;
+  font-size: 40px;
+}
+
+.noter-note textarea {
+  color: #cccccc;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-radius: 5px;
+}
+
+.note-record-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #C3D2D3;
+}
+
+.record_lydoptagelse {
+  font-size: 90px;
+  float: left;
+  margin-top: 28%;
+  margin-left: 30%;
+}
+
+.record_lydoptagelse img {
+width: 65px;
+margin-right: 0px;
+}
+
+.record_lydoptagelse2 {
+  font-size: 90px;
+  float: left;
+  margin-top: 28%;
+  margin-left: 30%;
+  display: none;
+}
+
+.record_lydoptagelse2 img {
+width: 65px;
+margin-right: 0px;
+}
+
+.record_stop {
+  font-size: 90px;
+  float: right;
+  margin-top: 28%;
+  margin-right: 30%;
+}
+
+.record_stop img {
+width: 65px;
+margin-right: 0px;
+}
+
+.record_stop2 {
+  font-size: 90px;
+  float: right;
+  margin-top: 28%;
+  margin-right: 30%;
+  display: none;
+}
+
+.record_stop2 img {
+width: 65px;
+margin-right: 0px;
+}
+
+.stopur {
+  margin-top: 232px;
+}
+
+.stopur h1 {
+  color: #005260;
+  font-size: 46px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.record_play {
+  font-size: 90px;
+  margin-top: 0%;
+text-align: center;
+  display: none;
+}
+
+.record_play img {
+width: 65px;
+margin-right: 0px;
+}
+
+
+.udfordring-wrapper {
+  margin: 0%;
+  width: 100%;
+  background-color: #abc7c9;
+}
+
+.udfordring-hjemknap {
+  color: #ffffff;
+  font-size: 40px;
+  margin-left: 3%;
+  padding-top: 0.8%;
+}
+
+.udfordring-hjemknap img {
+  width: 40px;
+}
+
+.udfordring-bjaelke {
+  position: relative;
+  height: 30px;
+  width: 80%;
+  background-color: white;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.udfordring-dag1 {
+  position: absolute;
+  width:24%;
+  height: 100%;
+  margin: 0%;
+  border-radius: 20px;
+}
+
+.udfordring-dag5 {
+  position: absolute;
+  width:23%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 77%;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.udfordring-dag2 {
+  position: absolute;
+  width:20%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 20%;
+  background-color: white;
+}
+
+.udfordring-dag3 {
+  position: absolute;
+  width:20%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 40%;
+  background-color: white;
+}
+
+.udfordring-dag4 {
+  position: absolute;
+  width:20%;
+  height: 100%;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 60%;
+  background-color: white;
+}
+
+.udfordring-streg1 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 20%;
+}
+
+.udfordring-streg2 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 40%;
+}
+
+.udfordring-streg3 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 60%;
+}
+
+.udfordring-streg4 {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+  margin-left: 80%;
+}
+
+
+
+.udfordring-udfordringer {
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+.udfordring-udfordring1 h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  font-size: 27px;
+  color: #558c94;
+}
+
+.udfordring-udfordring2 h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  font-size: 27px;
+  color: #558c94;
+}
+
+.udfordring-udfordring3 h1 {
+  margin-top: 28px;
+  margin-bottom: 0px;
+  font-size: 27px;
+  color: #558c94;
+}
+
+.udfordring-udfordring1 h2 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.udfordring-udfordring2 h2 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.udfordring-udfordring3 h2 {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.udfordring-udfordring1 .udfordring-noncompletion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+}
+
+.udfordring-udfordring1 .udfordring-completion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: none;
+}
+
+.udfordring-udfordring2 .udfordring-noncompletion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+}
+
+.udfordring-udfordring2 .udfordring-completion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: none;
+}
+
+.udfordring-udfordring3 .udfordring-noncompletion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+}
+
+.udfordring-udfordring3 .udfordring-completion {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: none;
+}
+
+.flot-wrapper {
+  margin: 0%;
+  width: 100%;
+  height: 700px;
+  background-color: #C3D2D3;
+}
+
+.flot-billede {
+  text-align: center;
+}
+
+.flot-billede img {
+  width: 300px;
+  margin-top: 180px;
+}
+
+.flot-point {
+  text-align: center;
+  font-size: 17px;
+  color: #005260;
+  margin-bottom: 31px;
+}
+
+.flot-info {
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.flot-næste {
+  width: 53%;
+  height: 55px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 13px;
+  color: #ffffff;
+  background-color: #6CC5D4;
+  border-style: solid;
+  border-color: #ffffff;
+  border-width: 4px;
+  border-radius: 31px;
+}
+
+.flot-næste h1 {
+  margin-top: 12px;
+}*/
+

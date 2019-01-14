@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="hejder.css">
+</head>
+<body>
+    
+    <div class="menu">
+        <ul class="menu-options">
+            <button onClick="yeet()">Hejsa</button>
+          <li class="menu-option">Back</li>
+          <li class="menu-option">Reload</li>
+          <li class="menu-option">Save</li>
+          <li class="menu-option">Save As</li>
+          <li class="menu-option">Inspect</li>
+        </ul>
+      </div>
+      
+      <h3 class="center">Right click to view custom context menu ☺☺</h3>
+
+<script>
+
+function yeet(){
+    alert("yo hvadså");
+}
+
+const menu = document.querySelector(".menu");
+let menuVisible = false;
+
+const toggleMenu = command => {
+  menu.style.display = command === "show" ? "block" : "none";
+  menuVisible = !menuVisible;
+};
+
+const setPosition = ({ top, left }) => {
+  menu.style.left = `${left}px`;
+  menu.style.top = `${top}px`;
+  toggleMenu("show");
+};
+
+window.addEventListener("click", e => {
+  if(menuVisible)toggleMenu("hide");
+});
+
+window.addEventListener("contextmenu", e => {
+  e.preventDefault();
+  const origin = {
+    left: e.pageX,
+    top: e.pageY
+  };
+  setPosition(origin);
+  return false;
+});
+</script>
+    
+</body>
+</html>

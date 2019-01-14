@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Bingo</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <!-- "Wrapper" klassen indeholder alt hvad "body" klassen
+      indeholder. Den er til for at man bedre kan stylé
+      den individuelle body i hver html-fil, uden at skulle
+      bruge en separat css-fil.-->
+    <div class="galleri-wrapper">
+
+
+        <!-- i headeren har vi vores primære navigation, som består af
+          en "tilbage"-knap.
+          "a" elementet er et link som er blevet smidt på og "img" elementet
+          er refferencen til det billede der skal bruges.
+          klassen som hedder "spilside-hjemknap" bliver brugt på mange
+          af HTML-siderne da de stylés éns.-->
+        <header>
+        <a href="menuside.html"><div class="galleri-hjemknap">
+            <img src="billeder/tilbage_knap.png" alt="Et tilbage-symbol">
+          </div></a>
+
+
+          <!-- Et billede af et kamera med et link til "kamera"-siden.
+              Men dette billede er taget fra siden "fontawesome.com"
+              og er gratis (og lovligt) at bruge. -->
+          <div class="galleri-kamera">
+            <a href="kamera.html">  <i class="fas fa-camera"></i></a>
+          </div>
+
+          <!-- "Galleri" er bare ren tekst. Titlen for oven. -->
+          <div class="galleri-h1">
+            <h1>Galleri</h1>
+          </div>
+        </header>
+
+
+        <!-- Herunder ligger samtlige billeder i albummet. Her tænkes det
+          at alle brugerens billeder kommer til at ligge. Så når en bruger
+          tager et billede, vil det blive overført hertil.
+          Det første billede har et link den side, hvor brugeren har
+          muligheden for at skrive noter til. Det antages at der kommer
+          lignende links til alle billederne. -->
+        <div class="galleri-album">
+          <div class="galleri-billede">
+        <a href="noter.html"><img src="billeder/note_billede.PNG" alt="Et billede af en stol"> </a>
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/hus.jpg" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/hammer.jpg" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/kage.jpg" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/lampe.jpg" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/moppe.png" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/seng.jpg" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/sofa.jpg" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/stol.png" alt="Et billede af en stol">
+        </div>
+
+        <div class="galleri-billede">
+          <img src="billeder/supermarked.jpg" alt="Et billede af en stol">
+        </div>
+
+      </div>
+    </div>
+    <!-- Der bliver referret til js filen og jQuery biblioteket
+    som det sidste for at sørge for at det er det sidste som bliver
+    indlæst i koden. En ekstra foranstaltning er dog taget i js filen.-->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src='javascript.js'></script>
+  </body>
+</html>

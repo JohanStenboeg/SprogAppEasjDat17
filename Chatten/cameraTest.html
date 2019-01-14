@@ -1,0 +1,43 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Yes great successsssssssss</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="spasser.css" />
+    
+</head>
+<body>
+    
+        
+<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+<p><label for="file" style="cursor: pointer;">📷</label></p>
+<p><img id="output" width="200" /></p>
+
+
+<form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
+  <input type="file" accept="image/*" name="file" ondblclick="indsaetIdb()"class="">
+  <button onclick="indsaetIdb()">Submit</button>
+ </form>
+<script>
+function indsaetIdb(){
+        let randomnummer = Math.floor(Math.random()*999999999)+1;      
+        var billedenavn = document.getElementById("BilledeUpload");
+        var url = "https://storage.googleapis.com/sprogappdat17easj/billeder/"+randomnummer
+
+        
+        billedenavn.action=url;
+
+        document.cookie="linket="+url;
+        //document.getElementById("BilledeUpload").reset();
+        console.log(findCookieBeskrivelse("linket"));
+        
+}
+function findCookieBeskrivelse(name) {
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) return match[2];
+}
+</script>
+</body>
+</html>

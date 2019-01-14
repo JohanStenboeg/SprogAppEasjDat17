@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vis ord</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/tempOrdbogSheet.css">
+    <script src="javascripts/ordbog.js"></script>
+    
+</head>
+<header>
+        <nav>
+            <ul class="panel">
+                <li id="js_dine_ord" class="menuknap">Dine ord</li>
+            </ul>
+        </nav>
+    </header>
+<body>
+    <section>
+        <!-- Hovedafsnit / Vis ord og billeder og redigér-->
+        {{#if this}}
+        <div id="vis_ord">
+            <center>
+            
+            <img src="../uploads/1542031170406-BmwBB2_IIAAeec2_557x_crop_center.progressive.jpg" height="150" width="150">
+
+            <h5 class="visOrdOrd">{{this.ord}}</h5>
+            <h6 class="visOrdKategori">{{this.kategori}}</p>
+            <a href="#" class="btnVisOrdAfspilLyd">Afspil lydfil</button><br>
+            </center>
+        </div>
+        {{/if}}
+        <div>
+            <form action="#" method="POST">
+                <button id="btnRediger" type="submit" class="floatTilfoj">Redigér</button>
+            </form>
+            <form action="" method="POST">
+                <button id="btnSlet" type="submit" class="floatVis">Slet</button>
+            </form>
+        </div>
+        
+    </section>
+</body>
+
+</html>

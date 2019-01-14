@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>chat</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <style>
+       * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font: 13px Helvetica, Arial;
+      background-color: rgb(27, 77, 77);
+    }
+    form {
+      display: inline-block;
+      
+      padding: 4px;
+      position: fixed;
+      bottom: 0;
+      width: 90%;
+    
+    }
+    h1{
+      color:white;
+      text-align: center;
+    }
+    form input {
+      border: 0;
+      padding: 10px;
+      width: 64%;
+      margin-right: 4%;
+      margin-bottom: 10%;
+    }
+    form button {
+      width: 9%;
+      background: rgb(219, 151, 16);
+      border: none;
+      padding: 10px;
+      color: white;
+    }
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    #messages li {
+      padding: 5px 10px;
+      color:white;
+    }
+    #messages li:nth-child(odd) {
+      background: rgb(19, 54, 54);
+    }
+    #smartKnap{
+          width: 40px;
+          border-radius: 50%;
+          height: 40px;
+          position: absolute;
+          bottom: 43px;
+          color: white;
+          font-size: 15px;
+
+          float: left;
+          
+      }
+      table{
+        border: 2px solid black;
+        text-align:center;
+      }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<h1>Sprogapp Chat</h1>
+
+<table>
+  <ul id="messages"></ul>
+</table>
+
+ <!--denne form gør det muligt at sende et billede til vores google database-->
+<form id="BilledeUpload" action="" method="POST" enctype="multipart/form-data">
+ <input type="file"accept="image/*" name="file"class="">
+ <button form="BilledeUpload" name ="SendpictoDBbtn"onclick=" indsaetIdb()">Upload</button>
+ </form>
+    <!--Denne form gør det muligt at sende beskeder til chatten og indeholder også mads' smart button.--> 
+  <form id="ChatInput" name="testtest"action="">
+    <input name="input1" id="m" autocomplete="off" />
+    <button name="Tekstfieldknap">Send</button>
+    <img id="smartKnap" src="http://pluspng.com/img-png/free-png-plus-sign-plus-symbol-clipart-library-600.png" onclick="lavEtKort()" height="32px" width="32px">
+  </form>
+
+
+  <script src= "http://localhost:8080/tsmtest"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <script>
+    // metode til at indsætte vores fil i google cloud
+    // den genererer et 9cifret link til billedet, og gemmer dette i en cookie til senere brug.
+    function indsaetIdb(){
+        let randomnummer = Math.floor(Math.random()*999999999)+1;      
+        var billedenavn = document.getElementById("BilledeUpload");
+        var url = "https://storage.googleapis.com/sprogappdat17easj/billeder/"+randomnummer
+
+        // sætter action elementet i billedeupload lig med URL'et
+        billedenavn.action=url;
+
+        document.cookie="linket="+url;
+        //document.getElementById("BilledeUpload").reset();
+        console.log(findCookieBeskrivelse("linket"));
+        return false;
+}
+    
+   function findCookieBeskrivelse(name) {
+  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  if (match) return match[2];
+}
+  printTidligereBeskeder();
+
+
+    var hvemSkriverJegTil = findCookieBeskrivelse("hvemSkriverDuTil"); 
+
+    var username = findCookieBeskrivelse("hvemErJeg");
+    
+    function sorterNavn(navna,navnb){
+      if(navna>navnb){return ""+navnb+navnb+""}
+      if(navna<navnb){return ""+navna+navnb+""}
+      else{return ""+navna+navnb+""}
+    }
+
+    var chatId = sorterNavn(username,hvemSkriverJegTil);
+
+
+    // Metode til at printe tidligere beskeder
+    function printTidligereBeskeder() {
+      //Vi henter beskederne
+      var xmlhttp2 = new XMLHttpRequest();
+
+      xmlhttp2.onreadystatechange = function () {
+        // Hvis requested kommer til stadie 4(sendt), og får status 200(Alt ok), så kører loopet. 
+        if (this.readyState == 4 && this.status == 200) {
+          // Vi parser her resultatet til et json, fordi at den data vi henter fra myObj ikke er et rigtig json objekt.
+          var myObj = JSON.parse(this.responseText);
+
+          console.log(myObj.arr.length + " = Antal beskeder");
+
+          // For at kunne printe beskederne, laver vi et array.
+          // Da JSON objekter ikke har nogen længde, går vi ind i en array subgruppe, som tæller hvor mange pladser i arrayet, vi bruger.
+          // Når vi så har det tal, kan vi lave et forloop, der printer beskeder, så længe der er nogen der ikke er printet endnu. 
+          for (i = 0; i < myObj.arr.length; i++) {
+
+            // Laver variabel, der bestemmer beskeden ud fra dens plads i arrayet.
+            var text = myObj.arr[i].besked;
+            // Tilføjer beskeden ud fra listen. 
+            $('#messages').append($('<li>').text(text));
+          }
+        }
+      }
+
+      xmlhttp2.open("GET", "http://localhost:8080/getChat", true);
+      xmlhttp2.send();
+    }
+
+    //Kort functionerne
+    function lavEtKort(){
+          var imgUrl = "http://4kl.plot.alinea.dk/wp-content/uploads/sites/37/2015/09/Video.jpg";
+          var ordetForDet = "Skriv ord her";
+          var lydKlipUrl = "https://www.myinstants.com/media/sounds/fortnite-dance-moves-emote-music-tv9iv8cxmo0-1.mp3";
+        
+          $('#messages').append($('<div class="card" style="width: 18rem; "><img  class="card-img-top" onclick="udskiftbillede(this)" src="'+imgUrl+'" alt="Card image cap" height="250px" width="250px" ><div class="card-body"><h5 class="card-title" onclick="udskiftTekst(this)" >'+ordetForDet+'</h5><p class="card-text"></p><div onclick="udskiftLyd(this)"><audio onclick="udskiftLyd(this)" src="'+lydKlipUrl+'" controls=""/></div></div></div>'));
+        }
+
+    
+        
+        //
+        function udskiftbillede(object){
+          if(confirm("Vil du skifte billedet, med det seneste taget billede?")){
+            //Kør metode, der tager kameraet frem.
+            var nuvarendebilled = findCookieBeskrivelse("linket"); 
+            object.src=nuvarendebilled;
+            //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
+          }
+        }
+        function udskiftTekst(object){
+          if(confirm("Vil du skifte ordet?")){
+            var ord =prompt("Hval vil du udskifte "+ object.innerHTML +" med?");
+            object.innerHTML = ord;
+            //HUSK AT HAVE NOGET KODE DER OPDATERE I ORDBOGEN! 
+
+          }
+        }
+        function udskiftLyd(object){
+          if(confirm("Skift ord")){
+            var link = "https://www.myinstants.com/media/sounds/deja-vu.mp3"
+            object.src = link;
+            
+          }
+        }
+
+
+    //Til at printe of sende beskeder.
+    $(function () {
+      var socket = io();
+
+      //Spørger om dit brugernavn
+      //var username = prompt('Hvad er dit brugernavn ?');
+      //alert("Husk og vælg hvem du vil skrive med.")
+      //var hvemSkriverJegTil = prompt("Hvem vil du skrive til?");
+
+
+      //Når man connector til socket'en
+      socket.emit('new_client', chatId);
+      document.title = username + ' - ' + document.title;
+
+      //Når vi sender beskeder.
+      $('#ChatInput').submit(function () {
+        //socket.emit('chat message',username+' : '+ $('#m').val());
+        //9:25 9/11 + mads : hej
+        var tidDato = new Date().toLocaleTimeString('dk-DK',{hour12:false,hour:"numeric",minute:"numeric"})+ " "+new Date().toLocaleDateString();
+        var hvadViSender = " "+ tidDato +" - "+username+" : " +$('#m').val() + " "
+        socket.emit('chat message', hvemSkriverJegTil + hvadViSender);
+        //$('#messages').append($('<li>').text($('#m').val()));
+        $('#m').val('');
+        return false;
+      });
+
+      //Når vi får beskeder. 
+      socket.on('chat message', function (msg) {
+        console.log("Her : " + msg.search(hvemSkriverJegTil))
+        if (msg.search(username) > (-1)) {
+          console.log(msg)
+          if (msg.search(hvemSkriverJegTil) == 0) {
+            var res = msg.replace(hvemSkriverJegTil, " ");
+            $('#messages').append($('<li>').text(" " + res));
+          } else {
+            var res2 = msg.replace(username, " ");
+            $('#messages').append($('<li>').text(" " + res2));
+          }
+        } else {
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
