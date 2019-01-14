@@ -5,7 +5,8 @@ var upload = multer({dest: "./public/uploads"});
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var mongodb = require('mongodb');
-var url = "mongodb://stenboeg:stenboeg1234@ds155653.mlab.com:55653/sprogappmongodb";
+var url = "mongodb://localhost:27017/";
+
 
 /* Handler GET request og henter alle objects i ordbogen */
 router.get('/api/getord', function (req, res, next) {
@@ -53,29 +54,51 @@ router.post('/api/postord', function (req, res, next) {
   });
 });
 
-/* Handler POST request og opdaterer et ord i ordbogen - fungerer ikke!*/
+/* Handler POST request og opdaterer et ord i ordbogen */
 router.post('/api/updateord', function (req, res, next) {
-  var item = {
-    ord: req.body.ord,
-  };
-  var id = reg.body.id;
-  
-  MongoClient.connect(url, {
-    useNewUrlParser: true
-  }, function (err, db) {
-    assert.equal(null, err);
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    
+    if (err) throw err;
+    
     let database = db.db("tododb");
-    database.collection("ordbog").updateOne(ord,  function (err, result) {
+    
+    let myquery = { ord: req.body.ord };
+    
+    let newvalues = { $set: { ord: req.body.nyt_ord } };
+    
+    database.collection('ordbog').updateOne( myquery, newvalues, function (err, res) {
       if (err) throw err;
-      console.log("1 document updated-index_updateOne_used: ");
+      console.log("1 document updated");
       db.close();
     });
     res.send("1 document updated-index_updateOne_used");
+     //   res.redirect('/ordbog');
+    //    res.redirect('/test'); //Dur ikke her, da det ikke er en function!
+    });
   });
-});
 
-/* Handler POST sletter et ord i ordbogen - fungerer ikke! */
-router.post('/slet_ord', function (req, res, next) {
+// Hentet fra i fredags/lørdags -> FUNGERER! Finder og sletter!
+/* Handler POST sletter et ord i ordbogen */
+router.post('/api/slet_ord', function (req, res, next) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+    if (err) throw err;
+    let database = db.db("tododb");
+
+//    database.collection('ordbog').remove({ _id: ObjectId(req.params._id) }, (err, result) => {
+      database.collection('ordbog').findOne({ _id: ObjectId(req.params._id) }, (err, result) => {
+        if (err) return console.log(err);
+        console.log(req.body);
+
+        database.collection('ordbog').deleteOne(req.body, (err, result) => {
+          if (err) return console.log(err);  
+        res.redirect('/test');
+      });
+    });
+  });
+}); 
+
+/* Handler POST sletter et ord i ordbogen - mongoose - fungerer ikke! */
+/* router.post('/slet_ord', function (req, res, next) {
   MongoClient.connect(url, {
     useNewUrlParser: true
   }, function (err, db) {
@@ -87,8 +110,8 @@ router.post('/slet_ord', function (req, res, next) {
       console.log(req.body)
       res.redirect('/ordbog')
     })
-  })
-});
+  }) */
+
 
 /* Handler POST request og opdaterer et image i ordbogen */
 router.post('/api/uploadimage', upload.single('image'), function (req, res) {
@@ -117,14 +140,6 @@ router.get('/', function (req, res, next) {
     title: 'SprogApp'
   });
 });
-
-/* let myquery = {
-  _id: mongodb.ObjectID( req.params.id)
-};
-let newvalues = {
-  $set: {
-    ord: req.body.ord
-  } */
 
 
 module.exports = router;
