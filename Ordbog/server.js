@@ -14,17 +14,14 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-//hbs.registerPartials(__dirname + '/views/partials');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/ordbog', ordbogRouter);
 app.use('/ordbog/redigerord', redigerordRouter);
-//app.use('/ordbog/seneste', senesteRouter);
 app.use('/test', testRouter);
 
 // catch 404 and forward to error handler
@@ -57,7 +54,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 /**

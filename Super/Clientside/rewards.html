@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rewards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <style>
+        button{
+            color: white;
+            border-radius:5px;
+            border-width: 2px;
+            text-align: center;
+            font-size: 30px;
+            align-content: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+            background-color: rgb(219, 151, 16);
+            border-color:rgb(219, 151, 16);
+            padding:25px 40px; 
+        }
+        button:hover{
+            background-color: rgb(167, 122, 32);
+            border-color:rgb(167, 122, 32);
+            border-radius:5px;
+            border-width: 2px;
+    
+        }
+        h1{
+            color: white;
+            border-radius:5px;
+            border-width: 2px;
+            text-align: center;
+            align-content: center; 
+        }
+        body{
+            background-color:rgb(20, 77, 77);
+        }
+        p{
+            text-align: center;
+            color: white;
+        }
+        .center{
+        
+            align-content: center;
+        }
+        </style>
+        
+        <h1>Velkommen til dine Præmier</h1>
+        <p id="textHer">Fejl med at hente præmie points</p>
+        <script>
+            antalpoints();
+            function antalpoints(){
+                let text = "Tillykke, du har så mange præmiepoint: 595 ";
+                
+                /*let antalpoint =   findCookieBeskrivelse("rewardpoints") 
+                console.log(""+antalpoint)
+                text += antalpoint;
+                */
+                document.getElementById("textHer").innerHTML =text;
+
+
+            }
+
+
+            /*            function forogRPoints(){
+                let antalpoint = findCookieBeskrivelse("rewardpoints");
+                console.log("pluse"+antalpoint)
+                var parser = parseInt(antalpoint);
+                var antalpointplus = + 1;
+                console.log("plus"+antalpointplus);
+                document.cookie = "antalbesog=" + antalpointplus + ";"
+
+            }
+*/
+            function opretcookie(){
+                document.cookie= "rewardpoints=0;"
+            }
+            
+
+//find cookie
+function findCookieBeskrivelse(name) {
+    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) return match[2];
+}
+        
+
+function goNextPage(){
+            window.location.replace("dagensopgaver");
+        }
+
+</script>
+<img src="https://storage.googleapis.com/billedertilsprogapp/processbar%20ting%20ting.png" alt="Trulli" width="800" height="600" class="center" ></img>
+<button onclick="goNextPage()" >Dagens opgaver</button>
+</body>
+</html>

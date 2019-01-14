@@ -112,12 +112,12 @@ router.post('/api/updatevideo', function (req, res, next) {
 });
 
 /* GET index. */
-router.get('/', function (req, res, next) {
+/*router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'SprogApp'
   });
 });
-
+*/
 /* let myquery = {
   _id: mongodb.ObjectID( req.params.id)
 };

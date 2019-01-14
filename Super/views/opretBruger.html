@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Opret Bruger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/stylelogin.css" />
     <script src="../routes/opretBruger.js"></script>
 </head>
         <!--Logo øverst oppe-->
-      <a href="../Clientside/login.html"><img class="logoutmenu" src="../public/stylesheets/logout.png" alt="tilbage"></a>
+        <a href="https://sprogapp.appspot.com/login"><img class="tilbageknap" src="https://storage.googleapis.com/billedertilsprogapp/logout.png" alt="tilbage"></a>
 <body>
 
     <div class="containerlogin">
         <form method="POST" action="opretBruger/register">
             <input type="text" name="brugernavn" id="input_brugernavn" placeholder="Skriv brugernavn">
             <input type="password" name="kodeord" id="input_kodeord" placeholder="Skriv kodeord">
+            <input type="text" name="contact" id="input_contact" placeholder="Angiv din kontakt">
            
         <select class="roller" name="rolle"> 
             <option class="options" value="default" selected>Vælg en rolle...</option>

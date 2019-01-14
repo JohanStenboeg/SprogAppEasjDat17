@@ -205,6 +205,15 @@ span.psw {
     float: right;
 }
 
+#welcome_msg {
+  font: 'Arial';
+  font-weight: bold;
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: right;
+
+}
 
 body {
   background-color: rgb(20, 77, 77); 
@@ -308,6 +317,16 @@ p {
   margin-top: relative;
   margin-right: 5%;
   float: right;
+}
+
+#contact {
+  font: 'Arial';
+  font-weight: bold;
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: center;
+
 }
 
 .dagensOrd {/*holder til dagens ord*/
@@ -1542,4 +1561,3 @@ margin-right: 0px;
 .flot-næste h1 {
   margin-top: 12px;
 }*/
-

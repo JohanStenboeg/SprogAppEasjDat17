@@ -1,11 +1,13 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
+/*
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/chatOverview.html');
   //res.sendFile(__dirname + '/tsmtest.js');
+  
 });
+*/
 app.get('/chatside', function(req,res){
   res.sendFile(__dirname + '/chatSide.html');
 
@@ -22,7 +24,7 @@ app.get('/dagensopgaver', function(req,res){
   
 })
 //hvordan vi sender js filer,  den nedenunder skal i html 
-//  <script src= "http://localhost:3000/tsmtest"></script>
+//  <script src= "http://localhost:8080/tsmtest"></script>
 
 app.get('/tsmtest', function(req, res){
   res.sendFile(__dirname + '/tsmtest.js')

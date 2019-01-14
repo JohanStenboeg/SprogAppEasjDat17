@@ -4,16 +4,6 @@ var express = require('express');
 var router = express.Router();
 //var __dirname = 'localhost:8080/login';
 
-/*
-//router forbinder til css
-router.use('/css/style.css', function(req, res){
-    res.sendFile(__dirname + '/css/style.css');
-});
-//router der forbinder til fortryd-knappen
-router.use('/billeder/logout.png', function(req, res){
-    res.sendFile(__dirname + '/billeder/logout.png');
-});
-*/
 
 //Forbind til mongoDB vha. mongoose modulet.
 mongoose.connect('mongodb://stenboeg:stenboeg1234@ds155653.mlab.com:55653/sprogappmongodb', {useNewUrlParser: true});
@@ -29,7 +19,8 @@ router.post('/register', function(req, res, next){
         brugernavn : req.body.brugernavn,
         kodeord : req.body.kodeord,
         rolle : req.body.rolle,
-        rewardLvL : 0
+        rewardLvL : 0,
+        contact : req.body.contact
     }
     //opret brugeren
     bruger.create(object, function(err){

@@ -3,10 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Vælg chat partner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <style>
+    button{
+        color: white;
+        border-radius:5px;
+        border-width: 2px;
+        text-align: center;
+        align-content: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        background-color: rgb(219, 151, 16);
+        border-color:rgb(219, 151, 16);
+    }
+    button:hover{
+        background-color: rgb(167, 122, 32);
+        border-color:rgb(167, 122, 32);
+        border-radius:5px;
+        border-width: 2px;
+
+    }
+    h1{
+        color: white;
+        border-radius:5px;
+        border-width: 2px;
+        text-align: center;
+        align-content: center; 
+    }
+    body{
+        background-color:rgb(20, 77, 77);
+    }
+    </style>
+    <h1>Vælg hvem du vil chatte med</h1>
     <ul id="messages"></ul>
 
     
@@ -33,27 +66,28 @@
         for (let index = 0; index < myObj.arr.length; index++) {
             let holder  = myObj.arr[index].name;
             console.log(myObj.arr[index].name)
-            $('#messages').append($('<button id="'+holder+'" onclick="goNextPage(this)">'+holder+'</button>'));
+            $('#messages').append($('<button id="'+holder+'" onclick="goNextPage(this,false)">'+holder+'</button>'));
 
         }
       }
     };
     console.log("yeet XD");
+    $('#messages').append($('<button id="btn_tilrewards" onclick="goNextPage(this,true)"> Gå til Præmier </button>'));
 
-    xmlhttp.open("GET", "https://sprogapp.appspot.com/getChats", true);
+    xmlhttp.open("GET", "http://localhost:8080/getChats", true);
     xmlhttp.send();
     console.log("venne " + venneliste);
 
 
 
-    function goNextPage(object){
-        //Til at skifte within domain.
-        document.cookie ="hvemSkriverDuTil="+object.id +";"
-
-        window.location.replace("chatside");   
-         
-
-
+    function goNextPage(object,chatElEj){
+        if(chatElEj==false){
+            //Til at skifte within domain.
+            document.cookie ="hvemSkriverDuTil="+object.id +";"
+            window.location.replace("chatside");   
+        }else{
+            window.location.replace("rewards");
+        }
     }
 
     

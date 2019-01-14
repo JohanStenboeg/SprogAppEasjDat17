@@ -15,7 +15,7 @@ function testLogin(){
           document.getElementById("skrivher").innerHTML = this.response;
         }
     };
-    var url = "http://172.20.10.5:3000/login";
+    var url = "http://172.20.10.5:8080/login";
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(params);

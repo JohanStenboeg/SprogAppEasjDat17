@@ -6,13 +6,312 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Med Sproget På Arbejde</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/stylesheets/stylelogin.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
 
 </head>
 
 <body>
+    <style>
+        *{
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Arial'
+}
+h1, h2, h3, h4, h5 {
+  color: #fff;
+  font-weight: bold;
+}
+p, div {
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+/*--------- START login og opret bruger -----------*/
+
+#mainlogin {
+    background-color: rgb(20, 77, 77);  
+  padding-bottom: 20px;
+}
+
+form {
+  /*border: 3px solid #f1f1f1;*/
+}
+
+/*-------inputfelter på login.html og opretbruger.html-------*/
+
+input[type=fName], input[type=passWord], input[type=lName], input[type=eMail], input[type=telefonNummer], input[type=text] {
+    width: 95%;
+    padding: 12px 20px;
+    margin: 8px 2.5%;
+    display: inline-block;
+    border: 3px solid #fff;
+    border-radius: 25px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #fff; 
+    font: 'Arial';
+    font-weight: bold;
+    
+}
+
+
+/*-------  password inputfelt - sikrer at det er '******'   -------*/
+input[type=text]::placeholder, input[type=password]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+}
+
+input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+input[type=text]::-ms-input-placeholder, input[type=password]::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+}
+
+
+input[type=text]::placeholder, input[type=eMail]::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+  opacity: 1; /* Firefox */
+}
+
+input[type=text]:-ms-input-placeholder, input[type=eMail]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #fff;
+}
+
+input[type=text]::-ms-input-placeholder, input[type=eMail]::-ms-input-placeholder { /* Microsoft Edge */
+  color: #fff;
+}
+
+button {
+    background-color: #FAB32A;
+    /*background-color: rgb(67, 156, 230);*/
+    color: #fff;
+    padding: 10px 20px;
+    margin: 8px 20%;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 60%;
+    font: 'Arial';
+    font-weight: bold;
+}
+
+.btnlogin {
+    background-color: #FAB32A;
+    /*background-color: rgb(67, 156, 230);*/
+    color: #fff;
+    padding: 10px 20px;
+    margin: 8px 20%;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 60%;
+    font: 'Arial';
+    font-weight: bold;
+}
+
+/*.lgnsocialbtn {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 12px 10%;
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: #005260;
+  color: #fff;
+}*/
+
+/*.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}*/
+
+
+/*Beholder div til inputfelter på 'login.html' + 'opretBruger.html' */
+.containerlogin {
+  padding: 40px 60px;
+  padding-top: 10rem;
+  margin-bottom: 50px;
+}
+/*
+Beholder div til Facebook og Google login
+.containerloginsocialbtn {
+  padding: 40px 60px;
+}*/
+
+
+.container div {
+  padding: 0 60px;
+}
+.container2 div {
+  padding: 0 60px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/*------ "roller" felt på opretbruger.html--------*/
+.roller {
+  width: 95%;
+  padding: 12px 20px;
+  margin: 8px 2.5%;
+  display: inline-block;
+  border: 3px solid #fff;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #fff; 
+  font: 'Arial';
+  font-weight: bold;
+}
+/*---- styling af valgmuligheder på opretBruger.html----*/
+.options {
+  background-color: #005260;
+  color: #fff;
+  font: 'Arial'!important;
+  font-size: 13px!important;
+  font-weight: bold!important;
+    
+}
+
+/*------- SLUT login og opret bruger -------*/
+
+
+
+/*---- START Styling til menusider (kursist, sprogmakker og underviser) ----*/
+
+
+
+.logoutmenu {
+  width: 7%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+.picturesmenu {
+  width: 8%;
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: right;
+}
+
+.cameramenu {
+    width: 10%;
+    height: auto;
+    margin-top: 3%;
+    margin-right: 8%;
+    float: right;
+}
+
+
+body {
+  background-color: rgb(20, 77, 77); 
+  padding-bottom: 20px;
+  
+}
+
+/*div til knapper på menusider */
+.buttonsmenu {
+  /*display: inline-grid;*/
+  margin-top: 20%;
+  margin-left: 5%;
+}
+
+.buttonstartspil {
+background-color: #FAB32A;
+border-color: white;
+border-width: 2px;
+border-radius: 42px;
+color: white;
+padding: 23px 94px;
+font-size: 10px;
+font-size: 20px;
+font-family: arial;
+margin-top: 50%;
+width: 40%;
+
+}
+
+
+body {
+  margin: 0%; 
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: arial;
+}
+
+h2 {
+  font-family: arial;
+}
+
+p {
+  font-family: arial;
+}
+
+
+
+/*---------- Start Kursist profilside ----------*/
+
+
+.tilbageknap { /*tilbage-knap i header*/
+  width: 7%;
+  height: auto;
+  margin-top: 3%;
+  margin-left: 3%;
+}
+
+#headertekst { /*velkomst-besked i header*/
+  height: auto;
+  margin-top: 3%;
+  margin-right: 5%;
+  float: right;
+}
+
+
+.profilbillede {/*holder til profilbillede*/
+  
+  margin-top: relative;
+  margin-right: 5%;
+  float: right;
+}
+
+.dagensOrd {/*holder til dagens ord*/
+  margin-top: 20%;
+  text-align: center;
+}
+
+
+#dagens_ord {
+  font: 'Arial';
+  color: #fff; 
+
+}
+
+
+        </style>
 
     <!--script for onclinck-->
     <script>
@@ -56,7 +355,7 @@
                                 document.cookie = "UserData=" + jsonString + ";path=/;";
                                 //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                                 console.log(document.cookie);
-                                window.location.href = "http://localhost:3000/kursistside"
+                                window.location.href = "http://localhost:8080/kursistside"
 
                                 break;
 
@@ -65,7 +364,7 @@
                                 document.cookie = "UserData=" + jsonString + ";path=/;";
                                 //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                                 console.log(document.cookie);
-                                window.location.href = "http://localhost:3000/sprogmakkerside"
+                                window.location.href = "http://localhost:8080/sprogmakkerside"
 
                                 break;
 
@@ -74,12 +373,12 @@
                                 document.cookie = "UserData=" + jsonString + ";path=/;";
                                 //document.cookie = "username=" + brugernavninput.value + ";password=" + passwordinput.value + ";path=/;"
                                 console.log(document.cookie);
-                                window.location.href = "http://localhost:3000/underviserside"
+                                window.location.href = "http://localhost:8080/underviserside"
 
                                 break;
 
                             case "":
-                                window.location.href = "http://localhost:3000"
+                                window.location.href = "http://localhost:8080"
                                 document.cookie = "loginPrivilege=" + this.response + ""
                         }
 
@@ -109,7 +408,7 @@
             };
 
             //HTTP forespørgsel starter, og indhenter nødvendig data til genenmførsel.
-            var url = "http://localhost:3000";
+            var url = "http://localhost:8080";
             xmlhttp.open("POST", url, true);
             xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xmlhttp.send(params);
@@ -128,7 +427,7 @@
                     <button onclick="testLogin()">Log Ind</button>
 
                     <!--Knap til nyBruger siden-->
-                    <button type="submit" onclick="location.href='http://localhost:3000/opretBruger'">Opret Ny bruger</button>
+                    <button type="submit" onclick="location.href='http://localhost:8080/opretBruger'">Opret Ny bruger</button>
                 </div>
             </div>
 

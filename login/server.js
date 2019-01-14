@@ -56,8 +56,8 @@ app.get('/Underviser' /* + et ID */, function(req, res){
 });
 
 /**STYLESHEET */
-app.use('/css/style.css', function(req, res){
-  res.sendFile(__dirname + '/css/style.css');
+app.use('/css/stylelogin.css', function(req, res){
+  res.sendFile(__dirname + '/css/stylelogin.css');
 });
 
 /**CONTENT / PICTURES / ETC */

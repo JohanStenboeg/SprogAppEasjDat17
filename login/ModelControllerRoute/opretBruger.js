@@ -5,8 +5,8 @@ var router = express.Router();
 //var __dirname = 'localhost:8080/login';
 
 //router forbinder til css
-router.use('/css/style.css', function(req, res){
-    res.sendFile(__dirname + '/css/style.css');
+router.use('/css/stylelogin.css', function(req, res){
+    res.sendFile(__dirname + '/css/stylelogin.css');
 });
 //router der forbinder til fortryd-knappen
 router.use('/billeder/logout.png', function(req, res){

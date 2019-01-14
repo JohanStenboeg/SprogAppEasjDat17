@@ -9,7 +9,7 @@
   "keywords": [
     "sprogapp"
   ],
-  "author": "Mads",
+  "author": "T69Sovsen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",

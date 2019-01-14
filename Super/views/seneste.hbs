@@ -11,13 +11,13 @@
   <!-- Hovedafsnit -->
   <section>
     <div class="container" id="mainOrdbog">
-
+        
       <div class="card-columns">
         <div id="accordion">
           {{#each this}}
           <div class="card" style="width: 18rem, background-color: #e3f2fd;">
             <a href="#collapse{{_id}}" data-toggle="collapse">
-              <img class="card-img-top" src="{{image}}" alt="Card image cap">
+              <img class="card-img-top" src="../{{image}}" alt="Card image cap">
 
               <div class="card-body">
                 <h5 class="card-title" style="color: grey">{{this.ord}}</h5>
@@ -38,7 +38,6 @@
       </div>
     </div>
     </div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   </section>
 
   <script>

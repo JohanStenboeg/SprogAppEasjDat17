@@ -8,12 +8,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-//var hbs = require('hbs');
 var indexRouter = require('./routes/index');
-var testRouter = require('./routes/test');
 var ordbogRouter = require('./routes/ordbog');
-var tilfojordRouter = require('./routes/tilfojord');
-var visRouter = require('./routes/vis');
+var redigerordRouter = require('./routes/redigerord');
+var testRouter = require('./routes/test');
 var app = express();
 
 
@@ -26,97 +24,101 @@ var mongoose = require('mongoose');
 
 //chat
 
+var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-
-
-//getter
-//ordbog
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-//hbs.registerPartials(__dirname + '/views/partials');
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/test', testRouter);
-app.use('/ordbog', ordbogRouter);
-app.use('/tilfojord', tilfojordRouter);
-//app.use('/vis', visRouter);
-// catch 404 and forward to error handler
-//app.use(function(req, res, next) {
-//  next(createError(404));
-//});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-
-
 
 
 //login
 //Routes til scripts
 var opretRouter = require('./models/brugerModel');
-var regRouter = require('./routes/opretBruger');
+//var regRouter = require('./routes/opretBruger');
 //var loginRouter = require('./Clientside/logintoServer');
 
-app.get('/login', function(req,res){
-  res.sendFile(__dirname + '/Clientside/login.html')
-})
-//Henter fra roden af URL og til indholdet af opretBruger.html
+/**ROUTES TIL SCRIPTS */
+var opretRouter = require('../Super/routes/opretBruger.js');
+//var loginRouter = require('./Clientside/logintoServer');
+
+/**ENDPOINTS */
+//henter indhold til opretBruger endpoint
 app.get('/opretBruger', function(req, res){
   res.sendFile(path.join(__dirname + '/views/opretBruger.html'));
 });
-
-app.use('/css/style.css', function(req, res){
-  res.sendFile(__dirname + '/public/stylesheets/style.css');
+//henter indhold til Index (login) endpoint
+app.get('/', function(req, res){
+  res.sendFile(path.join(__dirname + '/Clientside/login.html'));
+});
+//henter indhold til KursistSide endpoint
+app.get('/kursistside', function(req, res){
+  res.sendFile(path.join(__dirname + '/views/kursist/kursistside.html'));
+});
+//henter indhold til SprogmakkerSide endpoint
+app.get('/sprogmakkerside', function(req, res){
+  res.sendFile(path.join(__dirname + '/views/sprogmakker/sprogmakkerside.html'));
+});
+//henter indhold til UnderviserSide endpoint
+app.get('/underviserside', function(req, res){
+  res.sendFile(path.join(__dirname + '/views/underviser/underviserside.html'));
+});
+//henter indhold til Kursist + ID endpoint
+app.get('/Kursist' /* + et ID */, function(req, res){
+  res.sendFile(path.join(__dirname + '/views/kursist/Kursist.html'));
+});
+//henter indhold til Sprogmakker + ID endpoint
+app.get('/Sprogmakker' /* + et ID */, function(req, res){
+  res.sendFile(path.join(__dirname + '/views/sprogmakker/Sprogmakker.html'));
+});
+//henter indhold til Underviser + ID endpoint
+app.get('/Underviser' /* + et ID */, function(req, res){
+  res.sendFile(path.join(__dirname + '/views/underviser/Underviser.html'));
 });
 
-app.get('/kursistside',function(req, res){
-  res.sendFile(__dirname + '/views/kursist/kursistside.html');
+/**STYLESHEET */
+app.use('/stylesheets/stylelogin.css', function(req, res){
+  res.sendFile(__dirname + '/public/stylesheets/stylelogin.css');
 });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+/**CONTENT / PICTURES / ETC */
+app.use('/billeder/logout.png', function(req, res){
+  res.sendFile(__dirname + '/billeder/logout.png')
+});
+app.use('/billeder/camera.png', function(req, res){
+  res.sendFile(__dirname + '/billeder/camera.png')
+});
+app.use('/billeder/tilbage_knap.png', function(req, res){
+  res.sendFile(__dirname + '/billeder/tilbage_knap.png')
+});
 
-
-//Fortæller hvilket route skal hentes indhold fra, og hente scripts fra
-app.use('/opretBruger', regRouter);
-//app.use('/login', loginRouter);
-
-
-
-//chat
-app.get('/chatover', function(req, res){
+//CHATTENTEST
+app.get('/chatOverview', function(req, res){
   res.sendFile(path.join(__dirname + '/Clientside/chatOverview.html'));
-  //res.sendFile(__dirname + '/tsmtest.js');
+  
+});
+
+//CHATTEN
+
+
+app.get('/chatOverview', function(req, res){
+  res.sendFile(path.join(__dirname + '/Clientside/chatOverview.html'));
+  
 });
 app.get('/chatside', function(req,res){
-  res.sendFile(__dirname + '/Clientside/chatSide.html');
+  res.sendFile(path.join(__dirname + '/Clientside/chatSide.html'));
 
   
 })
-//hvordan vi sender js filer,  den nedenunder skal i html 
-//  <script src= "http://localhost:3000/tsmtest"></script>
+app.get('/rewards', function(req,res){
+  res.sendFile(path.join(__dirname + '/Clientside/rewards.html'));
 
-app.get('/tsmtest', function(req, res){
-  res.sendFile(__dirname + '/tsmtest.js')
-
+  
 })
+app.get('/dagensopgaver', function(req,res){
+  res.sendFile(path.join(__dirname + '/Clientside/dagensopgaver.html'));
+
+  
+})
+
+
 
 //fixer Cro$s-Origin Resource Sharing (CORS)
 app.use(function(req, res, next) {
@@ -135,7 +137,6 @@ app.get('/getChats',function(req,res){
 
 });
 
-//HUSK AT VI SKAL ÆNDRE DENNE
 var chatDummy = {arr: [ { "besked": '16:05 11/12/2018 - Frank : Hej Johan' },
 { "besked": '16:07 11/12/2018 - Frank : Hej' },
 { "besked": '16:08 11/12/2018 - Frank : virker' },
@@ -153,9 +154,7 @@ app.get('/getChat', function(request, res){
 
 
 
-http.listen(8080, function(){
-  console.log('listening on *:8080');
-});
+
 
 io.on('connection', function(socket){
     socket.on('new_client',function(username){
@@ -220,14 +219,83 @@ var collectionNavn = "chatBeskeder"; //Skriv navnet på den collection der skal 
 
 }); 
 
+//getter
+//ordbog
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/test', indexRouter);
+app.use('/ordbog', ordbogRouter);
+app.use('/redigerord', redigerordRouter);
+app.use('/test', testRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//fixer Cross-Origin Resource Sharing (CORS)
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+  //var routes = require('../ModelControllerRoute/routes'); //importing route
+//routes(app); //register the route
+
+
+app.route('/').post(clienttoserver.login_as_client)
+
+//Fortæller hvilket route skal hentes indhold fra, og hente scripts fra
+app.use('/opretBruger', opretRouter);
+//app.use('/login', loginRouter);
+
+//Middleware : Skriver hvis den ikke kan finde siden.
+app.use(function(req, res) {
+    res.status(404).send({url: req.originalUrl + ' not found'})
+  });
+
+
+
+
+
+
+
 
 
 //posters
 //login
-app.route('/Clientside/login').post(clienttoserver.login_as_client);
-
+/*
+app.route('/').post('clienttoserver.login_as_client');
+*/
+http.listen(8080, function(){
+  console.log('listening on *:8080');
+});
 
 //listener
-module.exports = app;
+//module.exports = app;
 
 

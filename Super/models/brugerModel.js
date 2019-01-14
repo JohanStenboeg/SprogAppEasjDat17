@@ -6,7 +6,8 @@ var BrugerSchema = new Schema({
     brugernavn : {type: String, required: true},
     kodeord : {type : String, required: true},
     rolle : {type: String, required: true},
-    rewardLvL : {type : Number, required: false} 
+    rewardLVL : {type : Number, required: false},
+    contact : {type : String, required: false} 
 });
 
 exports.BrugerSchema = BrugerSchema;
